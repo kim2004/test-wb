@@ -1,0 +1,20 @@
+export interface IConfig {
+    idUti: number,
+    hdc1: number,
+    hdc2: string,
+    hdc3: string,
+    hdc4: string,
+    hdc5: number,
+    hdc6: number,
+    unite: number,
+    correctionJour: number,
+    correctionNuit: number,
+    valeur: number,
+    unite1: number,
+    unite2: number,
+    unite3: number,
+    unite4: number,
+    unite5: number,
+    unite6: number,
+    dureeAction: number
+}

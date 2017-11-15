@@ -1,0 +1,29 @@
+<ion-content padding class="background-color-aliment">
+  <div style="height:30px;">
+    <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>
+  </div>
+  <ion-searchbar (ionInput)="setFilteredItems($event)" placeholder='{{"msg.rechercheAliments"|translate}}'></ion-searchbar>
+  <ion-list no-lines >
+    <div [hidden]="(isMesAliments === 0)">
+      <ion-item-sliding style="padding:3px 10px 3px 3px;border-bottom:1px solid grey" *ngFor="let aliment of listAliment | OrderBy : ['nom']" (click)="getQuantite(aliment.id)">
+        <ion-item>
+          {{aliment.nom}}        
+        </ion-item>
+
+        <ion-item-options>
+          <button ion-button icon-only (click)="deleteMesAliments(aliment.id)" [color]="'danger'">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </div>
+
+    <div [hidden]="(isMesAliments !== 0)">
+      <ion-item *ngFor="let aliment of listAliment | OrderBy : ['nom']" (click)="getQuantite(aliment.id)">
+          {{aliment.nom}}
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>

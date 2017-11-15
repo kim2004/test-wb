@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>        
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+
+    <ion-buttons right>
+        <button ion-button menuToggle>
+          <ion-icon class="ion-ios-menu"></ion-icon>
+        </button>
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-favoris">
+    <div style="height:30px;">
+      <span class="txt-title" style="font-weight: bold;font-family:">{{"frm.langue.titre" | translate}}</span>
+    </div>
+
+    
+
+      <ion-list radio-group no-lines>
+        <ion-item style="padding:3px 10px 3px 3px;border-bottom:1px solid grey">
+          <ion-radio  item-left  color="myck" class="ckCss" value="fr" [checked]="langue=='fr'" (click)="changeLangue('fr')"></ion-radio>
+          <ion-label>{{"frm.langue.francais"|translate}}</ion-label>
+        </ion-item>
+        <ion-item style="padding:3px 10px 3px 3px;border-bottom:1px solid grey">
+          <ion-radio  item-left  color="myck" class="ckCss" value="en" [checked]="langue=='en'" (click)="changeLangue('en')"></ion-radio>
+          <ion-label>{{"frm.langue.anglais"|translate}}</ion-label>
+        </ion-item>
+        <ion-item style="padding:3px 10px 3px 3px;">
+          <ion-radio  item-left color="myck" class="ckCss" value="de" [checked]="langue=='de'" (click)="changeLangue('de')"></ion-radio>
+          <ion-label>{{"frm.langue.allemand"|translate}}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      
+
+    <ion-grid>
+      <ion-row class="center">  
+        <ion-col width-90 class="center-col">
+          <button ion-button large class="button-ok" block (click)="goHome()">{{"button.ok"|translate}}</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+</ion-content>
+ 
+<ion-footer class="title center footer">
+  <div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>

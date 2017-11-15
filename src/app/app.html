@@ -1,1 +1,44 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" id="menuConnect" >
+
+<!--
+  <ion-header>
+    <ion-toolbar>
+    </ion-toolbar>
+  </ion-header>
+-->  
+<ion-header  class="background-color-menu " color="myBg">
+    <ion-toolbar class="background-color-menu paddLigne" color="myBg">
+      <ion-title class="background-color-menu " style="vertical-align:middle" color="myBg" ><ion-icon menuClose detail-none style=" float:right; vertical-align:middle" class="ion-ios-delete"></ion-icon></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content class="background-color-menu " color="myBg" >
+    <ion-list class="background-color-menu paddLigne paddBlock" color="myBg">
+      <button class="background-color-menu paddLigne" icon-end color="myBg" ion-item *ngFor="let p of menuConnect" (click)="openMenuPage(p)" >
+          {{p.title}}<ion-icon item-right  [class]="p.icon"></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-menu [content]="content" id="menuDisconnect" >
+
+  <ion-header  class="background-color-menu " color="myBg">
+    <ion-toolbar class="background-color-menu paddLigne" color="myBg">
+      <ion-title class="background-color-menu " style="vertical-align:middle" color="myBg" ><ion-icon menuClose detail-none style=" float:right; vertical-align:middle" class="ion-ios-delete"></ion-icon></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="background-color-menu  " color="myBg">
+    <ion-list class="background-color-menu paddLigne paddBlock" color="myBg">
+      <button  class="background-color-menu  paddLigne item-icon-right"  color="myBg" ion-item *ngFor="let p of menuDisconnect" (click)="openMenuPage(p)" >
+         {{p.title}}<ion-icon item-right  [class]="p.icon"></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

@@ -1,0 +1,61 @@
+<ion-header center align-title="center">
+  <ion-navbar center align-title="center" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>  
+      </button>
+    </ion-buttons>
+    <ion-title>
+        <div class="title left" style="padding-top: 10px;">
+          <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+        </div> 
+      </ion-title>
+      <ion-buttons right>
+          <button ion-button menuToggle>
+            <ion-icon class="ion-ios-menu"></ion-icon>
+          </button>
+        </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-login" no-lines>
+
+  <ion-title class=""><font color="#008cba" size="5rem">Connexion</font></ion-title>
+  <form (submit)="validateLogin()" [formGroup]="formLogin">
+
+    <ion-list>
+        <ion-grid >
+            <ion-row width-90 >  
+              <ion-col width-90 >
+      <ion-item text-input-md-highlight-color-invalid >
+<!--        <ion-input formControlName="email" autofocus type="text" placeholder='{{"msg.inscription.email"|translate}}' (keyup)="onChangeNom($event.target.value)"></ion-input>-->
+        <ion-input text-input-md-highlight-color-invalid formControlName="email" autofocus type="text" placeholder='{{"msg.inscription.email"|translate}}'></ion-input>
+      </ion-item>
+      <br>
+      <ion-item text-input-md-highlight-color-invalid>
+<!--        <ion-input formControlName="password" type="password" placeholder='{{"msg.connexion.mot_de_passe"|translate}}' (keyup)="onChangePassword($event.target.value)"></ion-input>-->
+        <ion-input text-input-md-highlight-color-invalid formControlName="password" type="password" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+      <ion-grid style="background-color:transparent;">
+        <ion-row width-90 style="background-color:transparent;">  
+          <ion-col width-90 style="background-color:transparent;">
+              <button ion-button block text-left color="dark"  round (click)="forgetPassword()">{{"frm.login.oublieMotdepasse"|translate}}</button>                   
+    <br>
+<!--            <button disabled={{buttonDisabled}} ion-button color="primary" type="submit" block>{{"button.ok"|translate}}</button>-->
+            <button ion-button large color="myck" type="submit" block>{{"button.ok"|translate}}</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+    </ion-list>
+
+  </form>
+
+</ion-content>
+ 
+<ion-footer class="title center footer">
+  <div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>

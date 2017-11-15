@@ -1,14 +1,70 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button>
+        <ion-icon class="ion-ios-home"></ion-icon>      
+      </button>
+    </ion-buttons>
+    
     <ion-title>
-      Ionic Blank
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
     </ion-title>
+    
+    <ion-buttons right>
+      <button ion-button menuToggle>
+        <ion-icon class="ion-ios-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<!--<ion-content padding class="background-image">-->
+<ion-content no-padding>  
+
+  <div class="title no-border no-padding no-margin" style>
+    <img class="background-image no-padding no-border no-margin"style="width: 100%; height:100px;" alt="WebDia" src="assets/img/bandeau_new.png">
+  </div>
+<div class="padding" style="padding: 0px 25px 5px 25px">
+  <button (click)="setMenu('aliment')" class="button-aliment button-menu" ion-button block >           
+      {{"button.aliments"|translate}}
+      <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
+  </button>
+
+  <button [disabled]="!isConnect()" (click)="setMenu('favoris')" class="button-favoris button-menu" ion-button block >           
+      {{"button.MesFavoris"|translate}}
+      <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
+  </button>
+
+  <button [disabled]="!isConnect()" (click)="setMenu('data')" class="button-donnees button-menu" ion-button block >           
+      {{"button.donnees"|translate}}
+      <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
+  </button>
+
+  <!--
+  <button (click)="setMenu('config')" class="button-configuration button-menu" ion-button block >           
+      {{"button.configuration"|translate}}
+      <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
+  </button>
+-->
+
+  <button (click)="setMenu('calcul')" class="button-bolus button-menu" ion-button block >           
+      {{"button.bolus"|translate}}
+      <div class="icon-button">
+        <ion-icon class="ion-ios-bolus"></ion-icon>
+      </div>
+      
+  </button>
+</div>
+  <div class="left" style="color:dimgrey;font-size: 0.9em;padding: 0px 25px 5px 25px;">{{"msg.site.citation.texte" | translate}}
+  <span class="right" style="color:dimgrey;font-size: 0.7em; float:right; padding-top:1px; padding-right:20px;">{{"msg.site.citation.nom" | translate}}</span></div>
+
+  <div class="bar bar-footer center" style="position: fixed; bottom:22px; padding-left:36%;"><img style="float: center;vertical-align: top; " alt="webDia" src="assets/img/logo_hug.png" height="22" border="0"><span class="left" style="display:inline-block; margin-left:19px; font-size:0.5em; ;color:dimgrey;"><span>Hôpitaux</span><br><span>Universitaires</span><br><span>Genève</span></span></div><br>
+<ion-footer *ngIf="!display" class="title center footer">
+   
+<div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>
+
+

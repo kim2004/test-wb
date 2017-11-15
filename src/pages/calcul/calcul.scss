@@ -1,0 +1,12 @@
+page-calcul {
+    ion-col {
+        &[width-10]{
+            flex: 0 0 10%;
+            max-width: 10%;
+        }
+        &[width-45]{
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+    }
+}

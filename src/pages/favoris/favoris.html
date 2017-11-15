@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>         
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+
+    <ion-buttons right>
+        <button ion-button menuToggle>
+          <ion-icon class="ion-ios-menu"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-favoris">
+  <div style="height:30px;">
+    <span class="txt-title">{{"frm.favoris.titre" | translate}}</span>
+  </div>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let favoris of listFavoris" (click)="callFavoris(favoris)">
+      <ion-item>
+        {{favoris.nom}}
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-only (click)="deleteFavoris(favoris)" [color]="'danger'">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="title center footer">
+  <div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>

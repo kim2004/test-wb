@@ -1,0 +1,30 @@
+<ion-content padding class="background-color-donnees">
+  <div>
+    <span class="txt-title">{{"frm.data.titre" | translate}}</span>
+  </div>
+
+  <div class="roundRect">
+    <span>{{"frm.transfert.envoi"|translate}}</span>
+  </div>
+  <br>
+
+  <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">
+
+    <ion-list> 
+      <ion-item>
+        <ion-input type="text" formControlName="mail" placeholder='{{"msg.inscription.email"|translate}}'></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-grid>
+      <ion-row class="center">  
+        <ion-col width-90 class="center-col">
+          <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+
+  </form>
+
+</ion-content>
+ 

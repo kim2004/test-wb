@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>  
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+    
+    <ion-buttons right>
+      <button ion-button menuToggle>
+        <ion-icon class="ion-ios-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-configuration">
+  <div style="padding-bottom:10px;">
+    <span class="txt-title">{{"frm.config.titre" | translate}}</span>
+    <br>
+    <span style="color:#000;">{{"frm.config.unit"|translate}}</span>
+  </div>
+
+  <form (submit)="validateConfig(formConfig.value)" [formGroup]="formConfig">
+
+    
+      
+      <ion-list radio-group no-lines formControlName="unite" class="list-conf-rb" >
+        <ion-item style=" padding:3px 10px 3px 3px;
+        border-bottom:1px solid grey;">
+          <ion-label item-center >mmol/l</ion-label>
+          <ion-radio item-left color="myck" checked value="1">mmol/l</ion-radio>
+        </ion-item >
+        <ion-item  style=" padding:3px 10px 3px 3px;
+        border-bottom:1px solid grey;">
+          <ion-label item-center >mg/dl</ion-label>
+          <ion-radio item-left color="myck" value="2">mg/dl</ion-radio>
+        </ion-item>
+        <ion-item style=" padding:3px 10px 3px 3px;">
+          <ion-label item-center >g/l</ion-label>
+          <ion-radio item-left color="myck" value="3">g/l</ion-radio>
+        </ion-item>
+    
+      </ion-list>  
+    <ion-grid text-center>
+        <ion-row >
+              <ion-col col-8>
+                  <ion-item no-lines class="itemConf list-conf-rb">
+                 <ion-label ><font size="1rem"> {{"frm.config.valeurRecherche"|translate}}</font></ion-label>
+                  </ion-item>
+                </ion-col>  
+              <ion-col col-4>
+                  <ion-item no-lines class="itemConf list-conf-rb">
+                  <ion-input  maxlength="4" class=" input-Conf" type="tel" style="font-size:0.8em;" center formControlName="valeur" placeholder="mmol/l" ></ion-input>
+                </ion-item>
+                </ion-col> 
+        </ion-row>
+         <ion-row > 
+                <ion-col col-8>
+                    <ion-item  no-lines  class=" itemConf list-conf-rb"> 
+                  <ion-label  > <font size="1rem">{{"frm.config.correctionJour"|translate}}</font></ion-label >
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item no-lines  class=" itemConf list-conf-rb"> 
+                    <ion-input maxlength="4" class="input-Conf"  style="font-size:0.8em;" type="tel" center formControlName="correctionJour" placeholder="mmol/l" ></ion-input>
+                    </ion-item>
+                </ion-col>
+          </ion-row> 
+          <ion-row >  
+              <ion-col col-8>
+                  <ion-item  no-lines class=" itemConf list-conf-rb">
+                  <ion-label ><font size="1rem">{{"frm.config.correctionNuit"|translate}}</font></ion-label>
+                  </ion-item>
+              </ion-col>  
+              <ion-col col-4>
+                  <ion-item no-lines class=" itemConf list-conf-rb">
+                  <ion-input  maxlength="4"  class=" input-Conf" style="font-size:0.8em;"  type="tel" center  formControlName="correctionNuit" placeholder="mmol/l" ></ion-input>
+                  </ion-item>
+              </ion-col> 
+          </ion-row> 
+          <ion-row>
+                <ion-col col-8>
+                    <ion-item  no-lines class=" itemConf list-conf-rb">
+                    <ion-label ><font size="1rem"> {{"frm.config.dureeInsuline"|translate}}</font></ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item no-lines class=" itemConf list-conf-rb">
+                    <ion-input  maxlength="4" class=" input-Conf" style="font-size:0.8em;" type="tel" center formControlName="dureeAction" placeholder="min." ></ion-input>
+                    </ion-item>
+               </ion-col>
+          </ion-row> 
+      </ion-grid>
+      <div class="list-conf-rbTwo center">
+        <span style="text-align:center;color:black;">{{"frm.config.rapport"|translate}}</span>
+        <ion-grid class="vertical-align-content">
+          <ion-row class="center">
+            <span>{{"msg.petitdejeuner"|translate}}</span>
+          </ion-row>
+          <ion-row center>
+            <ion-col col-4 ><ion-item no-lines class=" itemConf list-conf-rb"><ion-input maxlength="4" class=" input-Conf" style="font-size:0.8em;"  type="tel" formControlName="unite1" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4 ><ion-item no-lines class=" itemConf list-conf-rb"><ion-input maxlength="4"  class=" input-Conf" style="font-size:0.8em;"  type="tel" formControlName="hdc1" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+          <ion-row>
+            <span>{{"msg.collation10"|translate}}</span>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input maxlength="4"  class=" input-Conf" style="font-size:0.8em;"  type="number" formControlName="unite2" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input maxlength="4"  class=" input-Conf" style="font-size:0.8em;"  type="number" formControlName="hdc2" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+          <ion-row>
+            <span>{{"msg.midi"|translate}}</span>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb" ><ion-input type="number" formControlName="unite3" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4><ion-item  no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="hdc3" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+          <ion-row>
+            <span>{{"msg.collation16"|translate}}</span>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="unite4" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="hdc4" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+          <ion-row>
+            <span>{{"msg.diner"|translate}}</span>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="unite5" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="hdc5" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+          <ion-row>
+            <span>{{"msg.collationSoir"|translate}}</span>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="unite6" placeholder='{{"msg.xUnite"|translate}}'></ion-input></ion-item></ion-col>
+            <ion-col>/</ion-col>
+            <ion-col col-4><ion-item no-lines class=" itemConf list-conf-rb"><ion-input type="number" formControlName="hdc6" placeholder='{{"msg.xHdC"|translate}}'></ion-input></ion-item></ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </div>
+
+      <ion-grid>
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+            <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+    
+
+  </form>
+
+</ion-content>
+
+<ion-footer class="title center footer">
+  <div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>

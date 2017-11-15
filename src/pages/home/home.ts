@@ -1,14 +1,83 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { NavController, MenuController, Events } from 'ionic-angular';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+
+import { IUser } from '../../models/user';
+import { LoginPage } from '../../pages/login/login';
+import { CalculPage } from '../../pages/calcul/calcul';
+import { FavorisPage } from '../../pages/favoris/favoris';
+import { DataTabsPage } from '../../pages/dataTabs/dataTabs';
+import { AlimentTabsPage } from '../../pages/alimentTabs/alimentTabs';
+import { ConfigurationPage } from '../../pages/configuration/configuration';
+import { PopupPage } from '../../pages/pop/popup';
+
+import { SrvQuantite } from '../../providers/srvQuantite';
+
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [ SrvQuantite ]
 })
+
 export class HomePage {
+  user: IUser = {} as any;
 
-  constructor(public navCtrl: NavController) {
+  loginPage = LoginPage;
 
+  constructor( 
+    private events: Events,
+    private navCtrl: NavController,
+    private srvQuantite: SrvQuantite,
+    private menuCtrl: MenuController,
+    private translate: TranslateService ) {
+
+      this.srvQuantite.clearRepas();
+
+      this.user = JSON.parse(localStorage.getItem('User'));    
+      if(this.user!=null && this.user.actif==1){          
+        this.menuCtrl.enable(true, 'menuConnect');
+        this.menuCtrl.enable(false, 'menuDisconnect');
+      }
+      else {      
+        this.menuCtrl.enable(false, 'menuConnect');
+        this.menuCtrl.enable(true, 'menuDisconnect');
+      }
+     
+      if (Cookie.get('access')=='0'){
+        this.navCtrl.setRoot(PopupPage);
+        let cook= Cookie.set('access','1');
+      }
   }
 
+  public setMenu = ( page ): void => {
+    if(page=='config'){
+      this.navCtrl.push(ConfigurationPage);
+    }
+    else if (page=='aliment'){
+      this.navCtrl.push(AlimentTabsPage);
+    }
+    else if (page=='calcul'){
+      localStorage.removeItem("repas");
+      this.navCtrl.push(CalculPage);
+    }
+    else if (page=='data'){
+      this.navCtrl.push(DataTabsPage);
+    }
+    else if (page=='favoris'){
+      this.navCtrl.push(FavorisPage);
+    }   
+    
+  };
+
+  public isConnect = (): boolean => {
+    this.user = JSON.parse(localStorage.getItem('User'));
+    if(this.user!=null && this.user.actif==1){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

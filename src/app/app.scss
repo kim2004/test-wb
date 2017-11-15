@@ -1,4 +1,4 @@
-// http://ionicframework.com/docs/theming/
+// http://ionicframework.com/docs/v2/theming/
 
 
 // App Global Sass
@@ -14,3 +14,392 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+//@import "../assets/fonts/customFonts";
+
+
+
+.dividerBlock {
+    color: #333;
+    text-align: center;
+    background: rgb(0,177,175);
+    width: 100%;
+    height: 5px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #F2F0F0 /*{a-bdown-background-start}*/), to( #CECDCD /*{a-bdown-background-end}*/)); /* Saf4 , Chrome */
+    background-image: -webkit-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* Chrome 10 , Saf5.1  */
+    background-image:    -moz-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* IE10 */
+    background-image:      -o-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* Opera 11.10  */
+    background-image:         linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/);    
+}
+
+.center {
+    text-align: center;
+}
+.center-col {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+} 
+
+
+.title-webdia {
+    color: #333;
+    text-align: center;
+    background: #515151;
+    border-radius: 10px;
+    width: 100%;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #F2F0F0 /*{a-bdown-background-start}*/), to( #CECDCD /*{a-bdown-background-end}*/)); /* Saf4 , Chrome */
+    background-image: -webkit-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* Chrome 10 , Saf5.1  */
+    background-image:    -moz-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* IE10 */
+    background-image:      -o-linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/); /* Opera 11.10  */
+    background-image:         linear-gradient( #F2F0F0 /*{a-bdown-background-start}*/, #CECDCD /*{a-bdown-background-end}*/);    
+}
+
+.vertical-align-content > * {
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+
+.selectOption{
+    width:100%;
+    max-width: 100% !important;
+}
+
+.selectPad{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.listTitle {
+    color : #555555 !important;
+    font-size: 1.3em;
+}
+
+.title-padding {
+    padding: 10px;
+}
+
+.buttonPassword {
+    font-size: 0.8em;
+}
+
+/*
+.ion-modal {
+    position: absolute;
+    top: 80px;
+    left: 45px;
+    display: block;
+    width: 70%;
+    height: 62%;
+}
+*/
+
+.keyboard-open .tabbar{
+    display:none;
+}
+.keyboard-open .tabbar{
+    bottom:0;
+ }
+.keyboard-open .footer{
+    display:none;
+}
+.keyboard-open .scroll-content {
+    margin-bottom: 0px !important;
+}
+
+.imgAliment {
+    border-radius: 10px;
+    border: 3px #a5a5a5 solid;
+}
+
+.button-quantite {
+    border-radius: 10px;
+    border: 1px #a5a5a5 solid;
+}
+
+.col-border {
+    border-left: 1px #a5a5a5 solid;
+    border-right: 1px #a5a5a5 solid;
+}
+
+/* New Design */
+
+.roundRect-configuration {
+    padding: 5px;  
+    border: 1px #585757 solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.roundRect-calcul {
+    padding: 5px;  
+    border: 1px #07957b solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.roundRect {
+    padding: 15px;
+    color: #000;
+    background: #fafafa;    
+    border: 1px #aaa solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-size: 0.6em;
+    .txt-title{
+        font-size: 0.6em;
+    }
+    h3{
+        font-size: 1.5em;
+    }
+}
+
+
+/* ------------------------------------------------------------ */
+/* Gestion des BUTTON */
+.button-inner {
+    -webkit-justify-content: left;
+}
+
+.button {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+/* ------------------------------------------------------------ */
+
+.button-selectImage {
+    text-transform: none;
+}
+
+.button-menu {
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.icon-button {
+    text-align: right;
+    width:100%
+}
+.button-aliment {
+    background-color: #a0d0ab;
+/*     opacity:0.3;*/
+}
+.button-ok {
+    background-color: #07957b;
+/*     opacity:0.3;*/
+}
+.background-color-app {
+    color:#008cba;
+    font-size: 1.2em;
+    background-color: rgba(00,140,186,0.3);
+
+}
+.background-color-aliment {
+    color:#008cba;
+    font-size: 1.2em;
+    background-color: rgba(160,208,171,0.3);
+
+}
+
+.txt-color-tt{
+    color: grey;
+}
+.button-favoris {
+    background-color: #3abff0;
+/*     opacity:0.3;*/
+}
+.background-color-favoris {
+    color:#3abff0;
+    font-size: 1.2em;
+    background-color: rgba(58,191,240,0.3);
+
+}
+.button-donnees {
+    background-color: #72c5c3;
+/*     opacity:0.3;*/
+}
+.background-color-donnees {
+    color:#72c5c3;
+    font-size: 1.2em;
+    background-color: rgba(114,197,195,0.3);
+
+}
+.background-color-login {
+    
+    font-size: 1.2em;
+    background-color: rgba(88,87,87,0.3);
+
+}
+.background-color-configuration {
+    color:#585757;
+    font-size: 1.2em;
+    background-color: rgba(88,87,87,0.3);
+
+}
+.button-configuration {
+    background-color: #585757;
+/*     opacity:0.3;*/
+}
+.button-bolus {
+    background-color: #008cba;
+/*     opacity:0.3;*/
+}
+
+.md .menu-inner{
+    background: #008cba;
+}
+.background-color-menu {
+    background-color: #008cba;
+    color:white;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.paddBlock{
+    position: fixed;
+    bottom :0px;
+    padding-left:2px;
+    padding-right: 4px;
+    margin:0;
+    width: 100%;
+}
+.paddLigne{
+    padding-left: 2px;
+    text-indent: 10px;
+    display:list-item; 
+    vertical-align:text-top;
+    margin-top:5px;
+}
+.paddLigne span{ 
+    vertical-align:middle;
+    margin-top:5px;
+}
+
+.ckCss{
+input[type=checkbox]:checked {    background:url(../../assets/img/icone/ICONE_Checkbox_on.svg) left top no-repeat;
+    background-size: 25px 25px;
+    }
+}
+.footer{
+    height: 20px;
+    font-size: 8pt;
+    background-color: #fafafa;
+    border-top:3px #ffcccc solid;
+/*    
+    border-top:3px #d3d3d3 solid;
+    background-color: #ffcece;
+    border-top:3px #d66f64 solid;
+*/    
+}
+
+.txt-footer{
+    margin-top:2px;
+}
+
+/* ------------------------------------------------------------ */
+/* Gestion des TAB */
+.tabs-md .tab-button[aria-selected=true] {
+    color: #fff;
+    background: #488aff;
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: #fff;
+}
+/* ------------------------------------------------------------ */
+
+/*
+.ion-md-calcul {
+    content: url("../assets/img/calcul_min.png");
+}
+
+.ion-md-calcul[aria-selected=true] {
+    content: url("../assets/img/calcul_select_min.png");
+}
+*/
+.ion-md-calcul {
+    content: url(../assets/img/calcul_select_min.png);
+}
+
+.tabs-md {
+    a {
+        .tab-button-icon[ng-reflect-name=calcul] {
+            content: url(../assets/img/calcul_min.png);
+        }
+    }
+    a[aria-selected=true] {
+        span {
+            color: #fff; //whatever colour you want to use for the text
+        }
+        .tab-button-icon[ng-reflect-name=calcul] {
+            content: url(../assets/img/calcul_select_min.png);
+        }
+    }
+}
+.listTitle
+{
+    //background-color : rgba(88,87,87,0.3);
+    color : #008cba; 
+    //box-shadow : 0px 6px 10px #888888;
+}
+.txt-title {
+    color:#008cba;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.myBg{
+    background-color: #008cba;
+  }
+
+.alertDanger{
+    button{
+            padding-left: 125px;
+    }
+}
+
+.itemConf{
+    border-style:solid;
+    border-radius:3px;
+    border-color:#008cba ; 
+    border-width:medium;
+    margin-bottom: 6px;
+}
+
+.list-conf-rb{
+    border-style:solid;
+    border-radius:3px;
+    border-color:white;
+}
+.list-conf-rbTwo{
+    border-style:solid;
+    border-radius:3px;
+    border-color:#008cba;
+    padding-top: 5px;
+}
+.itemConf-Rb{
+    padding:3px 10px 3px 3px;
+    border-bottom:1px solid grey;
+}
+
+.item-traitVertical{
+    height: 20px;
+    padding:0px 10px 0px 10px;
+    border-left: 2px solid grey ;
+}
+
+.input-Conf{
+    text-align: end;
+    vertical-align: middle;
+    float: right;
+}
+

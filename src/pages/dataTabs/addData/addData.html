@@ -1,0 +1,77 @@
+<ion-content padding class="background-color-donnees">
+  <div>
+    <span class="txt-title">{{"frm.data.titre" | translate}}</span>
+  </div>
+
+  <form (submit)="validateAddData(formData.value)" [formGroup]="formData">
+
+    <ion-list>
+
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select formControlName="trancheHoraire" class="selectOption" cancelText="{{'button.annuler'|translate}}" okText="{{'button.ok'|translate}}">      
+                <ion-option *ngFor="let item of repas" value="{{item.value}}">{{item.text}}</ion-option>           
+              </ion-select>          
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <ion-datetime formControlName="currentDate" displayFormat="DD MMM YYYY - HH:mm" pickerFormat="DD MMM YYYY - HH:mm" cancelText="{{'button.annuler'|translate}}" doneText="{{'button.ok'|translate}}"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input type="number" autofocus formControlName="nbHdc" placeholder='{{"frm.monAliment.nbHdc"|translate}}'></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input type="number" formControlName="glycemie" placeholder='{{"msg.glycemie"|translate}}'></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input type="number" formControlName="injection" placeholder='{{"msg.injection"|translate}}'></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-textarea formControlName="commentaire" placeholder='{{"frm.data.commentaire"|translate}}'></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <ion-grid>
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+            <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+    </ion-list>
+
+  </form>
+
+</ion-content>

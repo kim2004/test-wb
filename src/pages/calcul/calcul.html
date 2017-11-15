@@ -1,0 +1,115 @@
+<ion-header *ngIf="!display">
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>   
+      </button>
+    </ion-buttons>
+    
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-aliment">
+  <div style="height:30px;">
+    <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>
+  </div>
+
+  <form (submit)="validateCalcul(formCalcul.value)" [formGroup]="formCalcul">
+
+      <ion-grid class="vertical-align-content">
+
+        <ion-row *ngIf="display">
+          <ion-col>
+            <ion-list no-margin>
+              <ion-list-header no-margin class="list-conf-rb" >
+                <span (click)="displayList=!displayList">{{nbAllHdc}}</span>
+                <ion-icon name={{addIcon}} item-right (click)="changeOnOff($event);displayList=!displayList"></ion-icon>
+<!--remove-circle-->                
+              </ion-list-header>
+              <ion-list *ngIf="displayList" no-margin>
+                <ion-item no-lines class="list-conf-rb" *ngFor="let aliment of lstRepas">
+                  <span (click)="getQuantite(aliment.idAliment);">{{aliment.nom}}</span>
+                  <ion-icon name="create" item-right (click)="getQuantite(aliment.idAliment);"></ion-icon>
+                </ion-item>
+              </ion-list>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines class="list-conf-rb" >
+              <ion-input type="number" formControlName="nbHdc" placeholder='{{"frm.monAliment.nbHdc"|translate}}'></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="center"><p>{{"frm.config.rapport"|translate}}</p></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+
+            <ion-grid  class="vertical-align-content" style="background-color: #fff">
+              <ion-row style="border-bottom:2px solid rgba(160, 208, 171, 0.3)">
+                <ion-col col-10 no-lines center>
+                  <ion-item no-lines >
+                    <ion-select #C  item-center formControlName="trancheHoraire" class="selectOption"  (ionChange)="initTrancheHoraire(C.value)" cancelText="{{'button.annuler'|translate}}" okText="{{'button.ok'|translate}}">      
+                      <ion-option *ngFor="let item of repasHoraire"  value="{{item.value}}">{{item.text}}</ion-option>
+                    </ion-select> 
+                  </ion-item>         
+                </ion-col>
+              </ion-row>
+                <ion-row center>
+                <ion-col col-5 width-50 no-lines no-padding no-margin>
+                  <ion-item no-lines >
+                    <ion-input  type="tel" maxlength="3" formControlName="unite" value="0" placeholder='Unite'  ></ion-input>
+                  /
+                  </ion-item>
+                </ion-col>
+                <ion-col center>/</ion-col>
+                <ion-col col-5 width-50 no-lines >
+                  <ion-item no-lines>
+                    <ion-input no-lines maxlength="3" type="tel" formControlName="hdc" ng-value="0" placeholder='HdC'  >0</ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      
+        
+      <ion-grid class="vertical-align-content">
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-input type="number" formControlName="glycemie" placeholder="{{'msg.glycemie'|translate}}" showFooter></ion-input>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+            <button ion-button large class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+  </form>
+
+</ion-content>
+ 
+<ion-footer *ngIf="!display" class="title center footer">
+  <div class="txt-footer">{{"msg.footer" | translate}}</div>
+</ion-footer>

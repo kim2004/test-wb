@@ -1,0 +1,55 @@
+<ion-content padding class="background-color-aliment">
+
+    <ion-grid class="vertical-align-content">
+      <ion-row>
+          <ion-col width-100 class="center"><span [innerHTML]="quantiteAliment"></span></ion-col>        
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-100>
+          <ion-item no-lines class="itemConf list-conf-rb" >
+            <ion-input type="number" [value]="quantite" placeholder='{{"frm.quantite.saisieQuantite"|translate}}' (change)="getQuantite($event.target.value)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>      
+      <ion-row class="center">  
+        <ion-col width-90 class="center-col">
+          <div class="dividerBlock" ></div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="center">  
+        <ion-col width-50 class="center-col">
+          <button ion-button full color="myck" (click)="calculHdc()">{{"button.ok"|translate}}</button>
+        </ion-col>
+        <ion-col width-50 class="center-col">
+          <button ion-button full color="dark" (click)="returnAliment();">{{"button.annuler"|translate}}</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+    <ion-grid>
+      <ion-row class="center">
+        <ion-col width-90 class="center-col">
+          <img src="{{imageAliment_1}}" class="imgAliment" [hidden]="(imageAliment_1 === null || alimentAffiche !== 1)">
+          <img src="{{imageAliment_2}}" class="imgAliment" [hidden]="(imageAliment_2 === null || alimentAffiche !== 2)">
+          <img src="{{imageAliment_3}}" class="imgAliment" [hidden]="(imageAliment_3 === null || alimentAffiche !== 3)">
+          <img [src]="sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + imageMonAliment)" class="imgAliment" [hidden]="(imageMonAliment === null)"> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="button-quantite" [hidden]="imageAliment === 0">
+      <ion-row class="center">
+        <ion-col width-33 class="center-col" (click)='setQuantite(1)'>
+            <span>{{quantite_1}}</span>
+        </ion-col>
+        <ion-col width-33 class="center-col col-border" (click)='setQuantite(2)'>
+            <span>{{quantite_2}}</span>
+        </ion-col>
+        <ion-col width-33 class="center-col" (click)='setQuantite(3)'>
+            <span>{{quantite_3}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-content padding class="background-color-aliment">
+    <div style="height:30px;">
+      <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>
+    </div>
+    
+    <ion-grid>
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+            <button ion-button block color="dark" class="button-selectImage" (click)="selectImage()">
+              <ion-icon name="camera"></ion-icon>&nbsp;&nbsp;&nbsp;{{"msg.image.select"|translate}}    
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+     
+<!--      
+      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+-->      
+    <ion-list> 
+
+      <ion-grid>
+        <ion-row class="center">
+          <ion-col width-100 class="center-col">
+            <ion-item no-lines class="itemConf list-conf-rb" >
+              <ion-input name="nom" required autofocus type="text" placeholder='{{"msg.nom.aliment"|translate}}' (keyup)="onChangeNom($event.target.value)"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row class="center">
+          <ion-col width-50 class="center-col">
+            <ion-item no-lines class="itemConf list-conf-rb" >
+              <ion-input name="nbHdc" required type="number" placeholder='{{"frm.monAliment.nbHdc"|translate}}' (keyup)="onChangeHdc($event.target.value)"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50 class="center-col">
+            <ion-item no-lines class="itemConf list-conf-rb" >
+              <ion-select [(ngModel)]="select" (ionChange)="onChangeUnite($event, select)" class="selectOption" cancelText="{{'button.annuler'|translate}}" okText="{{'button.ok'|translate}}">
+                <ion-option value=100 selected="true">100 gr.</ion-option>
+                <ion-option value=1>unité</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>    
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+            <img [src]="'data:image/jpg;base64,' + base64Image" style="width: 100%" [hidden]="(base64Image === null)">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row class="center">  
+          <ion-col width-90 class="center-col">
+<!--            <button class="button-ok" disabled={{buttonDisabled}} ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>-->
+            <button class="button-ok" ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+    </ion-list>
+</ion-content>

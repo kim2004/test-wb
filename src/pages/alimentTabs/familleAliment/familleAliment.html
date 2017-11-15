@@ -1,0 +1,10 @@
+<ion-content padding class="background-color-aliment">
+  <div style="height:30px;">
+    <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>
+  </div>
+  <ion-list class="list-conf-rb" no-lines >
+    <button  style="padding:3px 10px 3px 3px;border-bottom:1px solid grey" ion-item *ngFor="let famille of listFamille | OrderBy : ['ordre']" (click)="callAlimentFamille(famille)">
+      {{famille.nom}}
+    </button>
+  </ion-list>
+</ion-content>

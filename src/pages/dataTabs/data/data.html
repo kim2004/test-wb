@@ -1,0 +1,20 @@
+<ion-content padding class="background-color-donnees">
+  <div style="padding-bottom:10px;">
+    <span class="txt-title">{{"frm.data.titre" | translate}}</span>
+    <br>
+    <span style="color:#000;">{{"msg.data.dernieresDonnees"|translate}}</span>
+  </div>
+
+    <div *ngFor="let data of lstData">
+      <div  class="roundRect" style="margin-bottom:10px;">
+        {{data.dateInj}} - {{ data.timeInj }}
+        <br>
+        {{"msg.hdc"|translate}}: {{ data.nbHdc }}
+        <br>
+        {{"msg.glycemie"|translate}}: {{ data.glycemie }}
+        <br>
+        {{"msg.injection"|translate}}: {{ data.injection }}     
+      </div>
+    </div>
+
+</ion-content>
