@@ -4,9 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/timeout';
+import { normalizeURL } from 'ionic-angular';
 
 import { IUser } from '../models/user';
 import { IMesAliments } from '../models/mesAliments';
+import { IAlimentAdd } from '../models/addAliment';
 
 import { SrvHttp } from '../providers/srvHttp';
 import { SrvGeneral } from '../providers/srvGeneral';
@@ -22,6 +24,8 @@ export class SrvAliment {
   user: IUser = {} as any;
   mesAliments: IMesAliments = {} as any;
   lastImage: string = null;
+  lstAlimentAdd: IAlimentAdd[] = {} as any;
+  
 
 
   constructor( 
@@ -51,17 +55,23 @@ export class SrvAliment {
 
       // Get the data of an image
       this.camera.getPicture(options).then((imageData) => {
-          // Call Events de ajoutAliment.ts afin d'afficher l'image à l'écran
-          this.events.publish('initImageSrc', imageData);
+        let base64Image = null;
+        
+              //get photo from the camera based on platform type
+            
+                base64Image = "data:image/jpeg;base64," + imageData;
+              
+        // Call Events de ajoutAliment.ts afin d'afficher l'image à l'écran
+          this.events.publish('initImageSrc', base64Image);
         }, (err) => {
           this.srvGeneral.presentToast(this.translate.instant("msg.image.error.select"));
         });
     });
   }
 
-  public upload = ( dataFile: any, nom: string, hdc: string, unite: number ) : void => { 
-    this.platform.ready().then(() => {
-      this.srvGeneral.setLoader(true);
+  public upload =  ( dataFile: any, nom: string, hdc: number, unite: number):void=>  { 
+   this.platform.ready().then(() => {
+      //this.srvGeneral.setLoader(true);
 
       // Destination URL
       var url = this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment;  
@@ -79,28 +89,50 @@ export class SrvAliment {
         this.mesAliments.ordre = 0;
         this.mesAliments.description = "";
         this.mesAliments.image = dataFile;
-        this.mesAliments.glucide = +hdc;
+        this.mesAliments.glucide = hdc;
         this.mesAliments.quantite = unite;
         this.mesAliments.idUti = 0;
-
+      
         var strMesAliments = JSON.stringify(this.mesAliments);       
 
         let params = "img=" + strMesAliments;
         this.http.post(url, params, options)
             .subscribe(
                 data => {
-                  this.srvGeneral.setLoader(false);
+                  //this.srvGeneral.setLoader(false);
+                 
                   this.srvGeneral.setMessage(this.translate.instant("msg.image.enreg"));
-                  this.getMesAliments(options); 
-                },
+                  
+                  //this.getMesAliments(options);
+               } ,
                 err  => {
-                  this.srvGeneral.setLoader(false);
+                    var data = <IAlimentAdd>new Object();
+                    data.file=dataFile;
+                    data.name=nom;
+                    data.nbHdc=hdc;
+                    data.unite=unite;
+                    this.lstAlimentAdd=this.listLstAddAliment();
+                    this.lstAlimentAdd.push(data);
+                    localStorage.setItem("addAliment",JSON.stringify(this.lstAlimentAdd));
+                  //this.srvGeneral.setLoader(false);
                   this.srvHttp.handleError(err);
                 }
             ); 
       }
-    })
+    
+    
+    });
   }
+
+  public listLstAddAliment = function () {
+    var wd=localStorage.getItem("addAliment");
+    if (wd!=null && wd.length!==0) {       
+        return  JSON.parse(localStorage.getItem("addAliment"));
+    }
+    else {
+        return localStorage.setItem("addAliment", "[]");
+    }
+  };
 
   public getAliments = ( ): void => { 
     let lstData = this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlFamilleAliment)

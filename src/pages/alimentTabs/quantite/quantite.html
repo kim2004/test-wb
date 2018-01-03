@@ -33,7 +33,7 @@
           <img src="{{imageAliment_1}}" class="imgAliment" [hidden]="(imageAliment_1 === null || alimentAffiche !== 1)">
           <img src="{{imageAliment_2}}" class="imgAliment" [hidden]="(imageAliment_2 === null || alimentAffiche !== 2)">
           <img src="{{imageAliment_3}}" class="imgAliment" [hidden]="(imageAliment_3 === null || alimentAffiche !== 3)">
-          <img [src]="sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + imageMonAliment)" class="imgAliment" [hidden]="(imageMonAliment === null)"> 
+          <ion-img src="{{imageMonAliment}}" class="imgAliment" [hidden]="(imageMonAliment === null)"></ion-img>
         </ion-col>
       </ion-row>
     </ion-grid>

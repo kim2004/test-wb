@@ -8,11 +8,13 @@ import { SrvHttp } from '../providers/srvHttp';
 import { SrvData } from '../providers/srvData';
 import { SrvConfig } from '../providers/srvConfig';
 import { SrvAliment } from '../providers/srvAliment';
+import { IAlimentAdd } from '../models/addAliment';
 
  
 @Injectable()
 export class SrvInit {
   user: IUser = {} as any;
+  lstAlimentAdd : IAlimentAdd[] = {} as any;
  
   constructor( 
     private http: Http,
@@ -26,10 +28,36 @@ export class SrvInit {
 
     this.srvAliment.getAliments();
     this.srvAliment.getImagesAliments();
-
+    this.lstAlimentAdd=localStorage.getItem("addAliment")!=null && localStorage.getItem('addAliment').toString()!='[]'? JSON.parse(localStorage.getItem("addAliment")):'';
+    if ( this.lstAlimentAdd!=null && this.lstAlimentAdd!=[] ) {
+      if (this.lstAlimentAdd.length>1){
+        this.lstAlimentAdd.forEach(element => {
+          var mnObject= <IAlimentAdd> new Object;
+          mnObject.file=element.file;
+          mnObject.name=element.name;
+          mnObject.nbHdc=element.nbHdc;
+          mnObject.unite=element.unite; 
+          this.srvAliment.upload(mnObject.file,mnObject.name,mnObject.nbHdc,mnObject.unite); 
+        });
+        /*for (var i = 0; i < this.lstAlimentAdd.length; i++) { 
+          var mnObject= <IAlimentAdd> new Object;
+          mnObject.file=this.lstAlimentAdd[i].file;
+          mnObject.name=this.lstAlimentAdd[i].name;
+          mnObject.nbHdc=this.lstAlimentAdd[i].nbHdc;
+          mnObject.unite=this.lstAlimentAdd[i].unite;  
+          this.srvAliment.upload(mnObject.file,mnObject.name,mnObject.nbHdc,mnObject.unite,1); 
+        }*/
+            this.lstAlimentAdd=[];
+            localStorage.setItem("addAliment","[]");
+          
+      }else if (this.lstAlimentAdd.length>0){
+        this.srvAliment.upload(this.lstAlimentAdd[0].file,this.lstAlimentAdd[0].name,this.lstAlimentAdd[0].nbHdc,this.lstAlimentAdd[0].unite);
+        localStorage.setItem("addAliment","[]");
+        this.lstAlimentAdd=[];
+      }
+    }
       // Gestion des Favoris
-      this.user = JSON.parse(localStorage.getItem('User'));
-console.log(this.user);      
+      this.user = JSON.parse(localStorage.getItem('User'));   
       if(this.user && this.user.num && this.user.num.length>0){
         let headers = new Headers();
         headers.set('user', this.user.num);
@@ -43,7 +71,8 @@ console.log(this.user);
               
         this.srvAliment.getFavoris( options );
         this.srvAliment.getMesAliments( options );   
-        this.srvConfig.getConfiguration( options );  
+        this.srvConfig.getConfiguration( options );
+        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
       }             
   }
 

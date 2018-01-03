@@ -36,12 +36,7 @@ export class SendDataPage {
     if(validation){
       if(this.formSendMail.valid){       
         localStorage.setItem("mailTranfert", frmSendMail.mail);   
-        this.srvData.sendDataMail(frmSendMail.mail)
-              .subscribe(data => {
-                this.srvGeneral.setMessage(this.translate.instant("msg.donneesTranferees"));
-              },
-              err  => this.srvHttp.handleError(err)
-            );
+        this.srvData.sendDataMail(frmSendMail.mail);
       }
       else {
         this.srvGeneral.setMessage(this.translate.instant("msg.adresseEmailInvalide"));

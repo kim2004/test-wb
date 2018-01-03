@@ -1,9 +1,10 @@
-import { Http } from '@angular/http';
+
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingController } from 'ionic-angular/index';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { SrvSort } from "../../../pipes/srvSort"
 import { QuantitePage } from '../quantite/quantite';
@@ -11,7 +12,7 @@ import { SrvHttp } from '../../../providers/srvHttp';
 import { SrvAliment } from '../../../providers/srvAliment';
 import { SrvGeneral } from '../../../providers/srvGeneral';
 import { FamilleAlimentPage } from '../familleAliment/familleAliment';
-
+import { IUser } from '../../../models/user';
 
 @Component({
   selector: 'page-aliment',
@@ -28,6 +29,7 @@ export class AlimentPage {
   idFamille: number;
   searchTerm: string = '';
   isMesAliments : number = 0;
+  user: IUser = {} as any;
 
   constructor( 
     private http: Http, 
@@ -128,4 +130,13 @@ export class AlimentPage {
 
   }
 
+  ionViewWillEnter() {
+    this.user = JSON.parse(localStorage.getItem('User'));
+    if(this.user && this.user.num && this.user.num.length>0){
+      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+      headers.append('user', this.user.num);
+      let options = new RequestOptions({ headers: headers });
+    this.srvAliment.getMesAliments(options);
+    }
+  }
 }

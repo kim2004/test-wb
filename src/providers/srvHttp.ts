@@ -26,8 +26,11 @@ export class SrvHttp {
   urlMesdAliment: any;
   urlImageAliment: any;
   urlFamilleAliment: any;
-  SERVER_URL = 'http://www.kmconcept.net/webdia/';
-  //SERVER_URL = 'http://localhost:8101//webdia/';
+  urlUtilisateur :any;
+  urlInscription:any;
+  //SERVER_URL = 'http://www.kmconcept.net/webdia/';
+  //SERVER_URL = 'http://localhost:8081/webdia/';
+  SERVER_URL = 'http://localhost:8081/webdia/';
 
   constructor( 
     private srvGeneral: SrvGeneral,
@@ -43,6 +46,8 @@ export class SrvHttp {
     this.urlMesdAliment = 'mesAliments';
     this.urlImageAliment = 'imagesAliments';
     this.urlFamilleAliment = 'familleAliments';
+    this.urlUtilisateur= 'utilisateur';
+    this.urlInscription= 'inscription';
   }  
 
   public getFavoris = ( ): void => {

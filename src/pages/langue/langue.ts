@@ -25,7 +25,6 @@ export class LanguePage {
   }
 
   public goHome = (): void => {
-    console.log('kk');
     this.navCtrl.setRoot( HomePage );
    //this.navCtrl.setRoot( HomePage, {}, { animate: true, direction: 'back' });
   }
@@ -33,7 +32,7 @@ export class LanguePage {
   public changeLangue = ( langue ): void => {
     localStorage.setItem("langue", langue);
     this.translate.use(langue);
-
+    
     // Appel EVENT 'changeMenuLanguage' dans app.components.ts
     this.events.publish('changeMenuLanguage');
   }

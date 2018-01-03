@@ -152,7 +152,7 @@ var http = {
         return {'Authorization': 'Basic ' + b64EncodeUnicode(username + ':' + password)};
     },
     useBasicAuth: function (username, password) {
-        this.headers['*'].Authorization = 'Basic ' + b64EncodeUnicode(username + ':' + password);
+        this.setHeader('*', 'Authorization', 'Basic ' + b64EncodeUnicode(username + ':' + password));
     },
     setHeader: function () {
         // this one is for being backward compatible

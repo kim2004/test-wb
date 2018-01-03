@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
 import { TranslateService } from '@ngx-translate/core';
 import { NavController, AlertController, ActionSheetController, Platform, Events } from 'ionic-angular';
 
+
 import { HomePage } from '../../../pages/home/home';
 import { SrvAliment } from '../../../providers/srvAliment';
 import { SrvGeneral } from '../../../providers/srvGeneral';
+import { IMesAliments } from '../../../models/mesAliments';
+import { List } from 'ionic-angular/components/list/list';
+import { IAlimentAdd } from '../../../models/addAliment';
 
 declare var cordova:any;
 
@@ -16,10 +20,16 @@ declare var cordova:any;
   providers: [ SrvGeneral, SrvAliment, Camera ]
 })
 export class AjoutAlimentPage { 
+
+  
   nom: string = "";
   unite: number = 0;
   nbHdc: string = "";
-  base64Image: string = null;
+  base64ImageT: string = null;
+  lstAlimentAdd: IAlimentAdd[] = {} as any; ;
+  clearNom : string
+  clearHdc:number;
+  img:boolean=false;
 
 
   constructor( 
@@ -36,9 +46,10 @@ export class AjoutAlimentPage {
       // Permet d'initialiser l'image "lastImage", appelé dans le provider srvAliment.ts
       this.events.subscribe('initImageSrc', (dataImage) => {
 //        this.base64Image = 'data:image/jpeg;base64,' + dataImage; 
-        this.base64Image = dataImage;            
+        this.base64ImageT = dataImage;      
       });
-  }
+
+    }
 
   public onChangeNom = ( data ): void => {
     this.nom = data;  
@@ -51,6 +62,8 @@ export class AjoutAlimentPage {
     } 
 */    
   }
+  
+
   public onChangeHdc = ( data ): void => {
     this.nbHdc = data;  
 /*    
@@ -88,7 +101,7 @@ export class AjoutAlimentPage {
     alert.addButton({
       text: this.translate.instant("button.ok"),
       handler: data => {
-       
+        var l:string=null;
         if(data=='lib'){
           this.srvAliment.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
         }
@@ -100,11 +113,17 @@ export class AjoutAlimentPage {
     alert.present();
   }
   
+  
+
   public setRepas = ( ): void => {  
+    var data: {};
     this.platform.ready().then(() => {   
       if(this.nom && this.nom.length>0){
         if(this.nbHdc && this.nbHdc.length>0){
-          this.srvAliment.upload(this.base64Image, this.nom, this.nbHdc, this.unite);
+          //this.srvAliment.upload(this.base64ImageT, this.nom, Number.parseFloat(this.nbHdc), this.unite);
+          this.base64ImageT=null;
+          this.clearHdc=0;
+          this.clearNom="";
         }
         else {
           this.srvGeneral.setMessage(this.translate.instant("msg.saisieNbHdC"));
@@ -114,6 +133,13 @@ export class AjoutAlimentPage {
         this.srvGeneral.setMessage(this.translate.instant("msg.saisieNom"));
       }      
     })
+  }
+
+  public resetChamps= ():void=>{
+    this.events.subscribe('initImageSrc', (dataImage) => {
+      //        this.base64Image = 'data:image/jpeg;base64,' + dataImage; 
+              this.base64ImageT = "";      
+            });
   }
 
 /* ---------------------------------------------------------------------------------------------------------------- */

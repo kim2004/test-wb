@@ -6,6 +6,8 @@ export interface IData {
     glycemie: number,
     injection: number,
     commentaire: string,
-    glycemieAuto: boolean,
-    glycemieCapteur: boolean
+    glycemieAuto: number,
+    glycemieCapteur: number,
+    repas: number
+
 }

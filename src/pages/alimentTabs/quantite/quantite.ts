@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { DomSanitizer  } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController, NavParams, ViewController, Events } from 'ionic-angular';
-
+import { NavController, NavParams, ViewController, Events, Platform } from 'ionic-angular';
+import { normalizeURL } from 'ionic-angular';
 import { SrvQuantite } from '../../../providers/srvQuantite';
+import { normalizeUrl } from 'ionic-angular/navigation/deep-linker';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class QuantitePage {
     private navCtrl: NavController,
     private sanitizer: DomSanitizer,
     private srvQuantite: SrvQuantite,
-    private viewCtrl: ViewController,    
+    private viewCtrl: ViewController,
+    private platform: Platform,    
     private translate: TranslateService ) {
 
       this.idAliment = params.get("aliment");
@@ -45,6 +47,7 @@ export class QuantitePage {
       this.affQuantite();      
   }
 
+  
   public ionViewDidLoad = (): void => {
     this.events.publish('hideTabbar', true);
   }
@@ -87,12 +90,19 @@ export class QuantitePage {
     if(this.quantite==0){this.quantite="";}
     this.quantiteAliment = this.translate.instant("frm.quantite.saisie") + "<br>" + this.srvQuantite.getNomAliment(this.idAliment);
 
-    this.imageBase64 = this.srvQuantite.getImageAliment(this.idAliment);
+    
+    this.imageBase64 = this.srvQuantite.getImageAliment(this.idAliment).replace('data/image/jpeg/base64/','');
     if(this.imageBase64){ 
-      this.imageMonAliment = this.imageBase64;
+      if (this.platform.is('ios')){
+        this.imageMonAliment = 'data:image/jpeg;base64,' + this.imageBase64;
+      } else {
+      this.imageMonAliment = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.imageBase64);
     }
   }
+  
+  }
 
+  
   public setQuantite = ( num ): void => {
     if(num===1){
       this.alimentAffiche = 1;

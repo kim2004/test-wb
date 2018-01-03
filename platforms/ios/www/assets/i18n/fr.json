@@ -187,6 +187,7 @@
 "msg.inscriptionWebdia":"Inscription à www.WebDia.ch",
 "msg.errorPassword":"Mot de passe incorrect !",
 "msg.codeErreur":"Code saisie incorrect !",
+"msg.codeCaptcha":"Valider la captcha !",
 "msg.utilisateurExist":"Utilisateur existe déjà !",
 "msg.messageInscription":"<br>Bienvenue sur le site <b>www.webdia.ch</b> et sa version mobile <b>m.webdia.ch</b> ou accessible sur \n<a href='https://play.google.com/store/apps/details?id=ch.kmconcept.webdia'>GooglePlay</a> et sur l'<a href='https://itunes.apple.com/fr/app/webdia-hug/id1050648647?mt=8'>AppStore</a> afin de gérer votre diabète.<br>\nVous trouverez toute les informations nécessaires à l'adresse suivante : <a href='https://www.webdia.ch/'>https://www.webdia.ch/</a><br>\nVous trouverez toute la documentation nécessaire à l'adresse suivante : <a href='https://www.webdia.ch/webdia.pdf'>https://www.webdia.ch/webdia.pdf</a><br>\nNous sommes à votre disposition pour tous renseignements complémentaires,",
 "frm.inscription.monsieur":"M.",

@@ -51,6 +51,7 @@
 
 - (void)handleSuccess:(NSMutableDictionary*)dictionary withResponse:(NSHTTPURLResponse*)response andData:(id)data {
     if (response != nil) {
+        [dictionary setValue:response.URL.absoluteString forKey:@"url"];
         [dictionary setObject:[NSNumber numberWithInt:response.statusCode] forKey:@"status"];
         [dictionary setObject:[self copyHeaderFields:response.allHeaderFields] forKey:@"headers"];
     }
@@ -62,6 +63,7 @@
 
 - (void)handleError:(NSMutableDictionary*)dictionary withResponse:(NSHTTPURLResponse*)response error:(NSError*)error {
     if (response != nil) {
+        [dictionary setValue:response.URL.absoluteString forKey:@"url"];
         [dictionary setObject:[NSNumber numberWithInt:response.statusCode] forKey:@"status"];
         [dictionary setObject:[self copyHeaderFields:response.allHeaderFields] forKey:@"headers"];
         [dictionary setObject:[[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding] forKey:@"error"];
@@ -364,7 +366,7 @@
         }
     } progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-        [self handleSuccess:dictionary withResponse:(NSHTTPURLResponse*)task.response andData:nil];
+        [self handleSuccess:dictionary withResponse:(NSHTTPURLResponse*)task.response andData:responseObject];
 
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
         [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];

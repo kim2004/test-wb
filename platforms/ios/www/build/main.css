@@ -1,9 +1,10 @@
-@font-face {
-  font-family: MaPolice;
+/*font-family: MaPolice;
   src: url("../assets/fonts/CAT Rhythmus.ttf");
   font-weight: normal;
-}
-
+  }*/
+/*$font-family-ios-base: "MaPolice";
+  $font-family-md-base:"MaPolice";
+  $font-family-wp-base:"MaPolice";*/
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -3821,123 +3822,6 @@ ion-icon::before {
   src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../assets/fonts/noto-sans-bold.woff") format("woff"), url("../assets/fonts/noto-sans-bold.ttf") format("truetype");
 }
 
-.ion-ios-home,
-.ion-md-home {
-  content: url(../../assets/img/icone/ICONE_HOME.svg);
-  width: 30px;
-  height: 40px;
-  padding: 6px 4px 2px;
-  opacity: 0.9;
-}
-
-.ion-ios-menu,
-.ion-md-menu {
-  content: url(../../assets/img/icone/ICONE_MENU.svg);
-  width: 32px;
-  height: 40px;
-  padding: 6px 4px 2px;
-  opacity: 0.9;
-}
-
-.ion-ios-bolus,
-.ion-md-bolus {
-  content: url(../../assets/img/icone/ICONE_CALCULATOR_HOME.svg);
-  width: 32px;
-  height: 40px;
-  padding: 6px 4px 2px;
-  opacity: 0.9;
-}
-
-.ion-ios-delete,
-.ion-md-delete {
-  content: url(../../assets/img/icone/close-button.svg);
-  width: 15px;
-  height: 20px;
-  padding: 0px 0px 0px;
-  opacity: 0.9;
-}
-
-.ion-ios-connexion,
-.ion-md-connexion {
-  content: url(../../assets/img/icone/ICONE_LOGIN.svg);
-  width: 34px;
-  height: 40px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-.ion-ios-deconnexion,
-.ion-md-deconnexion {
-  content: url(../../assets/img/icone/ICONE_LOGOUT.svg);
-  width: 34px;
-  height: 40px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-checkOn,
-.ion-md-checkOn {
-  content: url(../../assets/img/icone/ICONE_Checkbox_on.svg);
-  width: 34px;
-  height: 40px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculAl,
-.ion-md-calculAl {
-  content: url(../../assets/img/icone/ICONE_CALCULATOR_OFF.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculAlOn,
-.ion-md-calculAlOn {
-  content: url(../../assets/img/icone/ICONE_CALCULATOR_ON.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculMnAl,
-.ion-md-calculMnAl {
-  content: url(../../assets/img/icone/ICONE_MON-ALLIMENT_OFF.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculMnAlOn,
-.ion-md-calculMnAlOn {
-  content: url(../../assets/img/icone/ICONE_MON-ALLIMENT_ON.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculListe,
-.ion-md-calculListe {
-  content: url(../../assets/img/icone/ICONE_LISTE_OFF.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
-ion-ios-calculListeOn,
-.ion-md-calculListeOn {
-  content: url(../../assets/img/icone/ICONE_LISTE_ON.svg);
-  width: 10px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-  margin: 0;
-}
-
 ion-action-sheet {
   left: 0;
   top: 0;
@@ -5004,6 +4888,10 @@ textarea:-ms-input-placeholder {
   padding-left: 2px;
 }
 
+textarea::-ms-input-placeholder {
+  padding-left: 2px;
+}
+
 textarea::placeholder {
   padding-left: 2px;
 }
@@ -5651,19 +5539,19 @@ ion-footer {
 }
 
 ion-app.ios {
-  font-family: "MaPolice";
+  font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
 
 ion-app.md {
-  font-family: "MaPolice";
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
 
 ion-app.wp {
-  font-family: "MaPolice";
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
@@ -14575,8 +14463,8 @@ input.text-input:-webkit-autofill {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+  -webkit-box-orient: inherit;
+  -webkit-box-direction: inherit;
   -webkit-flex-direction: inherit;
   -ms-flex-direction: inherit;
   flex-direction: inherit;
@@ -14601,8 +14489,8 @@ input.text-input:-webkit-autofill {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+  -webkit-box-orient: inherit;
+  -webkit-box-direction: inherit;
   -webkit-flex-direction: inherit;
   -ms-flex-direction: inherit;
   flex-direction: inherit;
@@ -30813,6 +30701,24 @@ ion-navbar.toolbar {
   font-size: 1.5em;
 }
 
+.roundRect_Sent {
+  padding: 15px;
+  color: #000;
+  background: #fafafa;
+  border: 1px white solid;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size: 0.6em;
+}
+
+.roundRect_Sent .txt-title {
+  font-size: 0.6em;
+}
+
+.roundRect_Sent h3 {
+  font-size: 1.5em;
+}
+
 /* ------------------------------------------------------------ */
 /* Gestion des BUTTON */
 .button-inner {
@@ -30827,6 +30733,8 @@ ion-navbar.toolbar {
 /* ------------------------------------------------------------ */
 .button-selectImage {
   text-transform: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 .button-menu {
@@ -31013,6 +30921,10 @@ ion-navbar.toolbar {
   margin-bottom: 10px;
 }
 
+.txt-title-D {
+  color: #008cba;
+}
+
 .myBg {
   background-color: #008cba;
 }
@@ -31027,6 +30939,11 @@ ion-navbar.toolbar {
   border-color: #008cba;
   border-width: medium;
   margin-bottom: 6px;
+}
+
+.check-sub-pd {
+  padding: 0;
+  margin: 0;
 }
 
 .list-conf-rb {
@@ -31057,6 +30974,159 @@ ion-navbar.toolbar {
   text-align: end;
   vertical-align: middle;
   float: right;
+}
+
+.ion-ios-home,
+.ion-md-home {
+  content: url(../assets/img/ICONE_HOME.png);
+  width: 30px;
+  height: 30px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+}
+
+.ion-ios-menu,
+.ion-md-menu {
+  content: url(../assets/img/ICONE_MENU.png);
+  width: 35px;
+  height: 20px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+}
+
+.ion-ios-bolus,
+.ion-md-bolus {
+  content: url(../assets/img/ICONE_CALCULATOR_HOME.png);
+  width: 35px;
+  height: 35px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+}
+
+.ion-ios-delete,
+.ion-md-delete {
+  content: url(../assets/img/close-button.png);
+  width: 20px;
+  height: 20px;
+  padding: 0px 0px 0px;
+  opacity: 0.9;
+}
+
+.ion-ios-connexion,
+.ion-md-connexion {
+  content: url(../assets/img/ICONE_LOGIN.png);
+  width: 30px;
+  height: 25px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+.ion-ios-deconnexion,
+.ion-md-deconnexion {
+  content: url(../assets/img/ICONE_LOGOUT.png);
+  width: 35px;
+  height: 25px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-checkOn,
+.ion-md-checkOn {
+  content: url(../assets/img/ICONE_Checkbox_on.png);
+  width: 20px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculAl,
+.ion-md-calculAl {
+  content: url(../assets/img/ICONE_CALCULATOR_OFF.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculAlOn,
+.ion-md-calculAlOn {
+  content: url(../assets/img/ICONE_CALCULATOR_ON.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculMnAl,
+.ion-md-calculMnAl {
+  content: url(../assets/img/ICONE_MON-ALLIMENT_OFF.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculMnAlOn,
+.ion-md-calculMnAlOn {
+  content: url(../assets/img/ICONE_MON-ALLIMENT_ON.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculListe,
+.ion-md-calculListe {
+  content: url(../assets/img/ICONE_LISTE_OFF.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-calculListeOn,
+.ion-md-calculListeOn {
+  content: url(../assets/img/ICONE_LISTE_ON.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-syncDataOff,
+.ion-md-syncDataOff {
+  content: url(../assets/img/ICONE_SYNC_ON.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-syncData,
+.ion-md-syncData {
+  content: url(../assets/img/ICONE_SYNC_OFF.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-sentDataOn,
+.ion-md-sentDataOn {
+  content: url(../assets/img/ICONE_ENVOYER_ON.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+ion-ios-sentData,
+.ion-md-sentData {
+  content: url(../assets/img/ICONE_ENVOYER_OFF.png);
+  width: 15px;
+  height: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
 }
 
 page-calcul ion-col[width-10] {

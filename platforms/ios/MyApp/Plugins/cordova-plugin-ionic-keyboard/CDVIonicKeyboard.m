@@ -70,7 +70,7 @@ typedef enum : NSUInteger {
                 self.keyboardResizes = ResizeBody;
             }
         }
-        NSLog(@"CDVIonicKeyboard: resize mode %lu", (unsigned long)self.keyboardResizes);
+        NSLog(@"CDVIonicKeyboard: resize mode %d", self.keyboardResizes);
     }
     self.hideFormAccessoryBar = [settings cordovaBoolSettingForKey:@"HideKeyboardFormAccessoryBar" defaultValue:YES];
 

@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.8.1
+
+- Fixed #27: "uploadFile" method doesn't return data object on iOS (thanks Faisalali23 and laiyinjie)
+- Fixed #40: generic error codes are different on Android and iOS
+
+## v1.8.0
+
+- Feature #33: response object contains response url
+
+## v1.7.1
+
+- Fixed #36: setting basic authentication not working correctly (thanks jkfb)
+- Fixed #35: Android headers are not normalized (not returned in lowercase)
+- Fixed #26: JSON request with array data is not working on Android (JSON error)
+
 ## v1.7.0
 
 - Feature #24: "setHeader" allows configuring headers for specified host

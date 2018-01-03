@@ -64,6 +64,7 @@ export class CalculPage {
       this.trancheHoraire = this.srvGeneral.getTrancheHoraire();
       this.initTrancheHoraire(this.srvGeneral.getTrancheHoraire());
 */      
+      this.repasHoraire = this.srvGeneral.initTrancheHoraire();
       this.initTrancheHoraire(this.srvGeneral.getTrancheHoraire());
 
       this.events.subscribe('afficheHdC', (data) => {
@@ -114,7 +115,7 @@ export class CalculPage {
     }
   }
   private initTrancheHoraire = ( tranche ): void => {  
-    this.config = JSON.parse(localStorage.getItem("Config"));
+    this.config = JSON.parse(localStorage.getItem("Config")); 
     if(tranche=='u1'){
         this.xHdc = this.config==null ? "" : this.config[0].hdc1;
         this.xUnite = this.config==null ? "" : this.config[0].unite1;

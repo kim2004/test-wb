@@ -17,11 +17,11 @@
 
 <ion-content padding>
 
-    <ion-tabs>
-      <ion-tab [root]="dataPage" tabTitle="{{'menu.data'|translate}}" tabIcon="list"></ion-tab>
-      <ion-tab [root]="addDataPage" tabTitle="{{'msg.ajout'|translate}}" tabIcon="add"></ion-tab>
-      <ion-tab tabTitle="{{'msg.synchronisation'|translate}}" tabIcon="refresh" (ionSelect)="refreshData()"></ion-tab>
-      <ion-tab [root]="sendDataPage" tabTitle="{{'msg.envoyer'|translate}}" tabIcon="share"></ion-tab>
+    <ion-tabs #myTabs>
+      <ion-tab [root]="dataPage" tabTitle="{{'menu.data'|translate}}" tabIcon={{listIcon}} (ionSelect)="changeOnOff($event);"  ></ion-tab>
+      <ion-tab [root]="addDataPage" tabTitle="{{'msg.ajout'|translate}}" tabIcon={{addIcon}} (ionSelect)="changeOnOff($event)"></ion-tab>
+      <ion-tab tabTitle="{{'msg.synchronisation'|translate}}" tabIcon={{syncIcon}} (ionSelect)="changeOnOff($event);refreshData();"></ion-tab>
+      <ion-tab [root]="sendDataPage" tabTitle="{{'msg.envoyer'|translate}}" tabIcon={{sentIcon}} (ionSelect)="changeOnOff($event)"></ion-tab>
     </ion-tabs>
 
 </ion-content>

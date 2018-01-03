@@ -58,25 +58,24 @@
 
             <ion-grid  class="vertical-align-content" style="background-color: #fff">
               <ion-row style="border-bottom:2px solid rgba(160, 208, 171, 0.3)">
-                <ion-col col-10 no-lines center>
+                <ion-col col-10 no-lines center style="padding-left:10px;">
                   <ion-item no-lines >
                     <ion-select #C  item-center formControlName="trancheHoraire" class="selectOption"  (ionChange)="initTrancheHoraire(C.value)" cancelText="{{'button.annuler'|translate}}" okText="{{'button.ok'|translate}}">      
-                      <ion-option *ngFor="let item of repasHoraire"  value="{{item.value}}">{{item.text}}</ion-option>
+                      <ion-option *ngFor="let item of repasHoraire"  value="{{item.value}}">{{item.text}}</ion-option>    
                     </ion-select> 
                   </ion-item>         
                 </ion-col>
               </ion-row>
                 <ion-row center>
-                <ion-col col-5 width-50 no-lines no-padding no-margin>
+                <ion-col col-5 width-50 no-lines no-padding no-margin style="padding-left:24px;">
                   <ion-item no-lines >
-                    <ion-input  type="tel" maxlength="3" formControlName="unite" value="0" placeholder='Unite'  ></ion-input>
-                  /
+                    <ion-input  type="tel" maxlength="3" formControlName="unite"  placeholder='Unite'  ></ion-input>
                   </ion-item>
                 </ion-col>
                 <ion-col center>/</ion-col>
-                <ion-col col-5 width-50 no-lines >
-                  <ion-item no-lines>
-                    <ion-input no-lines maxlength="3" type="tel" formControlName="hdc" ng-value="0" placeholder='HdC'  >0</ion-input>
+                <ion-col col-5 width-50 no-lines item-right>
+                  <ion-item no-lines item-right>
+                    <ion-input  item-right maxlength="3" type="tel" formControlName="hdc" placeholder='HdC'  ></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -101,7 +100,7 @@
       <ion-grid>
         <ion-row class="center">  
           <ion-col width-90 class="center-col">
-            <button ion-button large class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+            <button ion-button  class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
           </ion-col>
         </ion-row>
       </ion-grid> 

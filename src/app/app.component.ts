@@ -59,6 +59,7 @@ export class MyApp {
 
       // Init LocalStorage
       this.srvInit.initStorageAliment();
+      
 
       // Events appelé dans langue.ts lors du changement de langue
       this.events.subscribe('changeMenuLanguage', () => {
@@ -168,4 +169,5 @@ export class MyApp {
       localStorage.setItem("langue",userLang);     
     }
   }
+  
 }

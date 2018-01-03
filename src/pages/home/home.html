@@ -8,7 +8,7 @@
     
     <ion-title>
       <div class="title left" style="padding-top: 10px;">
-        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+        <img alt="webDia" src="assets/ressources/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
       </div> 
     </ion-title>
     
@@ -22,18 +22,24 @@
 </ion-header>
 
 <!--<ion-content padding class="background-image">-->
-<ion-content no-padding>  
+<ion-content no-padding style="background-image:url('assets/img/bandeau_newHOME.png');background-size: 100% 105%;
+background-repeat: no-repeat;">  
 
   <div class="title no-border no-padding no-margin" style>
-    <img class="background-image no-padding no-border no-margin"style="width: 100%; height:100px;" alt="WebDia" src="assets/img/bandeau_new.png">
+    
   </div>
-<div class="padding" style="padding: 0px 25px 5px 25px">
+  
+<div class="padding" style="padding: 80px 25px 5px 25px">
   <button (click)="setMenu('aliment')" class="button-aliment button-menu" ion-button block >           
       {{"button.aliments"|translate}}
       <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
   </button>
 
-  <button [disabled]="!isConnect()" (click)="setMenu('favoris')" class="button-favoris button-menu" ion-button block >           
+  <button  [hidden]="isConnect()" (click)="setMenu('inscription')" class="button-favoris button-menu" ion-button block >           
+    {{"frm.accueil.inscription"|translate}}
+    <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
+</button>
+  <button [disabled]="!isConnect()" [hidden]="!isConnect()" (click)="setMenu('favoris')" class="button-favoris button-menu" ion-button block >           
       {{"button.MesFavoris"|translate}}
       <ion-icon name="arrow-dropright" class="icon-button"></ion-icon>          
   </button>
@@ -58,10 +64,10 @@
       
   </button>
 </div>
-  <div class="left" style="color:dimgrey;font-size: 0.9em;padding: 0px 25px 5px 25px;">{{"msg.site.citation.texte" | translate}}
-  <span class="right" style="color:dimgrey;font-size: 0.7em; float:right; padding-top:1px; padding-right:20px;">{{"msg.site.citation.nom" | translate}}</span></div>
+  <div class="left" style="color:white;font-size: 0.9em;padding: 0px 25px 5px 25px;">{{"msg.site.citation.texte" | translate}}
+  <span class="right" style="color:white;font-size: 0.7em; float:right; padding-top:1px; padding-right:20px;">{{"msg.site.citation.nom" | translate}}</span></div>
 
-  <div class="bar bar-footer center" style="position: fixed; bottom:22px; padding-left:36%;"><img style="float: center;vertical-align: top; " alt="webDia" src="assets/img/logo_hug.png" height="22" border="0"><span class="left" style="display:inline-block; margin-left:19px; font-size:0.5em; ;color:dimgrey;"><span>Hôpitaux</span><br><span>Universitaires</span><br><span>Genève</span></span></div><br>
+  <div class="bar bar-footer center" style="position: fixed; bottom:22px; padding-left:36%;"><img style="float: center;vertical-align: top; " alt="webDia" src="assets/img/logo_hug_new.png" height="22" border="0"><span class="left" style="display:inline-block; margin-left:19px; font-size:0.5em; ;color:white;"><span>Hôpitaux</span><br><span>Universitaires</span><br><span>Genève</span></span></div><br>
 <ion-footer *ngIf="!display" class="title center footer">
    
 <div class="txt-footer">{{"msg.footer" | translate}}</div>

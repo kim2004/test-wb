@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>         
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-color-donnees">
+  <div>
+    <span class="txt-title">{{"frm.inscription.titre" | translate}}</span>
+  </div>
+
+  <form (submit)="validateAddUser(formUser.value)" [formGroup]="formUser" >
+        <ion-list>
+          <ion-grid>
+            <ion-row no-padding no-margin>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-select no-padding   style="padding-left:8px;padding-right:5px;" formControlName="genred" class="selectOption" cancelText="{{'button.annuler'|translate}}" okText="{{'button.ok'|translate}}">      
+                    <ion-option *ngFor="let item of appelation" value="{{item.value}}">{{item.text}}</ion-option>           
+                  </ion-select>          
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-input [value]="clearName" type="text" autofocus formControlName="prenom" placeholder='{{"msg.inscription.prenom"|translate}}'></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-input [value]="clearName" type="text" autofocus formControlName="nom" placeholder='{{"msg.inscription.nom"|translate}}'></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-input type="text" [value]="clearName" formControlName="mail" placeholder='{{"msg.inscription.email"|translate}}'></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-input   formControlName="mdp" [value]="clearName" type="text" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+    
+            <ion-row>
+              <ion-col>
+                <ion-item no-lines class="txt-title-D">
+                  <ion-input  formControlName="mdp2" type="text" [value]="clearName" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+    
+    
+          <ion-row >
+          <ion-col >
+            <ion-item no-lines  class="txt-title-D">
+              <ion-checkbox style="padding-right:2px;margin-right:2px;"   item-left formControlName="case" [checked]="clear"></ion-checkbox><ion-label class="check-sub-pd">{{"msg.inscription.acceptation"|translate}}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+         
+      
+       
+     
+      <!--<re-captcha #captchaControl="ngModel" fromControlName="captcha" name="captcha" required siteKey="6Lf6Jz4UAAAAAN2th6sLnHx0-MDExMkCAQ3AvWIv" ></re-captcha>
+      !--> 
+      <ion-row class="center">
+        <ion-col width-90 class="center-col">
+              <div style="text-align: center;" class="recaptcha"><img style="width:75px;
+                height:70px;text-align:left;" id="captcha" [src]="src"/><img style="width:75px;
+                height:70px;text-align:center;" src="assets/img/captcha/egal.png"/>
+                    <input style="width:75px; height:70px;text-align: right;float:right;margin-right:30px;" formControlName="code" name="answer" />
+              </div>
+    </ion-col>
+  </ion-row>
+
+    </ion-grid>
+
+          <ion-grid>
+            <ion-row class="center">  
+              <ion-col width-90 class="center-col">
+                <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid> 
+    
+        </ion-list>
+    
+      </form>
+
+</ion-content>

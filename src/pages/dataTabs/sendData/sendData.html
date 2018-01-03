@@ -2,16 +2,15 @@
   <div>
     <span class="txt-title">{{"frm.data.titre" | translate}}</span>
   </div>
-
-  <div class="roundRect">
-    <span>{{"frm.transfert.envoi"|translate}}</span>
+  <div  style="margin-top:10px;"class="roundRect_Sent">
+    <span class="txt-title-D" style="font-size:1.4em;">{{"frm.transfert.envoi"|translate}}</span>
   </div>
   <br>
 
   <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">
 
     <ion-list> 
-      <ion-item>
+      <ion-item class="list-conf-rb itemConf">
         <ion-input type="text" formControlName="mail" placeholder='{{"msg.inscription.email"|translate}}'></ion-input>
       </ion-item>
     </ion-list>

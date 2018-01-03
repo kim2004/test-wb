@@ -24,7 +24,7 @@
         <ion-row class="center">
           <ion-col width-100 class="center-col">
             <ion-item no-lines class="itemConf list-conf-rb" >
-              <ion-input name="nom" required autofocus type="text" placeholder='{{"msg.nom.aliment"|translate}}' (keyup)="onChangeNom($event.target.value)"></ion-input>
+              <ion-input [value]="clearNom" name="nom" required autofocus type="text" placeholder='{{"msg.nom.aliment"|translate}}' (keyup)="onChangeNom($event.target.value)"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -34,7 +34,7 @@
         <ion-row class="center">
           <ion-col width-50 class="center-col">
             <ion-item no-lines class="itemConf list-conf-rb" >
-              <ion-input name="nbHdc" required type="number" placeholder='{{"frm.monAliment.nbHdc"|translate}}' (keyup)="onChangeHdc($event.target.value)"></ion-input>
+              <ion-input [value]="clearHdc" name="nbHdc" required type="number" placeholder='{{"frm.monAliment.nbHdc"|translate}}' (keyup)="onChangeHdc($event.target.value)"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col width-50 class="center-col">
@@ -51,7 +51,7 @@
       <ion-grid>    
         <ion-row class="center">  
           <ion-col width-90 class="center-col">
-            <img [src]="'data:image/jpg;base64,' + base64Image" style="width: 100%" [hidden]="(base64Image === null)">
+            <img  [src]="base64ImageT" style="width: 100%" [hidden]="(base64ImageT === null)">
           </ion-col>
         </ion-row>
       </ion-grid>

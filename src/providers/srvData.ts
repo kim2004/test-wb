@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/timeout';
+import 'rxjs/add/operator/map';
 
 import { IUser } from '../models/user';
 import { IData } from '../models/data';
@@ -9,12 +10,18 @@ import { IConfig } from '../models/config';
 
 import { SrvHttp } from '../providers/srvHttp';
 import { SrvGeneral } from '../providers/srvGeneral';
+import { IMesAliments } from '../models/mesAliments';
+import { Observable } from 'rxjs/Observable';
+import { timeout } from 'rxjs/operator/timeout';
+import { Serializer } from '@angular/compiler/src/i18n/serializers/serializer';
 
 @Injectable()
 export class SrvData {
   user: IUser = {} as any;
   data: IData = [] as any;
   config: IConfig = {} as any;
+  aliments :IMesAliments = {} as any;
+  lstDataD: IData = {} as any;
 
   constructor( 
     private http: Http,
@@ -43,7 +50,7 @@ export class SrvData {
     if((formCalcul.glycemie==null || formCalcul.glycemie==0) && nbHdc!=null && nbHdc>0){     
       if(this.config[0].valeur>0){
         formCalcul.glycemie=this.config[0].valeur;   // Glycemie = Valeur recherchee
-        this.data.glycemieAuto = true;         
+        this.data.glycemieAuto = 1;         
       }
       else {
         calculInjection = false;
@@ -109,18 +116,76 @@ export class SrvData {
     return correction;
   }
 
-  public setDataToServer = ( formData ): void => {    
-    this.data.nbHdc = formData.nbHdc;
-    this.data.glycemie = formData.glycemie;
-    this.data.injection = formData.injection;
+  public setDataToServer = ( formData ): void => { 
+
+    this.data.nbHdc = Number.parseFloat(formData.nbHdc);
+    this.data.glycemie = Number.parseFloat(formData.glycemie);
+    this.data.injection = Number.parseFloat(formData.injection);
     this.data.dateInj = formData.currentDate.substring(0,10);
     this.data.timeInj = formData.currentDate.substring(11,16);
     this.data.commentaire = formData.commentaire;
-    this.data.glycemieAuto = false;
-    this.data.glycemieCapteur = false;
-
+    this.data.glycemieAuto = 0;
+    this.data.glycemieCapteur = 0;
+    var tranche=formData.trancheHoraire;
+    var numRepas:number;
+    if (tranche==="u1")
+    {
+        numRepas=1;
+    }else if (tranche==="u2"){
+      numRepas=2;
+    }else if (tranche==="u3"){
+      numRepas=3;}
+      else if (tranche==="u4"){
+        numRepas=4;
+      }
+      else if (tranche==="u5"){
+        numRepas=5;
+      }else if (tranche==="u6"){
+        numRepas=6;
+      }
+    this.data.repas=numRepas;
+   
     this.srvGeneral.setMessage(this.dataToString(this.data));
+    
+    this.savedData(this.data);
+    //localStorage.setItem("Donnees", JSON.stringify(this.dataToJson(this.data))); 
   }
+
+  public dataToJson = ( data: IData ):  any => {
+    this.data.idUti=this.config[0].idUti;
+    this.lstDataD.idUti=this.data.idUti;
+    this.lstDataD.timeInj=this.data.timeInj;
+    this.lstDataD.dateInj=this.data.dateInj;
+    this.lstDataD.nbHdc=this.data.nbHdc;
+    this.lstDataD.glycemie=this.data.glycemie;
+    this.lstDataD.injection=this.data.injection;
+    this.lstDataD.commentaire=this.data.commentaire;
+    this.lstDataD.glycemieAuto=this.data.glycemieAuto;
+    this.lstDataD.glycemieCapteur=this.data.glycemieCapteur;
+    this.lstDataD.repas=this.data.repas;
+   return this.lstDataD;
+
+  }
+
+  public listLocalData = function () {
+    var wd=localStorage.getItem("localData");
+    if (wd!=null && wd.length!=0){
+      return  JSON.parse(localStorage.getItem("localData")) ;
+}
+  else {
+      return localStorage.setItem("localData", "[]");
+  }
+}
+
+public listData = function () {
+  var wd=localStorage.getItem("lastData");
+  if (wd!=null && wd.length!==0) {       
+      return  JSON.parse(localStorage.getItem("lastData"));
+  }
+  else {
+      return localStorage.setItem("listData", "[]");
+  }
+};
 
   public dataToString = ( data: IData ):string => {
     var str: string;
@@ -137,6 +202,73 @@ export class SrvData {
     return lstData; 
   }
 
+  public storeData = function (display) {
+    this.user = JSON.parse(localStorage.getItem('User'));
+    
+//    var params = { a: mail };var params = "a="+mail;
+    let headers = new Headers();
+    headers.append("Accept", 'application/x-www-form-urlencoded');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.set('user', this.user.num);
+    let options = new RequestOptions({ headers: headers});
+    //var lenData=  localStorage.getItem("localData").length-1;
+   var localData=this.listLocalData();
+    var params =JSON.stringify(localData);
+    var storeData = "n="+params;
+     this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlData, storeData,options)
+     //.toPromise()
+     .timeout(10000)
+     .map(res => {
+            localStorage.setItem("lastData", JSON.stringify(res.json()));
+            localStorage.removeItem('localData');
+      } )
+      .subscribe(
+        data => { 
+         },
+        err  => {
+           
+          this.srvHttp.handleError(err);
+        }
+      );
+     
+  }
+  public savedData = ( dataT:IData ): any => {
+    var d = new Date();
+    
+    var yr = dataT.dateInj.substring(0,4);
+    var mh = dataT.dateInj.substring(5,7);
+    var dt = dataT.dateInj.substring(8,10);
+    var hr = dataT.timeInj.substring(0,2);
+    var mn = dataT.timeInj.substring(3,5);
+
+    if(!dataT.nbHdc) dataT.nbHdc = 0;
+    if(!dataT.glycemie) dataT.glycemie = 0;
+    if(!dataT.injection) dataT.injection = 0;
+    if(!dataT.commentaire) dataT.commentaire = "";
+  
+    var data = <IData>new Object();
+    data.dateInj=yr+"-"+mh+"-"+dt;
+    data.timeInj= hr+":"+mn+":00";
+    data.nbHdc=dataT.nbHdc; 
+    data.repas=dataT.repas;
+    data.glycemie=dataT.glycemie; 
+    data.injection=dataT.injection;
+    data.commentaire=dataT.commentaire;
+    data.glycemieAuto=0;
+    //data.glycemieCapteur=1;
+    localStorage.setItem("test",data.nbHdc.toString());
+    
+    var storeDataD = this.listLocalData();
+    if(!storeDataD || storeDataD.length===0) {
+        storeDataD = [];
+    }
+    
+   storeDataD.push(data);
+    localStorage.setItem("localData",  JSON.stringify(storeDataD));
+    this.storeData(false);
+   
+}
+
   public sendDataMail = ( mail ): any => {    
     this.user = JSON.parse(localStorage.getItem('User'));
     var params = "a="+mail;
@@ -145,11 +277,12 @@ export class SrvData {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.set('user', this.user.num);
     let options = new RequestOptions({ headers: headers });
-
     return this.http.post( this.srvHttp.SERVER_URL + this.srvHttp.urlSendData, params, options )
       .timeout(10000)
       .map(res => res)
-      .subscribe((err) => (console.log("Delay exceeded !")));
+      .subscribe((data) => {
+                this.srvGeneral.setMessage(this.translate.instant("msg.donneesTranferees"));
+              },(err) => (console.log("Delay exceeded !")));
   }
 
 }

@@ -11,11 +11,15 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-camera": {
-      "CAMERA_USAGE_DESCRIPTION": " ",
-      "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-filepath": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-http": {
@@ -27,11 +31,20 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
     "cordova-plugin-native-keyboard": {
       "LICENSE": "TRIAL",
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-transport-security": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-whitelist": {
@@ -42,9 +55,6 @@
     }
   },
   "dependent_plugins": {
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "io.ionic.starter"
     }

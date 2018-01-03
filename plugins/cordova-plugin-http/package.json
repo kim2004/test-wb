@@ -1,41 +1,19 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "cordova-plugin-http",
-        "scope": null,
-        "escapedName": "cordova-plugin-http",
-        "name": "cordova-plugin-http",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/Users/patrickribeiroamaral/Ionic/myfirstapp"
-    ]
-  ],
-  "_from": "cordova-plugin-http@latest",
+  "_from": "cordova-plugin-http@^1.2.0",
   "_id": "cordova-plugin-http@1.2.0",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-hUqixhWMCa7FzBOhHObahcnEqhc=",
   "_location": "/cordova-plugin-http",
-  "_nodeVersion": "4.4.0",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/cordova-plugin-http-1.2.0.tgz_1469032450311_0.49647506582550704"
-  },
-  "_npmUser": {
-    "name": "thekiteeatingtree",
-    "email": "thekiteeatingtree@gmail.com"
-  },
-  "_npmVersion": "3.8.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-http",
-    "scope": null,
-    "escapedName": "cordova-plugin-http",
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-http@^1.2.0",
     "name": "cordova-plugin-http",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "escapedName": "cordova-plugin-http",
+    "rawSpec": "^1.2.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.2.0"
   },
   "_requiredBy": [
     "#USER",
@@ -43,8 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-http/-/cordova-plugin-http-1.2.0.tgz",
   "_shasum": "854aa2c6158c09aec5cc13a11ce6da85c9c4aa17",
-  "_shrinkwrap": null,
-  "_spec": "cordova-plugin-http",
+  "_spec": "cordova-plugin-http@^1.2.0",
   "_where": "/Users/patrickribeiroamaral/Ionic/myfirstapp",
   "author": {
     "name": "Wymsee"
@@ -52,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/wymsee/cordova-HTTP/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-http",
     "platforms": [
@@ -59,21 +37,14 @@
       "android"
     ]
   },
-  "dependencies": {},
+  "deprecated": false,
   "description": "Cordova / Phonegap plugin for communicating with HTTP servers using SSL pinning",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "854aa2c6158c09aec5cc13a11ce6da85c9c4aa17",
-    "tarball": "https://registry.npmjs.org/cordova-plugin-http/-/cordova-plugin-http-1.2.0.tgz"
-  },
   "engines": [
     {
       "name": "cordova",
       "version": ">=3.0.0"
     }
   ],
-  "gitHead": "bf8ded59a26be1e927d14f99566646ad63240ce3",
   "homepage": "https://github.com/wymsee/cordova-HTTP#readme",
   "keywords": [
     "cordova",
@@ -83,23 +54,10 @@
     "cordova-android"
   ],
   "license": "MIT",
-  "maintainers": [
-    {
-      "name": "dmcnamara1",
-      "email": "dmcnamara1@gmail.com"
-    },
-    {
-      "name": "thekiteeatingtree",
-      "email": "thekiteeatingtree@gmail.com"
-    }
-  ],
   "name": "cordova-plugin-http",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wymsee/cordova-HTTP.git"
   },
-  "scripts": {},
   "version": "1.2.0"
 }

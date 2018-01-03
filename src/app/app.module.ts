@@ -4,12 +4,17 @@ import { Camera } from '@ionic-native/camera';
 import { Keyboard } from '@ionic-native/keyboard';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { Transfer } from '@ionic-native/transfer';
+import {FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FilePath } from '@ionic-native/file-path';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {WindowTokenModule} from 'ngx-window-token';
+
 //import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 
@@ -28,6 +33,7 @@ import { LanguePage } from '../pages/langue/langue';
 import { CalculPage } from '../pages/calcul/calcul';
 import { SrvGeneral } from '../providers/srvGeneral'; 
 import { SrvAliment } from '../providers/srvAliment'; 
+import { SrvInscription} from '../providers/srvInscription';
 import { FavorisPage } from '../pages/favoris/favoris';
 import { DataPage } from '../pages/dataTabs/data/data';
 import { DataTabsPage } from '../pages/dataTabs/dataTabs';
@@ -37,6 +43,7 @@ import { InformationPage } from '../pages/information/information';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ChangePasswordPage } from '../pages/changePassword/changePassword';
 import { PopupPage } from '../pages/pop/popup';
+import { SubscriptionPage} from '../pages/Inscription/subscription'
 
 import { AlimentTabsPage } from '../pages/alimentTabs/alimentTabs';
 import { AlimentPage } from '../pages/alimentTabs/aliment/aliment';
@@ -70,7 +77,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfigurationPage,
     FamilleAlimentPage,
     ChangePasswordPage,
-    PopupPage
+    PopupPage,
+    SubscriptionPage,
   ],
   imports: [    
     IonicModule.forRoot( MyApp, 
@@ -79,7 +87,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           tabsPlacement: 'bottom'
       }), 
       BrowserModule, 
-      HttpClientModule, 
+      HttpClientModule,
       HttpModule, 
       TranslateModule.forRoot({
         loader: {
@@ -109,14 +117,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfigurationPage,
     FamilleAlimentPage,
     ChangePasswordPage,
-    PopupPage
+    PopupPage,
+    SubscriptionPage
   ],
   providers: [
     {
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
-    }, 
-    Camera, 
+    },
+    Camera,
+    Transfer,
+    FilePath,
     Keyboard, 
     StatusBar, 
     SplashScreen,  
@@ -125,7 +136,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SrvHttp,
     SrvInit,
     SrvData,
-    SrvConfig
+    SrvConfig,
+    SrvInscription
   ]
 })
 export class AppModule {}

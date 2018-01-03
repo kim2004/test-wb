@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NavController, MenuController, Events } from 'ionic-angular';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
@@ -11,6 +11,7 @@ import { DataTabsPage } from '../../pages/dataTabs/dataTabs';
 import { AlimentTabsPage } from '../../pages/alimentTabs/alimentTabs';
 import { ConfigurationPage } from '../../pages/configuration/configuration';
 import { PopupPage } from '../../pages/pop/popup';
+import { SubscriptionPage } from '../../pages/Inscription/subscription';
 
 import { SrvQuantite } from '../../providers/srvQuantite';
 
@@ -31,7 +32,7 @@ export class HomePage {
     private navCtrl: NavController,
     private srvQuantite: SrvQuantite,
     private menuCtrl: MenuController,
-    private translate: TranslateService ) {
+    private translate: TranslateService) {
 
       this.srvQuantite.clearRepas();
 
@@ -67,9 +68,17 @@ export class HomePage {
     }
     else if (page=='favoris'){
       this.navCtrl.push(FavorisPage);
-    }   
+    }  
+    else if (page=='inscription'){
+      this.navCtrl.push(SubscriptionPage);
+    }    
     
   };
+
+  public openPage()
+  {
+    this.navCtrl.setRoot(HomePage);
+  }
 
   public isConnect = (): boolean => {
     this.user = JSON.parse(localStorage.getItem('User'));

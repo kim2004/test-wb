@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-
+import { Platform, Events } from 'ionic-angular';
 import { IRepas } from '../models/repas';
-
+import { normalizeURL } from 'ionic-angular';
 import { SrvGeneral } from '../providers/srvGeneral';
+import { normalizeUrl } from 'ionic-angular/navigation/deep-linker';
 
 
 @Injectable()
@@ -14,10 +15,11 @@ export class SrvQuantite {
 
 
   constructor( 
-    private srvGeneral: SrvGeneral ) { 
+    private srvGeneral: SrvGeneral,private platform: Platform ) { 
         this.langue = localStorage.getItem("langue");
         this.lstData = JSON.parse(localStorage.getItem("Aliments")); 
     }
+
 
   public getNbHdcRepas = ( ): number => {
     var nbHdc: number =0;
@@ -48,7 +50,7 @@ export class SrvQuantite {
   public getImageAliment = ( idAliment ): string => {
     for (var i = 0; i < this.lstData.length; i++) {
       if(this.lstData[i].id==idAliment){
-        return this.lstData[i].image;
+        return this.lstData[i].image; 
       }
     }
     return null;

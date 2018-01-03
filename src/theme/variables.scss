@@ -12,15 +12,15 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
 
-@font-face {
-  font-family: MaPolice;
+//@font-face {
+  /*font-family: MaPolice;
   src: url("../assets/fonts/CAT Rhythmus.ttf");
   font-weight: normal;
-  }
+  }*/
   
-  $font-family-ios-base: "MaPolice";
+  /*$font-family-ios-base: "MaPolice";
   $font-family-md-base:"MaPolice";
-  $font-family-wp-base:"MaPolice";
+  $font-family-wp-base:"MaPolice";*/
 
   $text-input-md-highlight-color-invalid: transparent;
   $text-input-md-highlight-color-valid: transparent;
@@ -92,5 +92,5 @@ $title-connecion: #488aff;
 
 @import "roboto";
 @import "noto-sans";
-@import "iconmoon";
+
 
