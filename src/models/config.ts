@@ -1,9 +1,9 @@
 export interface IConfig {
     idUti: number,
     hdc1: number,
-    hdc2: string,
-    hdc3: string,
-    hdc4: string,
+    hdc2: number,
+    hdc3: number,
+    hdc4: number,
     hdc5: number,
     hdc6: number,
     unite: number,

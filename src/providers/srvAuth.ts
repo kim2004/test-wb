@@ -13,7 +13,7 @@ export class SrvAuth {
   constructor( 
     private http: Http,
     private srvHttp: SrvHttp,
-    private menuCtrl: MenuController, ) {
+    private menuCtrl: MenuController ) {
   }
    
   public connexion = ( email: string, password: string ): any => {
@@ -22,7 +22,7 @@ export class SrvAuth {
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers: headers });  
 
-    return this.http.post( this.srvHttp.SERVER_URL + this.srvHttp.urlConnexion, params, options);
+    return this.http.post( this.srvHttp.SERVER_URL + this.srvHttp.urlConnexion, params, options)
 /*       
           .timeout(10000)
           .map(res => {

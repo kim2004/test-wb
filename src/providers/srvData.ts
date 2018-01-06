@@ -185,7 +185,7 @@ public listData = function () {
   else {
       return localStorage.setItem("listData", "[]");
   }
-};
+}
 
   public dataToString = ( data: IData ):string => {
     var str: string;
@@ -256,7 +256,6 @@ public listData = function () {
     data.commentaire=dataT.commentaire;
     data.glycemieAuto=0;
     //data.glycemieCapteur=1;
-    localStorage.setItem("test",data.nbHdc.toString());
     
     var storeDataD = this.listLocalData();
     if(!storeDataD || storeDataD.length===0) {

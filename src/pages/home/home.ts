@@ -14,12 +14,13 @@ import { PopupPage } from '../../pages/pop/popup';
 import { SubscriptionPage } from '../../pages/Inscription/subscription';
 
 import { SrvQuantite } from '../../providers/srvQuantite';
+import { SrvGeneral } from '../../providers/srvGeneral';
 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [ SrvQuantite ]
+  providers: [ SrvQuantite, SrvGeneral ]
 })
 
 export class HomePage {
@@ -31,6 +32,7 @@ export class HomePage {
     private events: Events,
     private navCtrl: NavController,
     private srvQuantite: SrvQuantite,
+    private srvGeneral: SrvGeneral,
     private menuCtrl: MenuController,
     private translate: TranslateService) {
 
@@ -44,6 +46,9 @@ export class HomePage {
       else {      
         this.menuCtrl.enable(false, 'menuConnect');
         this.menuCtrl.enable(true, 'menuDisconnect');
+        if (Cookie.get('access')=='1'){
+        this.srvGeneral.setMessage(this.translate.instant('msg.inscriptionConfirme'));
+        }
       }
      
       if (Cookie.get('access')=='0'){

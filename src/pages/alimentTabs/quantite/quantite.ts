@@ -91,7 +91,8 @@ export class QuantitePage {
     this.quantiteAliment = this.translate.instant("frm.quantite.saisie") + "<br>" + this.srvQuantite.getNomAliment(this.idAliment);
 
     
-    this.imageBase64 = this.srvQuantite.getImageAliment(this.idAliment).replace('data/image/jpeg/base64/','');
+    this.imageBase64 = this.srvQuantite.getImageAliment(this.idAliment)!=null?this.srvQuantite.getImageAliment(this.idAliment).replace('data/image/jpeg/base64/',''):this.srvQuantite.getImageAliment(this.idAliment);
+    console.log(this.imageBase64);
     if(this.imageBase64){ 
       if (this.platform.is('ios')){
         this.imageMonAliment = 'data:image/jpeg;base64,' + this.imageBase64;

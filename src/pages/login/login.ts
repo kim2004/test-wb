@@ -61,7 +61,7 @@ export class LoginPage {
   } 
 */   
 
-  public validateLogin = ( ): void => {       
+  public validateLogin = ( ): void => { 
     if (this.formLogin.status === 'VALID') {
       if(this.formLogin.value.email.length == 0){
         this.srvGeneral.setMessage(this.translate.instant("msg.saisieMail"));

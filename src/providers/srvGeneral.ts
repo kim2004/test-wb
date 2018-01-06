@@ -84,6 +84,8 @@ export class SrvGeneral {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
+      mode:'ios',
+      cssClass: 'alertDanger',
       buttons: ['Ok']
     });
     alert.present();   
