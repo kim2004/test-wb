@@ -120,7 +120,7 @@ export class AjoutAlimentPage {
     this.platform.ready().then(() => {   
       if(this.nom && this.nom.length>0){
         if(this.nbHdc && this.nbHdc.length>0){
-          //this.srvAliment.upload(this.base64ImageT, this.nom, Number.parseFloat(this.nbHdc), this.unite);
+          this.srvAliment.upload(this.base64ImageT, this.nom, Number.parseFloat(this.nbHdc), this.unite);
           this.base64ImageT=null;
           this.clearHdc=0;
           this.clearNom="";

@@ -15,6 +15,7 @@ import { SubscriptionPage } from '../../pages/Inscription/subscription';
 
 import { SrvQuantite } from '../../providers/srvQuantite';
 import { SrvGeneral } from '../../providers/srvGeneral';
+import { timeout } from 'rxjs/operator/timeout';
 
 
 @Component({
@@ -46,16 +47,22 @@ export class HomePage {
       else {      
         this.menuCtrl.enable(false, 'menuConnect');
         this.menuCtrl.enable(true, 'menuDisconnect');
-        if (Cookie.get('access')=='1'){
-        this.srvGeneral.setMessage(this.translate.instant('msg.inscriptionConfirme'));
-        }
+        this.srvGeneral.setMessage(this.translate.instant("msg.inscriptionConfirme"));
+      }
+
+      if (Cookie.get('access')=='0'){
+        setTimeout(() => {
+            // this.navCtrl.popToRoot();
+            // might try this instead
+            if (Cookie.get('access')=='0'){
+            this.navCtrl.setRoot(PopupPage);
+            }
+        }, 4500);
       }
      
-      if (Cookie.get('access')=='0'){
-        this.navCtrl.setRoot(PopupPage);
-        let cook= Cookie.set('access','1');
-      }
   }
+  
+  
 
   public setMenu = ( page ): void => {
     if(page=='config'){

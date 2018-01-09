@@ -37,6 +37,9 @@ export class SubscriptionPage {
   formUser: FormGroup;
   formHash: FormGroup;
   clearName:string="";
+  clearNameP:string="";
+  clearNameM:string="";
+  clearNameN:string="";
   clear:boolean=false;
   genred:string="m";
   user:IUser=null;
@@ -206,8 +209,10 @@ export class SubscriptionPage {
   }
 
   private initForm = ( ): void => {
+    var user = <IUser>new Object();
+    user=JSON.parse(localStorage.getItem("User"));
     this.formUser = new FormGroup({ 
-        genred : new FormControl(this.genred,Validators.required),
+        genred : new FormControl(user==null?this.genred:(user.sexe==1)?this.genred:"f",Validators.required),
         prenom: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         nom: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         mail: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
@@ -216,7 +221,9 @@ export class SubscriptionPage {
         code:new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         case : new FormControl(false)
     });
-  
+  this.clearNameM=user.mail;
+  this.clearNameN=user.nom;
+  this.clearNameP=user.prenom;
   }
 
   

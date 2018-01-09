@@ -32,7 +32,7 @@ export class SrvInscription{
       }
 
 
-      public createUser = function (user:IUserSubscription) {
+      public modifierUser = function (user:IUserSubscription) {
         
     //    var params = { a: mail };var params = "a="+mail;
         let headers = new Headers();
@@ -45,15 +45,13 @@ export class SrvInscription{
         var prenom="&p="+user.prenom;
         var mail= "&m="+user.mail;
         var pass="&p1="+user.mdp;
-        //var pass2="&p2="+user.mdp;
-        var hash="&hc="+user.hash;
-        var code="&cc=0";
         var medecin="&medecin=0";
-        var langue="&language="+Cookie.get("langue").toString();
-
-         var stringUser= civilite+nom+prenom+mail+pass+hash+code+medecin+langue;
-         console.log(stringUser);
-         /*this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlUtilisateur, stringUser,options)
+        var hash="&hc=1234";
+        var code="&c=0";
+        var langue="&language="+localStorage.getItem("langue").toString();
+        
+        let params= civilite+nom+prenom+mail+pass+medecin+code+hash+langue;
+         return this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlUtilisateur, params,options)
          //.toPromise()
          .timeout(10000)
           .subscribe(
@@ -62,8 +60,9 @@ export class SrvInscription{
              },
             err  => {
               this.srvHttp.handleError(err);
+              localStorage.setItem("ModificationUser",params);
             }
-          );*/
+          );
          
       }
 

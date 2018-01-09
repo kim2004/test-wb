@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import { HomePage } from '../../pages/home/home';
 import { SrvGeneral } from '../../providers/srvGeneral'

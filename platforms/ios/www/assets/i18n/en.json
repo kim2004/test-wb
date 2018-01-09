@@ -59,7 +59,7 @@
 "msg.hdc":"Carbs",
 "msg.glycemie":"Glycemia",
 "msg.injection":"Injection",
-"msg.codeCaptcha":"Validate the captcha !",
+"msg.codeCaptcha":"The captcha is false !",
 "msg.aucunedonnee":"<li>No data !!!</li>",
 "msg.noSelection":"No selection...",
 "msg.noConfig":"Check your configuration !",

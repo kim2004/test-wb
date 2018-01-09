@@ -8,7 +8,9 @@ import { SrvHttp } from '../providers/srvHttp';
 import { SrvData } from '../providers/srvData';
 import { SrvConfig } from '../providers/srvConfig';
 import { SrvAliment } from '../providers/srvAliment';
+import { SrvInscription } from '../providers/srvInscription';
 import { IAlimentAdd } from '../models/addAliment';
+import { IUserSubscription } from '../models/userSubscription';
 
  
 @Injectable()
@@ -21,7 +23,8 @@ export class SrvInit {
     private srvHttp: SrvHttp,
     private srvData: SrvData,
     private srvConfig: SrvConfig,
-    private srvAliment: SrvAliment, ) {
+    private srvAliment: SrvAliment,
+    private srvInscription:SrvInscription ) {
   }
    
   public initStorageAliment = ( ): void => {
@@ -56,6 +59,9 @@ export class SrvInit {
         this.lstAlimentAdd=[];
       }
     }
+    var mnObject= <IUserSubscription> new Object;
+    mnObject=localStorage.getItem("ModificationUser")==null?null:JSON.parse(localStorage.getItem("ModificationUser"));
+    mnObject==null?null:this.srvInscription.modifierUser(mnObject);
       // Gestion des Favoris
       this.user = JSON.parse(localStorage.getItem('User'));   
       if(this.user && this.user.num && this.user.num.length>0){

@@ -48,7 +48,7 @@
 "button.listes":"Listen",
 "msg.rechercheAliments":"Suche nach Nahrungsmittel...",
 "frm.monAliment.typeQuantite":"g/ml",
-"msg.codeCaptcha":"Validiere das Captcha !",
+"msg.codeCaptcha":"Das Captcha ist falsch !",
 "msg.newVersion":"<li>Webdia Aktualisierung</li>",
 "msg.glyceBloqueTexte1":"Ihr Blutzuckerwert ist auf",
 "msg.glyceBloqueTexte2":"blockiert, weil Sie Ihre letzte Injektion vor weniger als  ",

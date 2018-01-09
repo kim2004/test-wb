@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingController } from 'ionic-angular/index';
 import { AlertController, ToastController } from 'ionic-angular';
-
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 /*
   Generated class for the Famille provider.
@@ -51,7 +51,11 @@ export class SrvGeneral {
        options = {
         title: titre,
         subTitle: text,
-        buttons: ['Ok'],
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+              return (Cookie.get('access')=='0'?true:true);
+          }}],
         cssClass: 'alertDanger',
         mode:'ios',
         enableBackdropDismiss: false
@@ -61,7 +65,11 @@ export class SrvGeneral {
         options = {
         title: titre,
         subTitle: text,
-        buttons: ['Ok'],
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+              return (Cookie.get('access')=='0'?true:true);
+          }}],
         mode:'ios',
         cssClass: 'alertDanger',
         enableBackdropDismiss: false
@@ -69,8 +77,14 @@ export class SrvGeneral {
     }
     
     alert = this.alertCtrl.create(options);
-    //alert.setCssClass('alertDanger');
-    alert.present();    
+    
+    alert.present(); 
+    alert.onDidDismiss((data) => {
+      
+     if (data==true){
+       Cookie.set('access','1');
+     }
+});   
   }
 
   public setMessageInjection = ( title?: string, subTitle?: string ): void => {     

@@ -16,6 +16,7 @@ import { LanguePage } from '../pages/langue/langue';
 import { InformationPage } from '../pages/information/information';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ChangePasswordPage } from '../pages/changePassword/changePassword';
+import { SubscriptionPage } from '../pages/Inscription/subscription';
 
 
 @Component({
@@ -83,6 +84,7 @@ export class MyApp {
           this.menuConnect = [
             { title: this.translate.instant("menu.deconnexion"), component: 'deconnexion', icon: 'ion-ios-deconnexion', function: true },
             { title: this.translate.instant("menu.information"), component: InformationPage, icon: '', function: false },
+            { title: this.translate.instant("msg.connexion.utilisateur"), component: SubscriptionPage, icon: '', function: false },
             { title: this.translate.instant("menu.configuration"), component: ConfigurationPage, icon: '', function: false },
             { title: this.translate.instant("menu.chPassword"), component: ChangePasswordPage, icon: '', function: false },
             { title: this.translate.instant("menu.langue"), component: LanguePage, icon: '', function: false }
