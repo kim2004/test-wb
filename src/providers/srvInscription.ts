@@ -54,11 +54,9 @@ export class SrvInscription{
           .subscribe(
             data => { 
                 this.srvGeneral.setMessage('msg.modifProfil');
-                localStorage.removeItem("ModificationUser");
              },
             err  => {
               this.srvHttp.handleError(err);
-              localStorage.setItem("ModificationUser",JSON.stringify(user));
             }
           );
         } 

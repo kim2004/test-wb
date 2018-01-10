@@ -75,10 +75,7 @@ export class SrvInit {
         this.srvAliment.getFavoris( options );
         this.srvAliment.getMesAliments( options );   
         this.srvConfig.getConfiguration( options );
-        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';  
-        var mnObject= <IUserSubscription> new Object;
-        mnObject=localStorage.getItem("ModificationUser")==null?null:JSON.parse(localStorage.getItem("ModificationUser"));
-        mnObject==null?null:this.srvInscription.modifierUser(mnObject); 
+        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
       } 
       this.srvAliment.getAliments();
       this.srvAliment.getImagesAliments();            
