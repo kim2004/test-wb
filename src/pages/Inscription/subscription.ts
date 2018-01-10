@@ -160,7 +160,7 @@ export class SubscriptionPage {
             userInsc.sexe=(this.formUser.get("genred").value=="m"?0:1);
             userInsc.typeAcces=1;
             Cookie.set('email',mail);
-            //this.srvInscription.createUser(this.userInsc);
+            this.srvInscription.modifierUser(userInsc);
           }
         }
         else{
@@ -224,6 +224,7 @@ export class SubscriptionPage {
   this.clearNameM=user.mail;
   this.clearNameN=user.nom;
   this.clearNameP=user.prenom;
+  
   }
 
   

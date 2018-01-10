@@ -81,7 +81,7 @@ export class SrvGeneral {
     alert.present(); 
     alert.onDidDismiss((data) => {
       
-     if (data==true){
+     if (data=true){
        Cookie.set('access','1');
      }
 });   

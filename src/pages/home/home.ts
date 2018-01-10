@@ -47,7 +47,9 @@ export class HomePage {
       else {      
         this.menuCtrl.enable(false, 'menuConnect');
         this.menuCtrl.enable(true, 'menuDisconnect');
+        if (this.user!=null){
         this.srvGeneral.setMessage(this.translate.instant("msg.inscriptionConfirme"));
+        }
       }
 
       if (Cookie.get('access')=='0'){
