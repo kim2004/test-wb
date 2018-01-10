@@ -68,8 +68,8 @@
     
             <ion-row>
               <ion-col>
-                <ion-item no-lines class="txt-title-D">
-                  <ion-input  formControlName="mdp2" type="text" [value]="clearName" [hidden]="user!=null" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+                <ion-item no-lines [hidden]="util" class="txt-title-D">
+                  <ion-input  formControlName="mdp2" type="text" [value]="clearName"  placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>

@@ -54,7 +54,7 @@ export class SrvGeneral {
         buttons: [{
           text: 'OK',
           handler: () => {
-              return (Cookie.get('access')=='0'?true:true);
+              return (localStorage.getItem('access')=='0'?true:true);
           }}],
         cssClass: 'alertDanger',
         mode:'ios',
@@ -68,7 +68,7 @@ export class SrvGeneral {
         buttons: [{
           text: 'OK',
           handler: () => {
-              return (Cookie.get('access')=='0'?true:true);
+              return (localStorage.getItem('access')=='0'?true:true);
           }}],
         mode:'ios',
         cssClass: 'alertDanger',
@@ -82,7 +82,7 @@ export class SrvGeneral {
     alert.onDidDismiss((data) => {
       
      if (data=true){
-       Cookie.set('access','1');
+       localStorage.setItem('access','1');
      }
 });   
   }

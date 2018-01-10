@@ -52,11 +52,11 @@ export class HomePage {
         }
       }
 
-      if (Cookie.get('access')=='0'){
+      if (localStorage.getItem('access')=='0'){
         setTimeout(() => {
             // this.navCtrl.popToRoot();
             // might try this instead
-            if (Cookie.get('access')=='0'){
+            if (localStorage.getItem('access')=='0'){
             this.navCtrl.setRoot(PopupPage);
             }
         }, 4500);

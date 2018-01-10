@@ -33,37 +33,35 @@ export class SrvInscription{
 
 
       public modifierUser = function (user:IUserSubscription) {
-        
-    //    var params = { a: mail };var params = "a="+mail;
-        let headers = new Headers();
-        headers.append("Accept", 'application/x-www-form-urlencoded');
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        let options = new RequestOptions({ headers: headers});
+    this.user = JSON.parse(localStorage.getItem('User'));   
+    if(this.user && this.user.num && this.user.num.length>0){
+      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+      headers.set('user', this.user.num);
+        let options = new RequestOptions({ headers: headers }); 
        
         var civilite = "civ="+user.sexe;
         var nom = "&n="+user.nom;
         var prenom="&p="+user.prenom;
         var mail= "&m="+user.mail;
         var pass="&p1="+user.mdp;
-        var medecin="&medecin=0";
-        var hash="&hc=1234";
+        var hash="&hc=1234&mp=kk&ma=j&mv=er&mville=zz&mt=uu&mc=we";
         var code="&c=0";
-        var langue="&language="+localStorage.getItem("langue").toString();
         
-        let params= civilite+nom+prenom+mail+pass+medecin+code+hash+langue;
+        let params= civilite+nom+prenom+mail+pass+code+hash;
          return this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlUtilisateur, params,options)
          //.toPromise()
          .timeout(10000)
           .subscribe(
             data => { 
                 this.srvGeneral.setMessage('msg.modifProfil');
+                localStorage.removeItem("ModificationUser");
              },
             err  => {
               this.srvHttp.handleError(err);
-              localStorage.setItem("ModificationUser",params);
+              localStorage.setItem("ModificationUser",JSON.stringify(user));
             }
           );
-         
+        } 
       }
 
       public inscription = function (user:IUserSubscription) {

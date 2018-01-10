@@ -28,9 +28,9 @@ export class SrvHttp {
   urlFamilleAliment: any;
   urlUtilisateur :any;
   urlInscription:any;
-  SERVER_URL = 'http://www.kmconcept.net/webdia/';
+  //SERVER_URL = 'http://www.kmconcept.net/webdia/';
   //SERVER_URL = 'http://localhost:8081/webdia/';
-  //SERVER_URL = 'http://localhost:8081/webdia/';
+  SERVER_URL = 'http://localhost:8081/webdia/';
 
   constructor( 
     private srvGeneral: SrvGeneral,

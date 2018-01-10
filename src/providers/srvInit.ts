@@ -29,8 +29,7 @@ export class SrvInit {
    
   public initStorageAliment = ( ): void => {
 
-    this.srvAliment.getAliments();
-    this.srvAliment.getImagesAliments();
+    
     this.lstAlimentAdd=localStorage.getItem("addAliment")!=null && localStorage.getItem('addAliment').toString()!='[]'? JSON.parse(localStorage.getItem("addAliment")):'';
     if ( this.lstAlimentAdd!=null && this.lstAlimentAdd!=[] ) {
       if (this.lstAlimentAdd.length>1){
@@ -59,9 +58,7 @@ export class SrvInit {
         this.lstAlimentAdd=[];
       }
     }
-    var mnObject= <IUserSubscription> new Object;
-    mnObject=localStorage.getItem("ModificationUser")==null?null:JSON.parse(localStorage.getItem("ModificationUser"));
-    mnObject==null?null:this.srvInscription.modifierUser(mnObject);
+    
       // Gestion des Favoris
       this.user = JSON.parse(localStorage.getItem('User'));   
       if(this.user && this.user.num && this.user.num.length>0){
@@ -78,8 +75,13 @@ export class SrvInit {
         this.srvAliment.getFavoris( options );
         this.srvAliment.getMesAliments( options );   
         this.srvConfig.getConfiguration( options );
-        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
-      }             
+        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';  
+        var mnObject= <IUserSubscription> new Object;
+        mnObject=localStorage.getItem("ModificationUser")==null?null:JSON.parse(localStorage.getItem("ModificationUser"));
+        mnObject==null?null:this.srvInscription.modifierUser(mnObject); 
+      } 
+      this.srvAliment.getAliments();
+      this.srvAliment.getImagesAliments();            
   }
 
 }

@@ -47,6 +47,7 @@ export class SubscriptionPage {
   etat :boolean=false;
   src:string=null;
   val:number=0;
+  util:boolean=false;
 
   constructor( 
     private appCtrl: App,
@@ -57,11 +58,13 @@ export class SubscriptionPage {
     private srvInscription :SrvInscription,
     private zone: NgZone
   ) {
-    
-    this.appelation=this.initAppelation();
+    var userTest=JSON.parse(localStorage.getItem("User"));
+    if (userTest==null){
+      this.util=false;}else{this.util=true; } 
+          this.appelation=this.initAppelation();
     this.initForm();
     this.genred="m";
-
+    
     this.src=this.generateCaptcha();
   }
 
@@ -140,57 +143,55 @@ export class SubscriptionPage {
       else if(mdp==""){
         this.srvGeneral.setMessage(this.translate.instant("msg.saisieMotdepasse"));
       }
-      else if(mdp2==""){
-        this.srvGeneral.setMessage(this.translate.instant("msg.saisieMotdepasse"));
-      }else if (this.val!=code){
+      else if (this.val!=code){
         this.srvGeneral.setMessage(this.translate.instant("msg.codeCaptcha"));
       }
       else {
-          this.user=JSON.parse(localStorage.getItem("user"));
+          this.user=JSON.parse(localStorage.getItem("User"));
           if(this.user && this.user.num && this.user.num.length>0){
-          if (this.formUser.get("case").value==false){
-            this.srvGeneral.setMessage(this.translate.instant("msg.valideConditionUtilisation"));
-          }
-          else if (this.srvInscription.isValidEmailAddress(mail)){
-            userInsc.actif=0;
-            userInsc.mail=mail;
-            userInsc.mdp=mdp;
-            userInsc.nom=nom;
-            userInsc.prenom=prenom;
-            userInsc.sexe=(this.formUser.get("genred").value=="m"?0:1);
-            userInsc.typeAcces=1;
-            Cookie.set('email',mail);
-            this.srvInscription.modifierUser(userInsc);
-          }
-        }
-        else{
-          if (mdp!==mdp2) {
-            this.srvGeneral.setMessage(this.translate.instant('msg.saisieMotdepasseDifferent'));
-          }
-          else if(mdp.length<5) {
-          this.srvGeneral.setMessage(this.translate.instant('msg.saisieMinimumCar'));
-           }
-           else if(this.formUser.get("case").value==false) {
-          this.srvGeneral.setMessage(this.translate.instant('msg.valideConditionUtilisation'));
-          }
-          else if (this.formUser.get("code").value==""){
-            this.srvGeneral.setMessage(this.translate.instant('msg.codeCaptcha'));
-          }
-          else if (this.srvInscription.isValidEmailAddress(mail)){
-          userInsc.actif=0;
-          userInsc.mail=mail;
-          userInsc.mdp=mdp;
-          userInsc.nom=nom;
-          userInsc.prenom=prenom;
-          userInsc.sexe=(this.formUser.get("genred").value=="m"?0:1);
-          userInsc.typeAcces=1;
-          Cookie.set('email',mail);
-          this.srvInscription.inscription(userInsc);
-          this.clearName="";
-          this.clear=false;
-          
-            }
-        } 
+              if (this.formUser.get("case").value==false){
+                this.srvGeneral.setMessage(this.translate.instant("msg.valideConditionUtilisation"));
+                }
+                else if (this.srvInscription.isValidEmailAddress(mail)){
+                    userInsc.actif=0;
+                    userInsc.mail=mail;
+                    userInsc.mdp=mdp;
+                    userInsc.nom=nom;
+                    userInsc.prenom=prenom;
+                    userInsc.sexe=(this.formUser.get("genred").value=="m"?0:1);
+                    userInsc.typeAcces=1;
+                    this.srvInscription.modifierUser(userInsc);
+                  }
+                }
+                else if(mdp2==""){
+                  this.srvGeneral.setMessage(this.translate.instant("msg.saisieMotdepasse"));
+                }else{
+                  if (mdp!==mdp2) {
+                    this.srvGeneral.setMessage(this.translate.instant('msg.saisieMotdepasseDifferent'));
+                  }
+                  else if(mdp.length<5) {
+                  this.srvGeneral.setMessage(this.translate.instant('msg.saisieMinimumCar'));
+                  }
+                  else if(this.formUser.get("case").value==false) {
+                  this.srvGeneral.setMessage(this.translate.instant('msg.valideConditionUtilisation'));
+                  }
+                  else if (this.formUser.get("code").value==""){
+                    this.srvGeneral.setMessage(this.translate.instant('msg.codeCaptcha'));
+                  }
+                  else if (this.srvInscription.isValidEmailAddress(mail)){
+                  userInsc.actif=0;
+                  userInsc.mail=mail;
+                  userInsc.mdp=mdp;
+                  userInsc.nom=nom;
+                  userInsc.prenom=prenom;
+                  userInsc.sexe=(this.formUser.get("genred").value=="m"?0:1);
+                  userInsc.typeAcces=1;
+                  this.srvInscription.inscription(userInsc);
+                  this.clearName="";
+                  this.clear=false;
+                  
+                    }
+                } 
       } 
     }
   }
@@ -211,16 +212,17 @@ export class SubscriptionPage {
   private initForm = ( ): void => {
     var user = <IUser>new Object();
     user=JSON.parse(localStorage.getItem("User"));
-    this.formUser = new FormGroup({ 
+      this.formUser = new FormGroup({ 
         genred : new FormControl(user==null?this.genred:(user.sexe==1)?this.genred:"f",Validators.required),
         prenom: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         nom: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         mail: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         mdp: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
-        mdp2: new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
+        mdp2: new FormControl("",),
         code:new FormControl("",Validators.compose([Validators.required, this.nospaceValidator])),
         case : new FormControl(false)
     });
+    
   this.clearNameM=user.mail;
   this.clearNameN=user.nom;
   this.clearNameP=user.prenom;

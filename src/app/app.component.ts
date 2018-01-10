@@ -48,8 +48,8 @@ export class MyApp {
       this.initializeApp();
 
       //Initialiser le cookie Access
-      if (Cookie.get('access')==null){
-      Cookie.set('access','0');
+      if (localStorage.getItem('access')==null){
+      localStorage.setItem('access','0');
       }
 
       //initialize ng2-translate
