@@ -5,6 +5,8 @@ import 'rxjs/add/operator/timeout';
 
 import { IUser } from '../models/user';
 import { SrvHttp } from '../providers/srvHttp';
+import { SrvGeneral } from '../providers/srvGeneral';
+import { TranslateService } from '@ngx-translate/core';
  
 @Injectable()
 export class SrvAuth {
@@ -13,6 +15,8 @@ export class SrvAuth {
   constructor( 
     private http: Http,
     private srvHttp: SrvHttp,
+    private srvGeneral:SrvGeneral,
+    private translate: TranslateService,
     private menuCtrl: MenuController ) {
   }
    
@@ -23,7 +27,7 @@ export class SrvAuth {
     let options = new RequestOptions({ headers: headers });  
 
     return this.http.post( this.srvHttp.SERVER_URL + this.srvHttp.urlConnexion, params, options)
-/*       
+    /*       
           .timeout(10000)
           .map(res => {
             localStorage.setItem("User", JSON.stringify(res.json()));

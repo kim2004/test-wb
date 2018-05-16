@@ -21,7 +21,7 @@ export class LoginPage {
   buttonDisabled = true;
 
   formLogin: FormGroup;
-  user: IUser = {} as any;
+  emailSave: string ="";
 
 
   constructor( 
@@ -32,13 +32,15 @@ export class LoginPage {
     private navCtrl: NavController,
     private translate: TranslateService ) {
 
-      this.user = JSON.parse(localStorage.getItem('User'));
-      this.email = (this.user==null ? "" : this.user.mail);
+      this.emailSave = localStorage.getItem('email');
+      this.email = (this.emailSave==null ? "" : this.emailSave);
       this.formLogin = new FormGroup({
-        email: new FormControl(this.user==null ? "" : this.user.mail, Validators.required),
+        email: new FormControl(this.emailSave==null ? "" : this.email, Validators.required),
         password: new FormControl("", Validators.required)
       });
   }
+
+  
 
 /*
   public onChangeNom = ( data ): void => {   
@@ -72,11 +74,13 @@ export class LoginPage {
       else {
         this.srvGeneral.setLoader(true,this.translate.instant("msg.chargement_en_cours")); 
         this.srvAuth.connexion(this.formLogin.value.email, this.formLogin.value.password)
-            .timeout(10000)
+//            .timeout(10000)
             .subscribe(
-              data => {                              
+              data => {    
+console.log(data);                                          
                 if(data!=null){ 
-                  localStorage.setItem("User", JSON.stringify(data.json()));                
+                  localStorage.setItem("User", JSON.stringify(data.json())); 
+                  localStorage.setItem("email",this.formLogin.value.email);               
                   this.srvInit.initStorageAliment();
                   this.srvGeneral.setLoader(false);
                   this.goHome();
@@ -84,7 +88,7 @@ export class LoginPage {
               },
               err  => {            
                 this.srvGeneral.setLoader(false);
-                this.srvHttp.handleError(err)
+                this.srvGeneral.setMessage(this.translate.instant('msg.errorPassword'));
               }
             ); 
       }

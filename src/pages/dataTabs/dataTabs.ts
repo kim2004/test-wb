@@ -44,15 +44,14 @@ export class DataTabsPage {
       private srvdata: SrvData,
       private srvGeneral: SrvGeneral,
       private navCtrl: NavController,
-      private translate: TranslateService,
-      private ngZone: NgZone ) {
+      private translate: TranslateService) {
         
   }
 
   public refreshData = (): void => {
     this.srvGeneral.setLoader(true,this.translate.instant("msg.chargement_en_cours"));
     
-    this.user = JSON.parse(localStorage.getItem('User'));
+    this.user = JSON.parse(localStorage.getItem('User'));   
     if(this.user && this.user.num && this.user.num.length>0){
       let headers = new Headers();
       headers.set('user', this.user.num);
@@ -61,12 +60,12 @@ export class DataTabsPage {
           .timeout(10000) 
           .map((res) =>{
             localStorage.setItem("lastData",  JSON.stringify(res.json()));
-          } )
+          })
           .subscribe(
             data => { 
-            this.appCtrl.getRootNav().push(DataTabsPage);
-                this.srvGeneral.setLoader(false);
-                localStorage.removeItem("localData");
+              this.appCtrl.getRootNav().push(DataTabsPage);
+                  this.srvGeneral.setLoader(false);
+                  localStorage.removeItem("localData");
               },
             err  => { 
               this.appCtrl.getRootNav().setRoot(DataTabsPage); 

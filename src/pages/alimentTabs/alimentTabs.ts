@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 
 import { HomePage } from '../../pages/home/home';
+import { AlimentPage } from '../alimentTabs/aliment/aliment';
 import { CalculPage } from '../../pages/calcul/calcul';
 import { SrvGeneral } from '../../providers/srvGeneral';
 import { AjoutAlimentPage } from '../alimentTabs/ajoutAliment/ajoutAliment';
@@ -13,6 +14,8 @@ import { FamilleAlimentPage } from '../alimentTabs/familleAliment/familleAliment
   providers: [ AjoutAlimentPage, FamilleAlimentPage, SrvGeneral ]
 })
 export class AlimentTabsPage {
+  favoris: boolean = false;
+
   classTabbar: any;
   tabBarElement : any;
   valueforngif = true;
@@ -30,34 +33,40 @@ export class AlimentTabsPage {
     private params: NavParams,
     private srvGeneral: SrvGeneral,
     private navCtrl: NavController ) {
-      
-      
 
+      this.params = params;
+      this.favoris = this.params.data;
+
+/*
       // utilise par la fonction FAVORIS 
       let tabIndex = this.params.get('tabIndex');
       if(tabIndex){       
         this.tabIndex = tabIndex;
+        this.navCtrl.push( AlimentPage, { idFamille: this.MES_FAVORIS } );
       }
+*/
       
-
       // Permet de cacher la "Tabbar" lors de la saisie de la quantité => utilisé dans quantite.ts
       this.events.subscribe('hideTabbar', (data) => {
-        this.hideSave =0 ;
+//        this.hideSave = 0;
         this.hideTabbar( data );        
       });
 
-      
-
+      /*
       // permet d'afficher le bouton SAVE uniquement dans l'onglet CALCUL
       this.events.subscribe('hideSave', (data) => {
         this.hideSave = data;     
       });
+      */
   }
 
-/*
+/*  
   ionViewDidLoad() {
-      this.tabBarElement = document.querySelector('#idAlimentsTabs div');    
-  }
+console.log(this.favoris);        
+    if(this.favoris){
+      this.navCtrl.push( AlimentPage, { idFamille: this.MES_FAVORIS } );
+    }
+  } 
 */  
 
   public changeOnOff = ( event ) : void =>{
@@ -65,17 +74,20 @@ export class AlimentTabsPage {
       this.listIcon=  'calculListeOn';
       this.addIcon='calculMnAl';
       this.bolusIcon='calculAl';
-    }else if (event.index==1){
+    }
+    else if (event.index==1){
       this.listIcon=  'calculListe';
       this.addIcon='calculMnAlOn';
       this.bolusIcon='calculAl';
-    }else if(event.index==2){
+    }
+    else if(event.index==2){
       this.listIcon=  'calculListe';
       this.bolusIcon='calculAlOn';
       this.addIcon='calculMnAl';
       }
   }
 
+  
   private hideTabbar = ( hide ): void => {
     this.tabBarElement = document.querySelector('#idAlimentsTabs div');
     if(hide){
@@ -86,6 +98,8 @@ export class AlimentTabsPage {
     }    
   }
 
+  
+  /*
   public selectTab = ( event ): void => {
     // Tab - Calcul
     if(event.index === 2) {
@@ -99,6 +113,7 @@ export class AlimentTabsPage {
   public saveFavoris = ( ): void => {
     this.srvGeneral.setMessage("saveFavoris()");
   }
+  */
   
   public goHome = ( ): void => {
     this.navCtrl.setRoot( HomePage, {}, {animate: true, direction: 'back'} );

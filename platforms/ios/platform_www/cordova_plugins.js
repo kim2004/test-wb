@@ -263,14 +263,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-http.CordovaHttpPlugin",
-    "file": "plugins/cordova-plugin-http/www/cordovaHTTP.js",
-    "pluginId": "cordova-plugin-http",
-    "clobbers": [
-      "CordovaHttpPlugin"
-    ]
-  },
-  {
     "id": "cordova-plugin-ionic-keyboard.keyboard",
     "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
     "pluginId": "cordova-plugin-ionic-keyboard",
@@ -371,15 +363,6 @@ module.exports = [
     "clobbers": [
       "window.StatusBar"
     ]
-  },
-  {
-    "id": "ionic-plugin-keyboard.keyboard",
-    "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
-    "pluginId": "ionic-plugin-keyboard",
-    "clobbers": [
-      "cordova.plugins.Keyboard"
-    ],
-    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -391,7 +374,6 @@ module.exports.metadata =
   "cordova-plugin-device": "1.1.4",
   "cordova-plugin-file-transfer": "1.7.0",
   "cordova-plugin-filepath": "1.0.2",
-  "cordova-plugin-http": "1.2.0",
   "cordova-plugin-ionic-keyboard": "2.0.4",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-media-capture": "2.0.0",
@@ -399,8 +381,7 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-statusbar": "2.2.1",
   "cordova-plugin-transport-security": "0.1.0",
-  "cordova-plugin-whitelist": "1.3.3",
-  "ionic-plugin-keyboard": "2.2.1"
+  "cordova-plugin-whitelist": "1.3.3"
 };
 // BOTTOM OF METADATA
 });

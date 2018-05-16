@@ -64,9 +64,7 @@ export class CalculPage {
       this.trancheHoraire = this.srvGeneral.getTrancheHoraire();
       this.initTrancheHoraire(this.srvGeneral.getTrancheHoraire());
 */      
-      this.repasHoraire = this.srvGeneral.initTrancheHoraire();
-      this.initTrancheHoraire(this.srvGeneral.getTrancheHoraire());
-
+      this.initInput(this.trancheHoraire);
       this.events.subscribe('afficheHdC', (data) => {
         this.afficheHdC( data );        
       });
@@ -79,8 +77,18 @@ export class CalculPage {
     this.platform.ready().then(() => {
       this.repasHoraire = this.srvGeneral.initTrancheHoraire();
       this.trancheHoraire = this.srvGeneral.getTrancheHoraire();
-      this.initTrancheHoraire(this.trancheHoraire);
+      this.initTrancheHoraire(this.trancheHoraire);      
     })
+  }
+
+  public initInput=(tranche):void =>{
+    this.formCalcul = new FormGroup({
+      trancheHoraire: new FormControl(tranche, Validators.required),          
+      nbHdc: new FormControl(""),
+      unite: new FormControl(this.xUnite, Validators.required),
+      hdc: new FormControl(this.xHdc, Validators.required),
+      glycemie: new FormControl("")
+    });  
   }
 
   public afficheHdC = ( data ): void => {
@@ -95,9 +103,11 @@ export class CalculPage {
     this.navCtrl.push(QuantitePage,{aliment: this.repas.idAliment, quantite: this.repas.quantite, callFromList: false});
   }
 
-  public validateCalcul = ( formCalcul ): void => {  
+  public validateCalcul = ( formCalcul ): void => { 
+    this.trancheHoraire = this.srvGeneral.getTrancheHoraire(); 
     if(this.formCalcul.valid){ 
       this.srvData.calculInjection(formCalcul, this.srvQuantite.getNbHdcRepas());
+      this.initInput(this.trancheHoraire);
     }
 //    else if(!this.formCalcul.value.unite || !this.formCalcul.value.xHdc){
     else {
@@ -141,13 +151,7 @@ export class CalculPage {
         this.xUnite = this.config==null ? "" : this.config[0].unite6;
       }  
 
-      this.formCalcul = new FormGroup({
-        trancheHoraire: new FormControl(tranche, Validators.required),          
-        nbHdc: new FormControl(""),
-        unite: new FormControl(this.xUnite, Validators.required),
-        hdc: new FormControl(this.xHdc, Validators.required),
-        glycemie: new FormControl("")
-      });  
+      this.initInput(tranche);
   }
 
   public goHome = ( ):void => {

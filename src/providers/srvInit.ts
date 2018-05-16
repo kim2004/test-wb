@@ -27,9 +27,7 @@ export class SrvInit {
     private srvInscription:SrvInscription ) {
   }
    
-  public initStorageAliment = ( ): void => {
-
-    
+  public initStorageAliment = ( ): void => {  
     this.lstAlimentAdd=localStorage.getItem("addAliment")!=null && localStorage.getItem('addAliment').toString()!='[]'? JSON.parse(localStorage.getItem("addAliment")):'';
     if ( this.lstAlimentAdd!=null && this.lstAlimentAdd!=[] ) {
       if (this.lstAlimentAdd.length>1){
@@ -52,33 +50,35 @@ export class SrvInit {
             this.lstAlimentAdd=[];
             localStorage.setItem("addAliment","[]");
           
-      }else if (this.lstAlimentAdd.length>0){
+      }
+      else if (this.lstAlimentAdd.length>0){
         this.srvAliment.upload(this.lstAlimentAdd[0].file,this.lstAlimentAdd[0].name,this.lstAlimentAdd[0].nbHdc,this.lstAlimentAdd[0].unite);
         localStorage.setItem("addAliment","[]");
         this.lstAlimentAdd=[];
       }
     }
     
-      // Gestion des Favoris
-      this.user = JSON.parse(localStorage.getItem('User'));   
-      if(this.user && this.user.num && this.user.num.length>0){
-        let headers = new Headers();
-        headers.set('user', this.user.num);
-        let options = new RequestOptions({ headers: headers });        
+    // Gestion des données connectés - Données - Favoris - MesAliments -
+    this.user = JSON.parse(localStorage.getItem('User'));   
+    if(this.user && this.user.num && this.user.num.length>0){
+      let headers = new Headers();
+      headers.set('user', this.user.num);
+      let options = new RequestOptions({ headers: headers });        
 
-        this.srvData.getMesDonnees( options )
-            .timeout(10000)   
-            .subscribe(
-              data => localStorage.setItem("Donnees", JSON.stringify(data.json())), 
-              err => this.srvHttp.handleError(err)); 
-              
-        this.srvAliment.getFavoris( options );
-        this.srvAliment.getMesAliments( options );   
-        this.srvConfig.getConfiguration( options );
-        localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
-      } 
-      this.srvAliment.getAliments();
-      this.srvAliment.getImagesAliments();            
+      this.srvData.getMesDonnees( options )
+          .timeout(10000)   
+          .subscribe(
+            data => localStorage.setItem("Donnees", JSON.stringify(data.json())), 
+            err => (console.log("getMesDonnees: Delay exceeded !"))
+          );
+            
+      this.srvAliment.getFavoris( options );
+      this.srvAliment.getMesAliments( options );   
+      this.srvConfig.getConfiguration( options );
+      localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
+    } 
+    this.srvAliment.getAliments();
+    this.srvAliment.getImagesAliments();            
   }
 
 }

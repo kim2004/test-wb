@@ -9,6 +9,7 @@ import { CalculPage } from '../../pages/calcul/calcul';
 import { FavorisPage } from '../../pages/favoris/favoris';
 import { DataTabsPage } from '../../pages/dataTabs/dataTabs';
 import { AlimentTabsPage } from '../../pages/alimentTabs/alimentTabs';
+import { AlimentPage } from '../../pages/alimentTabs/aliment/aliment';
 import { ConfigurationPage } from '../../pages/configuration/configuration';
 import { PopupPage } from '../../pages/pop/popup';
 import { SubscriptionPage } from '../../pages/Inscription/subscription';
@@ -59,7 +60,7 @@ export class HomePage {
             if (localStorage.getItem('access')=='0'){
             this.navCtrl.setRoot(PopupPage);
             }
-        }, 4500);
+        }, 10000);
       }
      
   }
@@ -81,7 +82,8 @@ export class HomePage {
       this.navCtrl.push(DataTabsPage);
     }
     else if (page=='favoris'){
-      this.navCtrl.push(FavorisPage);
+      this.navCtrl.push(AlimentTabsPage, { favoris: true });
+//      this.navCtrl.push(FavorisPage);
     }  
     else if (page=='inscription'){
       this.navCtrl.push(SubscriptionPage);

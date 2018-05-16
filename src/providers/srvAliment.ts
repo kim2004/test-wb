@@ -48,19 +48,16 @@ export class SrvAliment {
         targetWidth: 512,
         targetHeight: 512,
         sourceType: sourceType,
+        correctOrientation: true,
         mediaType: this.camera.MediaType.PICTURE,
         encodingType: this.camera.EncodingType.JPEG,
         destinationType: this.camera.DestinationType.DATA_URL
       }
-
       // Get the data of an image
       this.camera.getPicture(options).then((imageData) => {
         let base64Image = null;
-        
               //get photo from the camera based on platform type
-            
                 base64Image = "data:image/jpeg;base64," + imageData;
-              
         // Call Events de ajoutAliment.ts afin d'afficher l'image à l'écran
           this.events.publish('initImageSrc', base64Image);
         }, (err) => {
@@ -69,7 +66,7 @@ export class SrvAliment {
     });
   }
 
-  public upload =  ( dataFile: any, nom: string, hdc: number, unite: number):void=>  { 
+  public upload =  ( dataFile: string, nom: string, hdc: number, unite: number):void=>  { 
    this.platform.ready().then(() => {
       //this.srvGeneral.setLoader(true);
 
@@ -88,11 +85,10 @@ export class SrvAliment {
         this.mesAliments.nom_de = nom;
         this.mesAliments.ordre = 0;
         this.mesAliments.description = "";
-        this.mesAliments.image = dataFile;
+        this.mesAliments.image = encodeURIComponent(dataFile);
         this.mesAliments.glucide = hdc;
         this.mesAliments.quantite = unite;
         this.mesAliments.idUti = 0;
-      
         var strMesAliments = JSON.stringify(this.mesAliments);       
 
         let params = "img=" + strMesAliments;
@@ -107,7 +103,7 @@ export class SrvAliment {
                } ,
                 err  => {
                     var data = <IAlimentAdd>new Object();
-                    data.file=dataFile;
+                    data.file=encodeURIComponent(dataFile);
                     data.name=nom;
                     data.nbHdc=hdc;
                     data.unite=unite;
@@ -141,7 +137,7 @@ export class SrvAliment {
             localStorage.setItem("FamillesAliments", JSON.stringify(res.json()));                                         
             return res.json(); 
           })
-          .subscribe(data => ( data ));
+          .subscribe(data => ( data ), (err) => (console.log("getFamillesAliments: Delay exceeded !")));
 
     lstData = this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlAliment)
           .timeout(10000)
@@ -149,7 +145,7 @@ export class SrvAliment {
             localStorage.setItem("Aliments", JSON.stringify(res.json()));                                                    
             return res.json(); 
           })
-          .subscribe(data => ( data ), (err) => (console.log("Delay exceeded !")));
+          .subscribe(data => ( data ), (err) => (console.log("getAliments: Delay exceeded !")));
   }  
 
   public getImagesAliments = ( ): void => { 
@@ -159,7 +155,7 @@ export class SrvAliment {
             localStorage.setItem("imagesAliments", JSON.stringify(res.json()));                                         
             return res.json();
           })
-          .subscribe(data => ( data ), (err) => (console.log("Delay exceeded !")));
+          .subscribe(data => ( data ), (err) => (console.log("getImagesAliments: Delay exceeded !")));
   }  
 
   public getFavoris = ( options: RequestOptions ): void => { 
@@ -169,32 +165,34 @@ export class SrvAliment {
             localStorage.setItem("mesRepas", JSON.stringify(res.json()));                                         
             return res.json();
           })
-          .subscribe(data => (data), (err) => (console.log("Delay exceeded !")));
+          .subscribe(data => (data), (err) => (console.log("getFavoris: Delay exceeded !")));
   }  
 
   public getMesAliments = ( options: RequestOptions ): void => { 
     this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment, options)
-          .timeout(10000)
-          .map(res => {                           
-            localStorage.setItem("Aliments", JSON.stringify(res.json()));                                                       
-            return res.json();
-          })
-          .subscribe(data => (data), (err) => (console.log("Delay exceeded !"))); 
+      .timeout(10000)
+      .map(res => {                           
+        localStorage.setItem("Aliments", JSON.stringify(res.json()));                                                       
+        return res.json();
+      })
+      .subscribe(data => (data), (err) => (console.log("getMesAliments: Delay exceeded !"))); 
   }
 
-  public deleteMesAliments = ( ): void => { 
+  public deleteMesAliments = (id): void => { 
     this.user = JSON.parse(localStorage.getItem('User'));
     if(this.user && this.user.num && this.user.num.length>0){
       let headers = new Headers();
+      headers.append("Accept", 'application/x-www-form-urlencoded');
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
       headers.set('user', this.user.num);
       let options = new RequestOptions({ headers: headers });
-
-      this.http.delete( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment, options)
+      var idAliment = "id="+id;
+      this.http.delete( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment+"?"+idAliment, options)
           .timeout(10000)
           .map(res => {                         
             this.getMesAliments(options);                                                     
           })
-          .subscribe(data => (data), (err) => (console.log("Delay exceeded !"))); 
+          .subscribe(data => (data), (err) => (console.log("deleteMesAliments: Delay exceeded !"))); 
     }
   }
 

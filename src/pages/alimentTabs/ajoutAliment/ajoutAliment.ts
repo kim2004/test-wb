@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
 import { TranslateService } from '@ngx-translate/core';
+import { List } from 'ionic-angular/components/list/list';
 import { NavController, AlertController, ActionSheetController, Platform, Events } from 'ionic-angular';
 
 
@@ -8,7 +9,6 @@ import { HomePage } from '../../../pages/home/home';
 import { SrvAliment } from '../../../providers/srvAliment';
 import { SrvGeneral } from '../../../providers/srvGeneral';
 import { IMesAliments } from '../../../models/mesAliments';
-import { List } from 'ionic-angular/components/list/list';
 import { IAlimentAdd } from '../../../models/addAliment';
 
 declare var cordova:any;
@@ -20,7 +20,6 @@ declare var cordova:any;
   providers: [ SrvGeneral, SrvAliment, Camera ]
 })
 export class AjoutAlimentPage { 
-
   
   nom: string = "";
   unite: number = 0;
@@ -45,7 +44,6 @@ export class AjoutAlimentPage {
 
       // Permet d'initialiser l'image "lastImage", appelé dans le provider srvAliment.ts
       this.events.subscribe('initImageSrc', (dataImage) => {
-//        this.base64Image = 'data:image/jpeg;base64,' + dataImage; 
         this.base64ImageT = dataImage;      
       });
 
@@ -53,27 +51,11 @@ export class AjoutAlimentPage {
 
   public onChangeNom = ( data ): void => {
     this.nom = data;  
-/*    
-    if(this.nom.length>0 && this.nbHdc.length>0){
-      this.buttonDisabled = null;
-    }
-    else {
-      this.buttonDisabled = true;
-    } 
-*/    
   }
   
 
   public onChangeHdc = ( data ): void => {
-    this.nbHdc = data;  
-/*    
-    if(this.nom.length>0 && this.nbHdc.length>0){
-      this.buttonDisabled = null;
-    }
-    else {
-      this.buttonDisabled = true;
-    }
-*/    
+    this.nbHdc = data;    
   } 
 
   public onChangeUnite = ( data, item ): void => {
@@ -112,8 +94,6 @@ export class AjoutAlimentPage {
     });
     alert.present();
   }
-  
-  
 
   public setRepas = ( ): void => {  
     var data: {};
@@ -137,7 +117,6 @@ export class AjoutAlimentPage {
 
   public resetChamps= ():void=>{
     this.events.subscribe('initImageSrc', (dataImage) => {
-      //        this.base64Image = 'data:image/jpeg;base64,' + dataImage; 
               this.base64ImageT = "";      
             });
   }

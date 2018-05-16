@@ -50,7 +50,7 @@ export class SrvQuantite {
   public getImageAliment = ( idAliment ): string => {
     for (var i = 0; i < this.lstData.length; i++) {
       if(this.lstData[i].id==idAliment){
-        return this.lstData[i].image; 
+        return decodeURIComponent(this.lstData[i].image); 
       }
     }
     return null;

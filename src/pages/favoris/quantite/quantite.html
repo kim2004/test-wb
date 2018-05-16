@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button (click)="goHome()">
+        <ion-icon class="ion-ios-home"></ion-icon>         
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="title left" style="padding-top: 10px;">
+        <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
+      </div> 
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="background-color-favoris">
+
+  <ion-grid class="vertical-align-content">
+    <ion-row>
+        <ion-col width-100 class="center"><span [innerHTML]="quantiteAliment"></span></ion-col>        
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-100>
+        <ion-item no-lines class="itemConf list-conf-rb">
+          <ion-input type="number" [value]="quantite" placeholder='{{getTextUnite()}}' (change)="getQuantite($event.target.value)"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>      
+    <ion-row class="center">  
+      <ion-col width-90 class="center-col">
+        <div class="dividerBlock" ></div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="center">  
+      <ion-col width-50 class="center-col">
+        <button ion-button full color="myck" (click)="calculHdc()">{{"button.ok"|translate}}</button>
+      </ion-col>
+      <ion-col width-50 class="center-col">
+        <button ion-button full color="dark" (click)="returnAliment();">{{"button.annuler"|translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+
+  <ion-footer class="title center footer">
+    <div class="txt-footer">{{"msg.footer" | translate}}</div>
+  </ion-footer>
+    
+</ion-content>
+

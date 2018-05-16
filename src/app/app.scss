@@ -180,13 +180,14 @@
 
 /* ------------------------------------------------------------ */
 /* Gestion des BUTTON */
+/*
 .button-inner {
     -webkit-justify-content: left;
 }
-
+*/
 .button {
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 /* ------------------------------------------------------------ */
 
@@ -207,6 +208,8 @@
     width:100%
 }
 .button-aliment {
+    height: 48px;
+    font-size: 1.8em;
     background-color: #a0d0ab;
 /*     opacity:0.3;*/
 }
@@ -230,7 +233,15 @@
 .txt-color-tt{
     color: grey;
 }
+.button-inscription {
+    height: 48px;
+    font-size: 1.8em;   
+    background-color: #049423;
+/*     opacity:0.3;*/
+}
 .button-favoris {
+    height: 48px;
+    font-size: 1.8em;   
     background-color: #3abff0;
 /*     opacity:0.3;*/
 }
@@ -241,6 +252,8 @@
 
 }
 .button-donnees {
+    height: 48px;
+    font-size: 1.8em;   
     background-color: #72c5c3;
 /*     opacity:0.3;*/
 }
@@ -251,22 +264,21 @@
 
 }
 .background-color-login {
-    
     font-size: 1.2em;
     background-color: rgba(88,87,87,0.3);
-
 }
 .background-color-configuration {
     color:#585757;
     font-size: 1.2em;
     background-color: rgba(88,87,87,0.3);
-
 }
 .button-configuration {
     background-color: #585757;
 /*     opacity:0.3;*/
 }
 .button-bolus {
+    height: 48px;
+    font-size: 1.8em; 
     background-color: #008cba;
 /*     opacity:0.3;*/
 }
@@ -306,12 +318,14 @@ input[type=checkbox]:checked {    background:url(../../assets/img/icone/ICONE_Ch
     background-size: 25px 25px;
     }
 }
+
 .footer{
     height: 20px;
     font-size: 8pt;
     background-color: #fafafa;
-    border-top:3px #ffcccc solid;
+    border-top:3px #ccc solid;
 /*    
+    border-top:3px #ffcccc solid;
     border-top:3px #d3d3d3 solid;
     background-color: #ffcece;
     border-top:3px #d66f64 solid;
@@ -384,8 +398,9 @@ input[type=checkbox]:checked {    background:url(../../assets/img/icone/ICONE_Ch
   }
 
 .alertDanger{
-    button{
-            padding-left: 125px;
+    button {
+        padding-left: 115px;
+        padding-right: 115px;
     }
 }
 
@@ -427,6 +442,13 @@ input[type=checkbox]:checked {    background:url(../../assets/img/icone/ICONE_Ch
     text-align: end;
     vertical-align: middle;
     float: right;
+}
+
+.input-Captcha{
+    width: 50px;
+    height: 50px;
+    font-size: 39px;
+    border: none;
 }
 
 //IconMoon IconCustom App
@@ -585,4 +607,9 @@ ion-ios-sentData,
   margin: 0;
 }
 
+/* Bouton information */
 
+.alert-ios .alert-button {
+    color: #fff;
+    background-color: #07957b;
+}

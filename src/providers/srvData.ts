@@ -128,24 +128,27 @@ export class SrvData {
     this.data.glycemieCapteur = 0;
     var tranche=formData.trancheHoraire;
     var numRepas:number;
-    if (tranche==="u1")
-    {
+    if (tranche==="u1"){
         numRepas=1;
-    }else if (tranche==="u2"){
+    }
+    else if (tranche==="u2"){
       numRepas=2;
-    }else if (tranche==="u3"){
-      numRepas=3;}
-      else if (tranche==="u4"){
-        numRepas=4;
-      }
-      else if (tranche==="u5"){
-        numRepas=5;
-      }else if (tranche==="u6"){
-        numRepas=6;
-      }
+    }
+    else if (tranche==="u3"){
+      numRepas=3;
+    }
+    else if (tranche==="u4"){
+      numRepas=4;
+    }
+    else if (tranche==="u5"){
+      numRepas=5;
+    }
+    else if (tranche==="u6"){
+      numRepas=6;
+    }
     this.data.repas=numRepas;
    
-    this.srvGeneral.setMessage(this.dataToString(this.data));
+    //this.srvGeneral.setMessage(this.dataToString(this.data));
     
     this.savedData(this.data);
     //localStorage.setItem("Donnees", JSON.stringify(this.dataToJson(this.data))); 
@@ -198,8 +201,7 @@ public listData = function () {
   }
 
   public getMesDonnees = ( options: RequestOptions ): any => {   
-    let lstData = this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlData, options);
-    return lstData; 
+    return this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlData, options);    
   }
 
   public storeData = function (display) {
@@ -212,8 +214,8 @@ public listData = function () {
     headers.set('user', this.user.num);
     let options = new RequestOptions({ headers: headers});
     //var lenData=  localStorage.getItem("localData").length-1;
-   var localData=this.listLocalData();
-    var params =JSON.stringify(localData);
+    var localData=this.listLocalData();
+    var params = JSON.stringify(localData);
     var storeData = "n="+params;
      this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlData, storeData,options)
      //.toPromise()
@@ -221,14 +223,10 @@ public listData = function () {
      .map(res => {
             localStorage.setItem("lastData", JSON.stringify(res.json()));
             localStorage.removeItem('localData');
-      } )
+      })
       .subscribe(
-        data => { 
-         },
-        err  => {
-           
-          this.srvHttp.handleError(err);
-        }
+        data => { },
+        err  => { this.srvHttp.handleError(err); }
       );
      
   }

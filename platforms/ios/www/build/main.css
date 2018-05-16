@@ -30930,7 +30930,8 @@ ion-navbar.toolbar {
 }
 
 .alertDanger button {
-  padding-left: 125px;
+  padding-left: 115px;
+  padding-right: 115px;
 }
 
 .itemConf {

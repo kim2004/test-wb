@@ -7,8 +7,11 @@
 
       <ion-row>
         <ion-col width-100>
-          <ion-item no-lines class="itemConf list-conf-rb" >
+          <ion-item no-lines class="itemConf list-conf-rb">
+            <!--
             <ion-input type="number" [value]="quantite" placeholder='{{"frm.quantite.saisieQuantite"|translate}}' (change)="getQuantite($event.target.value)"></ion-input>
+            -->
+            <ion-input type="number" [value]="quantite" placeholder='{{getTextUnite()}}' (change)="getQuantite($event.target.value)"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>      
@@ -33,7 +36,7 @@
           <img src="{{imageAliment_1}}" class="imgAliment" [hidden]="(imageAliment_1 === null || alimentAffiche !== 1)">
           <img src="{{imageAliment_2}}" class="imgAliment" [hidden]="(imageAliment_2 === null || alimentAffiche !== 2)">
           <img src="{{imageAliment_3}}" class="imgAliment" [hidden]="(imageAliment_3 === null || alimentAffiche !== 3)">
-          <ion-img src="{{imageMonAliment}}" class="imgAliment" [hidden]="(imageMonAliment === null)"></ion-img>
+          <img [src]="sanitizer.bypassSecurityTrustUrl(imageMonAliment)" style="width:100%;" class="imgAliment" [hidden]="(imageMonAliment === null || imageMonAliment=='undefined')">
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -45,6 +45,16 @@ export class AlimentPage {
 
     this.param = params.get("idFamille");       
     this.getAlimentFamille(this.param);
+    
+  }
+
+  public getTextTitle = (): void => {
+    if(this.param==this.MES_ALIMENTS){
+      return this.translate.instant("frm.favoris.titre");
+    }
+    else {
+      return this.translate.instant("frm.aliments.titre");
+    }
   }
 
   public getAlimentFamille = ( idFamille ): void => {
@@ -75,7 +85,7 @@ export class AlimentPage {
           aliment.nom = aliment.nom_de;
         }); 
       }
-    }    
+    }   
   }
 
   public setFilteredItems = ( searchBar ): boolean => {
@@ -110,24 +120,26 @@ export class AlimentPage {
     this.navCtrl.push(FamilleAlimentPage,{},{animate: true, direction: 'back'});
   }
 
-  public getQuantite = ( idAliment ): void => {
-    this.navCtrl.push(QuantitePage,{aliment: idAliment, quantite: 0, callFromList: true});
+  public getQuantite = ( idAliment, unite ): void => { 
+    this.navCtrl.push(QuantitePage,{aliment: idAliment, unite: unite, quantite: 0, callFromList: true});
     this.viewCtrl.dismiss();
   }
 
-  public deleteMesAliments = ( item ): void => {
-
+  public deleteMesAliments = ( idAliment ): void => {
+    event.stopPropagation();
     let alert = this.alertCtrl.create({
       title: "Suppression",
-      message: "Etes vous sûr de vouloir supprimer cet aliement ?",
+      message: "Etes vous sûr de vouloir supprimer cet aliment ?",
       buttons: [
         {text: 'Cancel', role: 'cancel'},
-        {text: 'Ok', handler: () => {this.srvAliment.deleteMesAliments();}}
-      ]
+        {text: 'Ok', handler: () => {this.srvAliment.deleteMesAliments(idAliment);
+          this.navCtrl.push(FamilleAlimentPage,{ idFamille: this.idFamille });}}
+      ],
+      mode:'ios',
+//      cssClass: 'alertDanger',
+      enableBackdropDismiss: false
     });
-
-    alert.present();
-
+    alert.present(); 
   }
 
   ionViewWillEnter() {

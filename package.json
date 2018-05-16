@@ -36,7 +36,7 @@
     "@ngx-translate/http-loader": "^2.0.0",
     "angular2-jwt": "^0.2.3",
     "bower": "^1.8.2",
-    "cordova-android": "6.3.0",
+    "cordova-android": "^7.0.0",
     "cordova-ios": "~4.5.4",
     "cordova-plugin-advanced-http": "^1.7.0",
     "cordova-plugin-camera": "^3.0.0",
@@ -46,7 +46,6 @@
     "cordova-plugin-file": "^4.3.1",
     "cordova-plugin-file-transfer": "~1.7.0",
     "cordova-plugin-filepath": "~1.0.2",
-    "cordova-plugin-http": "^1.2.0",
     "cordova-plugin-ionic-keyboard": "^2.0.4",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-media-capture": "^2.0.0",
@@ -57,14 +56,12 @@
     "io": "0.1.10",
     "ionic-angular": "3.8.0",
     "ionic-native": "^2.0.0",
-    "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "ng-recaptcha": "^3.0.2",
     "ng2-cookies": "^1.0.12",
     "ng2-translate": "^5.0.0",
     "ngx-window-token": "0.0.4",
     "node-sass": "^4.7.2",
-    "org.apache.cordova.camera": "~0.3.6",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
     "uuid": "^3.1.0",
@@ -79,19 +76,13 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "ionic-plugin-keyboard": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-http": {},
       "cordova-plugin-advanced-http": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-native-keyboard": {},
       "cordova-plugin-console": {},
-      "org.apache.cordova.camera": {
-        "CAMERA_USAGE_DESCRIPTION": " ",
-        "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
-      },
       "cordova-plugin-camera": {
         "CAMERA_USAGE_DESCRIPTION": " ",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
@@ -109,7 +100,8 @@
       "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

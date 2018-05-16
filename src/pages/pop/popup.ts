@@ -4,7 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import { HomePage } from '../../pages/home/home';
-import { SrvGeneral } from '../../providers/srvGeneral'
+import { SrvGeneral } from '../../providers/srvGeneral';
+
+
 @Component({
   selector: 'page-popup',
   templateUrl: 'popup.html',

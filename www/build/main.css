@@ -30721,13 +30721,14 @@ ion-navbar.toolbar {
 
 /* ------------------------------------------------------------ */
 /* Gestion des BUTTON */
+/*
 .button-inner {
-  -webkit-justify-content: left;
+    -webkit-justify-content: left;
 }
-
+*/
 .button {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 /* ------------------------------------------------------------ */
@@ -30750,6 +30751,8 @@ ion-navbar.toolbar {
 }
 
 .button-aliment {
+  height: 48px;
+  font-size: 1.8em;
   background-color: #a0d0ab;
   /*     opacity:0.3;*/
 }
@@ -30775,7 +30778,16 @@ ion-navbar.toolbar {
   color: grey;
 }
 
+.button-inscription {
+  height: 48px;
+  font-size: 1.8em;
+  background-color: #049423;
+  /*     opacity:0.3;*/
+}
+
 .button-favoris {
+  height: 48px;
+  font-size: 1.8em;
   background-color: #3abff0;
   /*     opacity:0.3;*/
 }
@@ -30787,6 +30799,8 @@ ion-navbar.toolbar {
 }
 
 .button-donnees {
+  height: 48px;
+  font-size: 1.8em;
   background-color: #72c5c3;
   /*     opacity:0.3;*/
 }
@@ -30814,6 +30828,8 @@ ion-navbar.toolbar {
 }
 
 .button-bolus {
+  height: 48px;
+  font-size: 1.8em;
   background-color: #008cba;
   /*     opacity:0.3;*/
 }
@@ -30860,8 +30876,9 @@ ion-navbar.toolbar {
   height: 20px;
   font-size: 8pt;
   background-color: #fafafa;
-  border-top: 3px #ffcccc solid;
+  border-top: 3px #ccc solid;
   /*    
+    border-top:3px #ffcccc solid;
     border-top:3px #d3d3d3 solid;
     background-color: #ffcece;
     border-top:3px #d66f64 solid;
@@ -30930,7 +30947,8 @@ ion-navbar.toolbar {
 }
 
 .alertDanger button {
-  padding-left: 125px;
+  padding-left: 115px;
+  padding-right: 115px;
 }
 
 .itemConf {
@@ -30974,6 +30992,13 @@ ion-navbar.toolbar {
   text-align: end;
   vertical-align: middle;
   float: right;
+}
+
+.input-Captcha {
+  width: 50px;
+  height: 50px;
+  font-size: 39px;
+  border: none;
 }
 
 .ion-ios-home,
@@ -31127,6 +31152,12 @@ ion-ios-sentData,
   height: 20px;
   padding: 0px 0px 0px 0px;
   margin: 0;
+}
+
+/* Bouton information */
+.alert-ios .alert-button {
+  color: #fff;
+  background-color: #07957b;
 }
 
 page-calcul ion-col[width-10] {

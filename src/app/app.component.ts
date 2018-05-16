@@ -4,7 +4,7 @@ import { Platform, MenuController, Nav, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
-import {Cookie} from 'ng2-cookies/ng2-cookies';
+//import {Cookie} from 'ng2-cookies/ng2-cookies';
 import { IUser } from '../models/user';
 
 import { HomePage } from '../pages/home/home';
@@ -23,7 +23,7 @@ import { SubscriptionPage } from '../pages/Inscription/subscription';
   templateUrl: 'app.html',
   providers: [ SrvHttp, SrvAuth, TranslateService ]
 })
-export class MyApp {
+export class webDia {
   @ViewChild(Nav) nav: Nav;
 
   user: IUser = {} as any;
@@ -49,7 +49,7 @@ export class MyApp {
 
       //Initialiser le cookie Access
       if (localStorage.getItem('access')==null){
-      localStorage.setItem('access','0');
+        localStorage.setItem('access','0');
       }
 
       //initialize ng2-translate

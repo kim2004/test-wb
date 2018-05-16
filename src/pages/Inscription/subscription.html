@@ -60,7 +60,7 @@
             <ion-row>
               <ion-col>
                 <ion-item no-lines class="txt-title-D">
-                  <ion-input   formControlName="mdp" [value]="clearName" type="text" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+                  <ion-input   formControlName="mdp" [value]="clearName" type="password" placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -69,7 +69,7 @@
             <ion-row>
               <ion-col>
                 <ion-item no-lines [hidden]="util" class="txt-title-D">
-                  <ion-input  formControlName="mdp2" type="text" [value]="clearName"  placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
+                  <ion-input  formControlName="mdp2" type="password" [value]="clearName"  placeholder='{{"msg.connexion.mot_de_passe"|translate}}'></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -77,7 +77,7 @@
     
           <ion-row >
           <ion-col >
-            <ion-item no-lines  class="txt-title-D">
+            <ion-item no-lines [hidden]="util" class="txt-title-D">
               <ion-checkbox style="padding-right:2px;margin-right:2px;"   item-left formControlName="case" [checked]="clear"></ion-checkbox><ion-label class="check-sub-pd">{{"msg.inscription.acceptation"|translate}}</ion-label>
             </ion-item>
           </ion-col>
@@ -89,15 +89,31 @@
      
       <!--<re-captcha #captchaControl="ngModel" fromControlName="captcha" name="captcha" required siteKey="6Lf6Jz4UAAAAAN2th6sLnHx0-MDExMkCAQ3AvWIv" ></re-captcha>
       !--> 
+
+<!--
       <ion-row class="center">
         <ion-col width-90 class="center-col">
               <div style="text-align: center;" class="recaptcha"><img style="width:75px;
                 height:70px;text-align:left;" id="captcha" [src]="src"/><img style="width:75px;
                 height:70px;text-align:center;" src="assets/img/captcha/egal.png"/>
-                    <input style="width:75px; height:70px;text-align: right;float:right;margin-right:30px;" formControlName="code" name="answer" />
+                    <input type="number" size="40" style="width:75px; height:70px;text-align:right;font-size:39px;float:right;margin-right:70px;" formControlName="code" name="answer" \>
               </div>
-    </ion-col>
-  </ion-row>
+        </ion-col>
+      </ion-row>
+-->
+
+      <ion-row width-90 class="center roundRect" style="margin-right:10px;margin-left:10px;">        
+        <ion-col col-8 class="right">
+            <div class="center-col recaptcha">
+              <img style="width:50px;height:50px;text-align:left;" id="captcha" [src]="src"/>
+              <img style="width:50px;height:50px;text-align:center;" src="assets/img/captcha/egal.png"/>    
+              
+            </div>            
+        </ion-col> 
+        <ion-col col-4 class="left">
+            <input type="number" maxlength="4" class="center input-Captcha" formControlName="code" name="answer">
+        </ion-col>
+      </ion-row>
 
     </ion-grid>
 

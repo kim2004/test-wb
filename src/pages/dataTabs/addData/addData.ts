@@ -1,6 +1,5 @@
 import { Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,6 +11,8 @@ import { SrvData } from '../../../providers/srvData';
 import { SrvGeneral } from '../../../providers/srvGeneral';
 import { IUser } from '../../../models/user';
 import { SrvHttp } from '../../../providers/srvHttp';
+import { DataPage } from '../data/data';
+import { DataTabsPage } from '../../dataTabs/dataTabs'
 
 
 
@@ -32,7 +33,7 @@ export class AddDataPage {
   repas: Array<{ value: string, text: string }> = [];
   clearNum:number;
   clearCom:string;
-
+  dataTab:DataTabsPage;
   
 
   constructor(  
@@ -41,9 +42,10 @@ export class AddDataPage {
     private srvHttp: SrvHttp,
     private platform: Platform,
     private srvGeneral: SrvGeneral,
-    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     private translate: TranslateService ) {
  
+      
     this.repas = this.srvGeneral.initTrancheHoraire();
     this.trancheHoraire = this.srvGeneral.getTrancheHoraire();
     this.initForm();
@@ -65,24 +67,27 @@ export class AddDataPage {
       headers.set('user', this.user.num);
       let options = new RequestOptions({ headers: headers });
   
-  this.srvData.getMesDonnees( options )
-  .timeout(10000) 
-  .subscribe(
-    data => { 
-      this.appCtrl.getRootNav().setRoot(AddDataPage);
-      this.srvGeneral.setLoader(false); },
-    err  => { 
-      this.appCtrl.getRootNav().setRoot(AddDataPage); 
-      this.srvGeneral.setLoader(false);
-      this.srvHttp.handleError(err);
-    }
-  );
+      this.srvData.getMesDonnees( options )
+        .timeout(10000) 
+        .subscribe(
+          data => { 
+            this.appCtrl.getRootNav().setRoot(AddDataPage);
+            this.srvGeneral.setLoader(false); },
+          err  => { 
+            this.appCtrl.getRootNav().setRoot(AddDataPage); 
+            this.srvGeneral.setLoader(false);
+            this.srvHttp.handleError(err);
+          }
+        );
     }
  }
 
-  public validateAddData = ( formData ): void => {      
+  public validateAddData = ( formData ): void => {  
+    
+     this.dataTab= new DataTabsPage(this.appCtrl,this.srvHttp,this.srvData,this.srvGeneral,this.navCtrl,this.translate);    
     if(this.formData.valid){ 
     this.srvData.setDataToServer(formData);
+    this.dataTab.refreshData();
     this.clearNum=0;
     this.clearCom="";
     }

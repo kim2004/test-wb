@@ -5,7 +5,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Transfer } from '@ionic-native/transfer';
-import {FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators}  from '@angular/forms';
 import { FilePath } from '@ionic-native/file-path';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,12 +20,13 @@ import {WindowTokenModule} from 'ngx-window-token';
 
 
 
-import { MyApp } from './app.component';
+import { webDia } from './app.component';
 import { SrvSort } from '../pipes/srvSort';
 import { HomePage } from '../pages/home/home';
 import { SrvHttp } from '../providers/srvHttp'; 
 import { SrvInit } from '../providers/srvInit'; 
 import { SrvData } from '../providers/srvData'; 
+import { PopupPage } from '../pages/pop/popup';
 import { SrvConfig } from '../providers/srvConfig'; 
 import { LoginPage } from '../pages/login/login';
 import { SrvSafeHtml } from '../pipes/srvSafeHtml';
@@ -33,16 +34,15 @@ import { LanguePage } from '../pages/langue/langue';
 import { CalculPage } from '../pages/calcul/calcul';
 import { SrvGeneral } from '../providers/srvGeneral'; 
 import { SrvAliment } from '../providers/srvAliment'; 
-import { SrvInscription} from '../providers/srvInscription';
 import { FavorisPage } from '../pages/favoris/favoris';
 import { DataPage } from '../pages/dataTabs/data/data';
 import { DataTabsPage } from '../pages/dataTabs/dataTabs';
+import { SrvInscription} from '../providers/srvInscription';
 import { AddDataPage } from '../pages/dataTabs/addData/addData';
 import { SendDataPage } from '../pages/dataTabs/sendData/sendData';
 import { InformationPage } from '../pages/information/information';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ChangePasswordPage } from '../pages/changePassword/changePassword';
-import { PopupPage } from '../pages/pop/popup';
 import { SubscriptionPage} from '../pages/Inscription/subscription'
 
 import { AlimentTabsPage } from '../pages/alimentTabs/alimentTabs';
@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MyApp,
+    webDia,
     SrvSort,
     DataPage,
     HomePage,
@@ -81,7 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SubscriptionPage,
   ],
   imports: [    
-    IonicModule.forRoot( MyApp, 
+    IonicModule.forRoot( webDia, 
       {
           mode: 'md', 
           tabsPlacement: 'bottom'
@@ -99,7 +99,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    webDia,
     DataPage,
     HomePage,    
     LoginPage,
@@ -112,7 +112,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SendDataPage,
     QuantitePage,
     InformationPage,
-    AlimentTabsPage,
+    AlimentTabsPage,  
     AjoutAlimentPage,
     ConfigurationPage,
     FamilleAlimentPage,

@@ -11,10 +11,10 @@
         <img alt="webDia" src="assets/img/logoNew_hug.png" height="30">&nbsp;&nbsp;<span style="position:absolute; top: 7px"></span>
       </div> 
     </ion-title>
-
+    
     <ion-buttons right>
-        <button ion-button menuToggle>
-          <ion-icon class="ion-ios-menu"></ion-icon>
+        <button ion-button (click)="creatFavoris()">
+          <ion-icon name="create" item-right ></ion-icon>
         </button>
       </ion-buttons>
   </ion-navbar>
@@ -27,16 +27,11 @@
 
   <ion-list>
 
-    <ion-item-sliding *ngFor="let favoris of listFavoris" (click)="callFavoris(favoris)">
+    <ion-item-sliding style="padding:3px 10px 3px 3px;border-bottom:1px solid grey" *ngFor="let aliment of listFavoris | OrderBy : ['nom']" (click)="getQuantite(aliment.id, aliment.quantite)">
       <ion-item>
-        {{favoris.nom}}
+        {{aliment.nom}}    
+        <ion-icon (click)="deleteMesAliments(aliment.id)" item-right name="remove-circle"></ion-icon>    
       </ion-item>
-
-      <ion-item-options>
-        <button ion-button icon-only (click)="deleteFavoris(favoris)" [color]="'danger'">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
     </ion-item-sliding>
 
   </ion-list>

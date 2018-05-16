@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import 'rxjs/add/operator/map';
 
@@ -9,28 +9,50 @@ import { HomePage } from '../../../pages/home/home';
 import { SrvHttp } from '../../../providers/srvHttp';
 import { SrvGeneral } from '../../../providers/srvGeneral';
 
-
 @Component({
   selector: 'page-familleAliment',
   templateUrl: 'familleAliment.html',
   providers: [SrvHttp]
 })
 export class FamilleAlimentPage {
+  MES_FAVORIS: number = 14;
+
+  favoris: boolean = false;
+
   listFamille: any;
   listMesAliments: any;
-
+  
   constructor( 
       private http: Http, 
       private srvHttp: SrvHttp,
+      private params: NavParams, 
       private srvGeneral: SrvGeneral,
       private navCtrl: NavController,
       private translate: TranslateService ) {
               
-          this.getFamilleAliment();
+      this.favoris = params.get("favoris");     
+      if(this.favoris){
+        this.getFamilleAliment();
+        this.navCtrl.push( AlimentPage, { idFamille: this.MES_FAVORIS } );
+      }
+      else{
+        this.getFamilleAliment();
+      }
+
   }
 
+  /*
+  ionViewDidLoad() {      
+    if(this.favoris){
+      this.navCtrl.push( AlimentPage, { idFamille: this.MES_FAVORIS } );
+    }
+  } 
+  */
+
   public getFamilleAliment = (): void => { 
-    this.srvGeneral.setLoader(true,this.translate.instant("msg.chargement_en_cours"));
+    if(!this.favoris){
+      this.srvGeneral.setLoader(true,this.translate.instant("msg.chargement_en_cours"));
+    }
 
     var langue = localStorage.getItem("langue");
     this.listFamille = this.srvHttp.getFamilleAliment();   
@@ -49,7 +71,9 @@ export class FamilleAlimentPage {
 
       this.listFamille.splice(0, 0, { id: 0, nom: this.translate.instant("msg.tous"), ordre: 0});
       
-      this.srvGeneral.setLoader(false);
+      if(!this.favoris){
+        this.srvGeneral.setLoader(false);
+      }
     }
     else {     
       this.listFamille = "[]";

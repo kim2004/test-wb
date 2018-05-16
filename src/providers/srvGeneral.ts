@@ -98,9 +98,10 @@ export class SrvGeneral {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
+      buttons: ['Ok'],
       mode:'ios',
-      cssClass: 'alertDanger',
-      buttons: ['Ok']
+//      cssClass: 'alertDanger',
+      enableBackdropDismiss: false
     });
     alert.present();   
   }
@@ -120,7 +121,10 @@ export class SrvGeneral {
       buttons: [
         {text: 'Cancel', role: 'cancel'},
         {text: 'Ok', handler: () => {return(true);}}
-      ]
+      ],
+      mode:'ios',
+//      cssClass: 'alertDanger',
+      enableBackdropDismiss: false
     });
 
     alert.present();
