@@ -4,27 +4,27 @@
     <br>
   </div>
   <div style="color:#000;"  [hidden]="isHidden()">{{"msg.data.locales" | translate}}</div>
-  <div  *ngFor="let data of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >
+  <div  *ngFor="let dataLocal of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >
     <div  class="roundRect" style="margin-bottom:10px;">
-      {{data.dateInj}} - {{ data.timeInj }}
+      {{dataLocal.dateInj}} - {{ dataLocal.timeInj }}
       <br>
-      {{"msg.hdc"|translate}}: {{ data.nbHdc }}
+      {{"msg.hdc"|translate}}: {{ dataLocal.nbHdc }}
       <br>
-      {{"msg.glycemie"|translate}}: {{ data.glycemie }}
+      {{"msg.glycemie"|translate}}: {{ dataLocal.glycemie }}
       <br>
-      {{"msg.injection"|translate}}: {{ data.injection }}     
+      {{"msg.injection"|translate}}: {{ dataLocal.injection }}     
     </div>
   </div>
   <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  
-  <div *ngFor="let datad of lstData" style="margin-bottom:10px;">
+  <div *ngFor="let data of lstData" style="margin-bottom:10px;">
     <div  class="roundRect" style="margin-bottom:10px;">
-      {{datad.dateInj}} - {{ datad.timeInj }}
+        {{data.dateInj | convertDate}} - {{ data.timeInj }}
         <br>
-        {{"msg.hdc"|translate}}: {{ datad.nbHdc }}
+        {{"msg.hdc"|translate}}: {{ data.nbHdc }}
         <br>
-        {{"msg.glycemie"|translate}}: {{ datad.glycemie }}
+        {{"msg.glycemie"|translate}}: {{ data.glycemie }}
         <br>
-        {{"msg.injection"|translate}}: {{ datad.injection }}     
+        {{"msg.injection"|translate}}: {{ data.injection }}     
       </div>
     </div>
 

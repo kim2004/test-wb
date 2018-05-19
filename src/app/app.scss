@@ -152,9 +152,9 @@
     border: 1px #aaa solid;
     border-radius: 10px;
     -webkit-border-radius: 10px;
-    font-size: 0.6em;
+    font-size: 0.8em;
     .txt-title{
-        font-size: 0.6em;
+        font-size: 0.8em;
     }
     h3{
         font-size: 1.5em;
@@ -289,8 +289,8 @@
 .background-color-menu {
     background-color: #008cba;
     color:white;
-    font-weight: bold;
-    font-size: 1em;
+/*   font-weight: bold;
+    font-size: 1em;*/
 }
 
 .paddBlock{
@@ -612,4 +612,7 @@ ion-ios-sentData,
 .alert-ios .alert-button {
     color: #fff;
     background-color: #07957b;
+}
+.alert-ios .alert-wrapper {
+    border: 1px solid #07957b;
 }

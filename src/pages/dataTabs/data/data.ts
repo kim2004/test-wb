@@ -6,11 +6,13 @@ import 'rxjs/add/operator/map';
 
 //import { IConfig } from '../../../models/config';
 import { HomePage } from '../../../pages/home/home';
+import { SrvConvertDate } from "../../../pipes/srvConvertDate"
 
 
 @Component({
   selector: 'page-data',
-  templateUrl: 'data.html'
+  templateUrl: 'data.html',
+  providers: [ SrvConvertDate ]
 })
 
 
@@ -18,7 +20,6 @@ export class DataPage {
 
   lstData: any;
   lstDataLocal:any;
-  
 
   constructor( 
     private http: Http, 
@@ -27,11 +28,18 @@ export class DataPage {
  
     this.affData( );
   }
+ 
+  /*
+  ionViewWillEnter() {
+    this.lstData = JSON.parse(localStorage.getItem("lastData"));
+    this.lstDataLocal = JSON.parse(localStorage.getItem("localData"));
+  }
+  */
 
   private affData = ( ): void => {   
     this.lstData = JSON.parse(localStorage.getItem("lastData"));
   }
-  private affDataL = ( ): void => {  
+  private affDataLocal = ( ): void => {  
     this.lstDataLocal = JSON.parse(localStorage.getItem("localData"));
   }
 
@@ -43,11 +51,6 @@ export class DataPage {
     else {
       return false;
     }
-  }
- 
-  ionViewWillEnter() {
-    this.affData();
-    this.affDataL();
   }
 
   public goHome = ( ): void => {

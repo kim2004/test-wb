@@ -1728,6 +1728,7 @@ var SrvSafeHtml = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipes_srvConvertDate__ = __webpack_require__(336);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1743,6 +1744,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //import { IConfig } from '../../../models/config';
+
 
 var DataPage = /** @class */ (function () {
     function DataPage(http, navCtrl, formBuilder) {
@@ -1777,7 +1779,8 @@ var DataPage = /** @class */ (function () {
     };
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/'<ion-content padding class="background-color-donnees">\n  <div style="padding-bottom:10px;">\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n    <br>\n  </div>\n  <div style="color:#000;"  [hidden]="isHidden()">{{"msg.data.locales" | translate}}</div>\n  <div  *ngFor="let data of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >\n    <div  class="roundRect" style="margin-bottom:10px;">\n      {{data.dateInj}} - {{ data.timeInj }}\n      <br>\n      {{"msg.hdc"|translate}}: {{ data.nbHdc }}\n      <br>\n      {{"msg.glycemie"|translate}}: {{ data.glycemie }}\n      <br>\n      {{"msg.injection"|translate}}: {{ data.injection }}     \n    </div>\n  </div>\n  <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  \n  <div *ngFor="let datad of lstData" style="margin-bottom:10px;">\n    <div  class="roundRect" style="margin-bottom:10px;">\n      {{datad.dateInj}} - {{ datad.timeInj }}\n        <br>\n        {{"msg.hdc"|translate}}: {{ datad.nbHdc }}\n        <br>\n        {{"msg.glycemie"|translate}}: {{ datad.glycemie }}\n        <br>\n        {{"msg.injection"|translate}}: {{ datad.injection }}     \n      </div>\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/
+            selector: 'page-data',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/'<ion-content padding class="background-color-donnees">\n  <div style="padding-bottom:10px;">\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n    <br>\n  </div>\n  <div style="color:#000;"  [hidden]="isHidden()">{{"msg.data.locales" | translate}}</div>\n  <div  *ngFor="let dataLocal of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >\n    <div  class="roundRect" style="margin-bottom:10px;">\n      {{dataLocal.dateInj}} - {{ dataLocal.timeInj }}\n      <br>\n      {{"msg.hdc"|translate}}: {{ dataLocal.nbHdc }}\n      <br>\n      {{"msg.glycemie"|translate}}: {{ dataLocal.glycemie }}\n      <br>\n      {{"msg.injection"|translate}}: {{ dataLocal.injection }}     \n    </div>\n  </div>\n  <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  \n  <div *ngFor="let data of lstData" style="margin-bottom:10px;">\n    <div  class="roundRect" style="margin-bottom:10px;">\n        {{data.dateInj | convertDate}} - {{ data.timeInj }}\n        <br>\n        {{"msg.hdc"|translate}}: {{ data.nbHdc }}\n        <br>\n        {{"msg.glycemie"|translate}}: {{ data.glycemie }}\n        <br>\n        {{"msg.injection"|translate}}: {{ data.injection }}     \n      </div>\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_6__pipes_srvConvertDate__["a" /* SrvConvertDate */]],
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
@@ -2456,7 +2459,7 @@ var AlimentPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvSort; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2827,7 +2830,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_calcul_calcul__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_srvAliment__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_favoris_favoris__ = __webpack_require__(338);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_favoris_favoris__ = __webpack_require__(339);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_dataTabs_data_data__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_dataTabs_dataTabs__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_srvInscription__ = __webpack_require__(126);
@@ -3179,7 +3182,39 @@ var webDia = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 337:
+/***/ 336:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvConvertDate; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var SrvConvertDate = /** @class */ (function () {
+    function SrvConvertDate() {
+    }
+    SrvConvertDate.prototype.transform = function (value) {
+        var tableau = value.split("-");
+        return tableau[2] + "/" + tableau[1] + "/" + tableau[0];
+    };
+    SrvConvertDate = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Pipe */])({
+            name: 'convertDate'
+        })
+    ], SrvConvertDate);
+    return SrvConvertDate;
+}());
+
+//# sourceMappingURL=srvConvertDate.js.map
+
+/***/ }),
+
+/***/ 338:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -3208,7 +3243,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 338:
+/***/ 339:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -30690,11 +30690,11 @@ ion-navbar.toolbar {
   border: 1px #aaa solid;
   border-radius: 10px;
   -webkit-border-radius: 10px;
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 .roundRect .txt-title {
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 .roundRect h3 {
@@ -30841,8 +30841,8 @@ ion-navbar.toolbar {
 .background-color-menu {
   background-color: #008cba;
   color: white;
-  font-weight: bold;
-  font-size: 1em;
+  /*   font-weight: bold;
+    font-size: 1em;*/
 }
 
 .paddBlock {
@@ -31158,6 +31158,10 @@ ion-ios-sentData,
 .alert-ios .alert-button {
   color: #fff;
   background-color: #07957b;
+}
+
+.alert-ios .alert-wrapper {
+  border: 1px solid #07957b;
 }
 
 page-calcul ion-col[width-10] {

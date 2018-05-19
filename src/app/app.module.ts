@@ -36,6 +36,7 @@ import { SrvGeneral } from '../providers/srvGeneral';
 import { SrvAliment } from '../providers/srvAliment'; 
 import { FavorisPage } from '../pages/favoris/favoris';
 import { DataPage } from '../pages/dataTabs/data/data';
+import { SrvConvertDate } from '../pipes/srvConvertDate';
 import { DataTabsPage } from '../pages/dataTabs/dataTabs';
 import { SrvInscription} from '../providers/srvInscription';
 import { AddDataPage } from '../pages/dataTabs/addData/addData';
@@ -71,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DataTabsPage,
     SendDataPage,
     QuantitePage,
+    SrvConvertDate,
     InformationPage,
     AlimentTabsPage,
     AjoutAlimentPage,
@@ -111,6 +113,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DataTabsPage,
     SendDataPage,
     QuantitePage,
+    SrvConvertDate,
     InformationPage,
     AlimentTabsPage,  
     AjoutAlimentPage,
