@@ -32,11 +32,11 @@ export class SrvInscription{
       }
 
 
-      public modifierUser = function (user:IUserSubscription) {
-    this.user = JSON.parse(localStorage.getItem('User'));   
-    if(this.user && this.user.num && this.user.num.length>0){
-      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-      headers.set('user', this.user.num);
+    public modifierUser = function (user:IUserSubscription) {
+      this.user = JSON.parse(localStorage.getItem('User'));   
+      if(this.user && this.user.num && this.user.num.length>0){
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        headers.set('user', this.user.num);
         let options = new RequestOptions({ headers: headers }); 
        
         var civilite = "civ="+user.sexe;

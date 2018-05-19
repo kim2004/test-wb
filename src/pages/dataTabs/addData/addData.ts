@@ -84,15 +84,53 @@ export class AddDataPage {
 
   public validateAddData = ( formData ): void => {  
     
-     this.dataTab= new DataTabsPage(this.appCtrl,this.srvHttp,this.srvData,this.srvGeneral,this.navCtrl,this.translate);    
+     this.dataTab = new DataTabsPage(this.appCtrl,this.srvHttp,this.srvData,this.srvGeneral,this.navCtrl,this.translate);    
     if(this.formData.valid){ 
-    this.srvData.setDataToServer(formData);
-    this.dataTab.refreshData();
-    this.clearNum=0;
-    this.clearCom="";
+      this.setDataToServer(formData);
+      this.dataTab.refreshData();
+      this.clearNum=0;
+      this.clearCom="";
     }
   }
 
+  public setDataToServer = ( formData ): void => { 
+
+    this.data.nbHdc = Number.parseFloat(formData.nbHdc);
+    this.data.glycemie = Number.parseFloat(formData.glycemie);
+    this.data.injection = Number.parseFloat(formData.injection);
+    this.data.dateInj = formData.currentDate.substring(0,10);
+    this.data.timeInj = formData.currentDate.substring(11,16);
+    this.data.commentaire = formData.commentaire;
+    this.data.glycemieAuto = 0;
+    this.data.glycemieCapteur = 0;
+    var tranche=formData.trancheHoraire;
+    var numRepas:number;
+    if (tranche==="u1"){
+      numRepas=1;
+    }
+    else if (tranche==="u2"){
+      numRepas=2;
+    }
+    else if (tranche==="u3"){
+      numRepas=3;
+    }
+    else if (tranche==="u4"){
+      numRepas=4;
+    }
+    else if (tranche==="u5"){
+      numRepas=5;
+    }
+    else if (tranche==="u6"){
+      numRepas=6;
+    }
+    this.data.repas=numRepas;
+   
+    //this.srvGeneral.setMessage(this.dataToString(this.data));
+    
+//    this.saveData(this.data);
+    localStorage.setItem("localData", JSON.stringify(this.srvData.dataToJson(this.data))); 
+    this.srvData.saveData();
+  }
 
   private initForm = ( ): void => {
     var curtDate: String = new Date().toISOString();

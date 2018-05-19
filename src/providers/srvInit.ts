@@ -68,14 +68,14 @@ export class SrvInit {
       this.srvData.getMesDonnees( options )
           .timeout(10000)   
           .subscribe(
-            data => localStorage.setItem("Donnees", JSON.stringify(data.json())), 
+            data => localStorage.setItem("lastData", JSON.stringify(data.json())), 
             err => (console.log("getMesDonnees: Delay exceeded !"))
           );
             
       this.srvAliment.getFavoris( options );
       this.srvAliment.getMesAliments( options );   
       this.srvConfig.getConfiguration( options );
-      localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.storeData(false):'';   
+      localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.saveData():'';   
     } 
     this.srvAliment.getAliments();
     this.srvAliment.getImagesAliments();            

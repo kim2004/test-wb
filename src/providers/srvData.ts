@@ -44,12 +44,14 @@ export class SrvData {
       formCalcul.nbHdc = 0;
     }
     nbHdc += formCalcul.nbHdc;
+    this.data.nbHdc = Number(nbHdc);
+    this.data.glycemieAuto = 0; 
 
     var correction = this.getCorrection();
 
     if((formCalcul.glycemie==null || formCalcul.glycemie==0) && nbHdc!=null && nbHdc>0){     
       if(this.config[0].valeur>0){
-        formCalcul.glycemie=this.config[0].valeur;   // Glycemie = Valeur recherchee
+        formCalcul.glycemie = this.config[0].valeur;   // Glycemie = Valeur recherchee
         this.data.glycemieAuto = 1;         
       }
       else {
@@ -57,6 +59,8 @@ export class SrvData {
         msgErr = this.translate.instant("msg.noConfig");
       }
     }
+
+    this.data.glycemie = formCalcul.glycemie;
 
     if(calculInjection){
       if(formCalcul.unite!=null && formCalcul.unite>0 && formCalcul.hdc!=null && formCalcul.hdc>0) {
@@ -75,7 +79,7 @@ export class SrvData {
           else {
             injection = (nbHdc * formCalcul.unite) / formCalcul.hdc;
             injection = this.srvGeneral.roundNumber(injection);
-            if(injection<0) injection = 0.0;
+            if(injection<0) injection = 0.0;            
             msgSubTitle = this.translate.instant("msg.noCorrection");
             msgInjection = this.translate.instant("msg.injecter") + ": " + injection;
           }
@@ -93,7 +97,16 @@ export class SrvData {
 
     if(calculInjection) {         
       this.srvGeneral.setMessageInjection(msgInjection,msgSubTitle);  
-      // Set Data Injection    
+      this.data.dateInj = this.srvGeneral.formatDate(new Date());
+      this.data.timeInj = this.srvGeneral.formatTime(new Date());
+      this.data.commentaire = '';
+      this.data.glycemieCapteur = 0;
+      this.data.injection = injection;
+      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
+
+      localStorage.setItem("localData", JSON.stringify(this.dataToJson(this.data)));
+      // Set Data Injection 
+      this.saveData();   
     }
     else {         
       this.srvGeneral.setMessage(msgErr);
@@ -116,7 +129,8 @@ export class SrvData {
     return correction;
   }
 
-  public setDataToServer = ( formData ): void => { 
+  /*
+  public setData = ( formCalcul ): void => { 
 
     this.data.nbHdc = Number.parseFloat(formData.nbHdc);
     this.data.glycemie = Number.parseFloat(formData.glycemie);
@@ -129,7 +143,7 @@ export class SrvData {
     var tranche=formData.trancheHoraire;
     var numRepas:number;
     if (tranche==="u1"){
-        numRepas=1;
+      numRepas=1;
     }
     else if (tranche==="u2"){
       numRepas=2;
@@ -150,11 +164,12 @@ export class SrvData {
    
     //this.srvGeneral.setMessage(this.dataToString(this.data));
     
-    this.savedData(this.data);
-    //localStorage.setItem("Donnees", JSON.stringify(this.dataToJson(this.data))); 
+    localStorage.setItem("LastData", JSON.stringify(this.dataToJson(this.data))); 
+    this.saveData();
   }
+  */
 
-  public dataToJson = ( data: IData ):  any => {
+  public dataToJson = ( data: IData ):  any => {  
     this.data.idUti=this.config[0].idUti;
     this.lstDataD.idUti=this.data.idUti;
     this.lstDataD.timeInj=this.data.timeInj;
@@ -166,29 +181,29 @@ export class SrvData {
     this.lstDataD.glycemieAuto=this.data.glycemieAuto;
     this.lstDataD.glycemieCapteur=this.data.glycemieCapteur;
     this.lstDataD.repas=this.data.repas;
-   return this.lstDataD;
 
+    return this.lstDataD;
   }
 
   public listLocalData = function () {
-    var wd=localStorage.getItem("localData");
+    var wd=localStorage.getItem("localData"); 
     if (wd!=null && wd.length!=0){
-      return  JSON.parse(localStorage.getItem("localData")) ;
-}
-  else {
+      return JSON.parse(localStorage.getItem("localData")) ;
+    }
+    else {
       return localStorage.setItem("localData", "[]");
+    }
   }
-}
 
-public listData = function () {
-  var wd=localStorage.getItem("lastData");
-  if (wd!=null && wd.length!==0) {       
-      return  JSON.parse(localStorage.getItem("lastData"));
+  public listData = function () {
+    var wd=localStorage.getItem("lastData");
+    if (wd!=null && wd.length!==0) {       
+        return  JSON.parse(localStorage.getItem("lastData"));
+    }
+    else {
+        return localStorage.setItem("listData", "[]");
+    }
   }
-  else {
-      return localStorage.setItem("listData", "[]");
-  }
-}
 
   public dataToString = ( data: IData ):string => {
     var str: string;
@@ -201,26 +216,23 @@ public listData = function () {
   }
 
   public getMesDonnees = ( options: RequestOptions ): any => {   
-    return this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlData, options);    
+    return this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlData, options);     
   }
 
-  public storeData = function (display) {
+  public saveData = function ( ) {
     this.user = JSON.parse(localStorage.getItem('User'));
     
-//    var params = { a: mail };var params = "a="+mail;
     let headers = new Headers();
     headers.append("Accept", 'application/x-www-form-urlencoded');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.set('user', this.user.num);
     let options = new RequestOptions({ headers: headers});
-    //var lenData=  localStorage.getItem("localData").length-1;
     var localData=this.listLocalData();
     var params = JSON.stringify(localData);
     var storeData = "n="+params;
-     this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlData, storeData,options)
-     //.toPromise()
-     .timeout(10000)
-     .map(res => {
+    this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlData, storeData, options)
+      .timeout(10000)
+      .map(res => {
             localStorage.setItem("lastData", JSON.stringify(res.json()));
             localStorage.removeItem('localData');
       })
@@ -228,9 +240,10 @@ public listData = function () {
         data => { },
         err  => { this.srvHttp.handleError(err); }
       );
-     
   }
-  public savedData = ( dataT:IData ): any => {
+
+  /*
+  public saveData = ( dataT:IData ): any => {
     var d = new Date();
     
     var yr = dataT.dateInj.substring(0,4);
@@ -260,11 +273,12 @@ public listData = function () {
         storeDataD = [];
     }
     
-   storeDataD.push(data);
+    storeDataD.push(data);
     localStorage.setItem("localData",  JSON.stringify(storeDataD));
     this.storeData(false);
    
 }
+*/
 
   public sendDataMail = ( mail ): any => {    
     this.user = JSON.parse(localStorage.getItem('User'));

@@ -9,5 +9,4 @@ export interface IData {
     glycemieAuto: number,
     glycemieCapteur: number,
     repas: number
-
 }

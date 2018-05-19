@@ -50,12 +50,13 @@ export class SrvConfig {
       let options = new RequestOptions({ headers: headers });
       var storeData = [];
       storeData.push(profil);
-    localStorage.setItem("Config",JSON.stringify(storeData));
-    let params ="n="+JSON.stringify(storeData);
-    this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlProfil,params,options)
-    .timeout(10000)
-    .subscribe(data=>{this.srvGeneral.setMessage(this.translate.instant("msg.config.enrogOk"));  },(err)=>(console.log("Delay exceeded")));
+      localStorage.setItem("Config",JSON.stringify(storeData));
+      let params ="n="+JSON.stringify(storeData);
+
+      this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlProfil,params,options)
+        .timeout(10000)
+        .subscribe(data=>{this.srvGeneral.setMessage(this.translate.instant("msg.config.enrogOk"));  },(err)=>(console.log("Delay exceeded")));
     }
-}
+  }
 
 }

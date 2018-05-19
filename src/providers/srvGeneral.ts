@@ -161,6 +161,50 @@ export class SrvGeneral {
     return repas;
   }
 
+  public formatDate = ( d: Date ):string => {
+      var month = '' + (d.getMonth() + 1);
+      var day = '' + d.getDate();
+      var year = d.getFullYear();
+  
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+  
+      return [year, month, day].join('-');
+  }
+
+  public formatTime = ( d: Date ):string => {
+    var hr = '' + d.getHours();
+    var mn = '' + d.getMinutes();
+
+    if (hr.length < 2) hr = '0' + hr;
+    if (mn.length < 2) mn = '0' + mn;
+
+    return [hr, mn, '00'].join(':');
+  }
+
+  public getNumeroRepas = ( trancheHoraire?: string ):number => { 
+    var numRepas=0;
+    if (trancheHoraire==="u1"){
+      numRepas=1;
+    }
+    else if (trancheHoraire==="u2"){
+      numRepas=2;
+    }
+    else if (trancheHoraire==="u3"){
+      numRepas=3;
+    }
+    else if (trancheHoraire==="u4"){
+      numRepas=4;
+    }
+    else if (trancheHoraire==="u5"){
+      numRepas=5;
+    }
+    else if (trancheHoraire==="u6"){
+      numRepas=6;
+    }
+    return numRepas;
+  }
+
   public getTrancheHoraire = ( ):string => {    
     var d = new Date();
     var hr = d.getHours();

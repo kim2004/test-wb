@@ -113,7 +113,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     DataTabsPage,
     SendDataPage,
     QuantitePage,
-    SrvConvertDate,
     InformationPage,
     AlimentTabsPage,  
     AjoutAlimentPage,
