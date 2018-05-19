@@ -18,7 +18,7 @@
   <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  
   <div *ngFor="let data of lstData" style="margin-bottom:10px;">
     <div  class="roundRect" style="margin-bottom:10px;">
-<!--        {{data.dateInj | convertDate}} - {{ data.timeInj }}-->
+        {{data.dateInj | convertDate}} - {{ data.timeInj }}
         {{data.dateInj}} - {{ data.timeInj }}
         <br>
         {{"msg.hdc"|translate}}: {{ data.nbHdc }}

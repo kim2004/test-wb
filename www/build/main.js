@@ -1779,7 +1779,7 @@ var DataPage = /** @class */ (function () {
     };
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/'<ion-content padding class="background-color-donnees">\n  <div style="padding-bottom:10px;">\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n    <br>\n  </div>\n  <div style="color:#000;"  [hidden]="isHidden()">{{"msg.data.locales" | translate}}</div>\n  <div  *ngFor="let dataLocal of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >\n    <div  class="roundRect" style="margin-bottom:10px;">\n      {{dataLocal.dateInj}} - {{ dataLocal.timeInj }}\n      <br>\n      {{"msg.hdc"|translate}}: {{ dataLocal.nbHdc }}\n      <br>\n      {{"msg.glycemie"|translate}}: {{ dataLocal.glycemie }}\n      <br>\n      {{"msg.injection"|translate}}: {{ dataLocal.injection }}     \n    </div>\n  </div>\n  <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  \n  <div *ngFor="let data of lstData" style="margin-bottom:10px;">\n    <div  class="roundRect" style="margin-bottom:10px;">\n<!--        {{data.dateInj | convertDate}} - {{ data.timeInj }}-->\n        {{data.dateInj}} - {{ data.timeInj }}\n        <br>\n        {{"msg.hdc"|translate}}: {{ data.nbHdc }}\n        <br>\n        {{"msg.glycemie"|translate}}: {{ data.glycemie }}\n        <br>\n        {{"msg.injection"|translate}}: {{ data.injection }}     \n      </div>\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/,
+            selector: 'page-data',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/'<ion-content padding class="background-color-donnees">\n  <div style="padding-bottom:10px;">\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n    <br>\n  </div>\n  <div style="color:#000;"  [hidden]="isHidden()">{{"msg.data.locales" | translate}}</div>\n  <div  *ngFor="let dataLocal of lstDataLocal" style="margin-bottom:20px;" [hidden]="isHidden()" >\n    <div  class="roundRect" style="margin-bottom:10px;">\n      {{dataLocal.dateInj}} - {{ dataLocal.timeInj }}\n      <br>\n      {{"msg.hdc"|translate}}: {{ dataLocal.nbHdc }}\n      <br>\n      {{"msg.glycemie"|translate}}: {{ dataLocal.glycemie }}\n      <br>\n      {{"msg.injection"|translate}}: {{ dataLocal.injection }}     \n    </div>\n  </div>\n  <div style="color:#000;">{{"msg.data.dernieresDonnees" | translate}}</div>  \n  <div *ngFor="let data of lstData" style="margin-bottom:10px;">\n    <div  class="roundRect" style="margin-bottom:10px;">\n        {{data.dateInj | convertDate}} - {{ data.timeInj }}\n        {{data.dateInj}} - {{ data.timeInj }}\n        <br>\n        {{"msg.hdc"|translate}}: {{ data.nbHdc }}\n        <br>\n        {{"msg.glycemie"|translate}}: {{ data.glycemie }}\n        <br>\n        {{"msg.injection"|translate}}: {{ data.injection }}     \n      </div>\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\data\data.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_6__pipes_srvConvertDate__["a" /* SrvConvertDate */]],
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */],
@@ -3345,12 +3345,10 @@ var FavorisPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3363,10 +3361,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import 'rxjs/add/operator/timeout';
 
 
 
-
+//import { Serializer } from '@angular/compiler/src/i18n/serializers/serializer';
 var SrvData = /** @class */ (function () {
     function SrvData(http, srvHttp, srvGeneral, translate) {
         var _this = this;
@@ -3377,7 +3376,7 @@ var SrvData = /** @class */ (function () {
         this.user = {};
         this.data = [];
         this.config = {};
-        this.aliments = {};
+        //  aliments :IMesAliments = {} as any;
         this.lstDataD = {};
         this.calculInjection = function (formCalcul, nbHdc) {
             var msgErr;
@@ -3389,6 +3388,8 @@ var SrvData = /** @class */ (function () {
                 formCalcul.nbHdc = 0;
             }
             nbHdc += formCalcul.nbHdc;
+            _this.data.nbHdc = Number(nbHdc);
+            _this.data.glycemieAuto = 0;
             var correction = _this.getCorrection();
             if ((formCalcul.glycemie == null || formCalcul.glycemie == 0) && nbHdc != null && nbHdc > 0) {
                 if (_this.config[0].valeur > 0) {
@@ -3400,6 +3401,7 @@ var SrvData = /** @class */ (function () {
                     msgErr = _this.translate.instant("msg.noConfig");
                 }
             }
+            _this.data.glycemie = formCalcul.glycemie;
             if (calculInjection) {
                 if (formCalcul.unite != null && formCalcul.unite > 0 && formCalcul.hdc != null && formCalcul.hdc > 0) {
                     if (formCalcul.glycemie != null && formCalcul.glycemie > 0) {
@@ -3436,7 +3438,15 @@ var SrvData = /** @class */ (function () {
             }
             if (calculInjection) {
                 _this.srvGeneral.setMessageInjection(msgInjection, msgSubTitle);
-                // Set Data Injection    
+                //      this.data.dateInj = this.srvGeneral.formatDate(new Date());
+                //      this.data.timeInj = this.srvGeneral.formatTime(new Date());
+                _this.data.commentaire = '';
+                _this.data.glycemieCapteur = 0;
+                _this.data.injection = injection;
+                //      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
+                localStorage.setItem("localData", JSON.stringify(_this.dataToJson(_this.data)));
+                // Set Data Injection 
+                //      this.saveData();   
             }
             else {
                 _this.srvGeneral.setMessage(msgErr);
@@ -3456,40 +3466,45 @@ var SrvData = /** @class */ (function () {
             }
             return correction;
         };
-        this.setDataToServer = function (formData) {
-            _this.data.nbHdc = Number.parseFloat(formData.nbHdc);
-            _this.data.glycemie = Number.parseFloat(formData.glycemie);
-            _this.data.injection = Number.parseFloat(formData.injection);
-            _this.data.dateInj = formData.currentDate.substring(0, 10);
-            _this.data.timeInj = formData.currentDate.substring(11, 16);
-            _this.data.commentaire = formData.commentaire;
-            _this.data.glycemieAuto = 0;
-            _this.data.glycemieCapteur = 0;
-            var tranche = formData.trancheHoraire;
-            var numRepas;
-            if (tranche === "u1") {
-                numRepas = 1;
-            }
-            else if (tranche === "u2") {
-                numRepas = 2;
-            }
-            else if (tranche === "u3") {
-                numRepas = 3;
-            }
-            else if (tranche === "u4") {
-                numRepas = 4;
-            }
-            else if (tranche === "u5") {
-                numRepas = 5;
-            }
-            else if (tranche === "u6") {
-                numRepas = 6;
-            }
-            _this.data.repas = numRepas;
-            //this.srvGeneral.setMessage(this.dataToString(this.data));
-            _this.savedData(_this.data);
-            //localStorage.setItem("Donnees", JSON.stringify(this.dataToJson(this.data))); 
-        };
+        /*
+        public setData = ( formCalcul ): void => {
+      
+          this.data.nbHdc = Number.parseFloat(formData.nbHdc);
+          this.data.glycemie = Number.parseFloat(formData.glycemie);
+          this.data.injection = Number.parseFloat(formData.injection);
+          this.data.dateInj = formData.currentDate.substring(0,10);
+          this.data.timeInj = formData.currentDate.substring(11,16);
+          this.data.commentaire = formData.commentaire;
+          this.data.glycemieAuto = 0;
+          this.data.glycemieCapteur = 0;
+          var tranche=formData.trancheHoraire;
+          var numRepas:number;
+          if (tranche==="u1"){
+            numRepas=1;
+          }
+          else if (tranche==="u2"){
+            numRepas=2;
+          }
+          else if (tranche==="u3"){
+            numRepas=3;
+          }
+          else if (tranche==="u4"){
+            numRepas=4;
+          }
+          else if (tranche==="u5"){
+            numRepas=5;
+          }
+          else if (tranche==="u6"){
+            numRepas=6;
+          }
+          this.data.repas=numRepas;
+         
+          //this.srvGeneral.setMessage(this.dataToString(this.data));
+          
+          localStorage.setItem("LastData", JSON.stringify(this.dataToJson(this.data)));
+          this.saveData();
+        }
+        */
         this.dataToJson = function (data) {
             _this.data.idUti = _this.config[0].idUti;
             _this.lstDataD.idUti = _this.data.idUti;
@@ -3534,16 +3549,14 @@ var SrvData = /** @class */ (function () {
         this.getMesDonnees = function (options) {
             return _this.http.get(_this.srvHttp.SERVER_URL + _this.srvHttp.urlData, options);
         };
-        this.storeData = function (display) {
+        this.saveData = function () {
             var _this = this;
             this.user = JSON.parse(localStorage.getItem('User'));
-            //    var params = { a: mail };var params = "a="+mail;
             var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
             headers.append("Accept", 'application/x-www-form-urlencoded');
             headers.append('Content-Type', 'application/x-www-form-urlencoded');
             headers.set('user', this.user.num);
             var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
-            //var lenData=  localStorage.getItem("localData").length-1;
             var localData = this.listLocalData();
             var params = JSON.stringify(localData);
             var storeData = "n=" + params;
@@ -3555,39 +3568,43 @@ var SrvData = /** @class */ (function () {
             })
                 .subscribe(function (data) { }, function (err) { _this.srvHttp.handleError(err); });
         };
-        this.savedData = function (dataT) {
-            var d = new Date();
-            var yr = dataT.dateInj.substring(0, 4);
-            var mh = dataT.dateInj.substring(5, 7);
-            var dt = dataT.dateInj.substring(8, 10);
-            var hr = dataT.timeInj.substring(0, 2);
-            var mn = dataT.timeInj.substring(3, 5);
-            if (!dataT.nbHdc)
-                dataT.nbHdc = 0;
-            if (!dataT.glycemie)
-                dataT.glycemie = 0;
-            if (!dataT.injection)
-                dataT.injection = 0;
-            if (!dataT.commentaire)
-                dataT.commentaire = "";
-            var data = new Object();
-            data.dateInj = yr + "-" + mh + "-" + dt;
-            data.timeInj = hr + ":" + mn + ":00";
-            data.nbHdc = dataT.nbHdc;
-            data.repas = dataT.repas;
-            data.glycemie = dataT.glycemie;
-            data.injection = dataT.injection;
-            data.commentaire = dataT.commentaire;
-            data.glycemieAuto = 0;
-            //data.glycemieCapteur=1;
-            var storeDataD = _this.listLocalData();
-            if (!storeDataD || storeDataD.length === 0) {
-                storeDataD = [];
-            }
-            storeDataD.push(data);
-            localStorage.setItem("localData", JSON.stringify(storeDataD));
-            _this.storeData(false);
-        };
+        /*
+        public saveData = ( dataT:IData ): any => {
+          var d = new Date();
+          
+          var yr = dataT.dateInj.substring(0,4);
+          var mh = dataT.dateInj.substring(5,7);
+          var dt = dataT.dateInj.substring(8,10);
+          var hr = dataT.timeInj.substring(0,2);
+          var mn = dataT.timeInj.substring(3,5);
+      
+          if(!dataT.nbHdc) dataT.nbHdc = 0;
+          if(!dataT.glycemie) dataT.glycemie = 0;
+          if(!dataT.injection) dataT.injection = 0;
+          if(!dataT.commentaire) dataT.commentaire = "";
+        
+          var data = <IData>new Object();
+          data.dateInj=yr+"-"+mh+"-"+dt;
+          data.timeInj= hr+":"+mn+":00";
+          data.nbHdc=dataT.nbHdc;
+          data.repas=dataT.repas;
+          data.glycemie=dataT.glycemie;
+          data.injection=dataT.injection;
+          data.commentaire=dataT.commentaire;
+          data.glycemieAuto=0;
+          //data.glycemieCapteur=1;
+          
+          var storeDataD = this.listLocalData();
+          if(!storeDataD || storeDataD.length===0) {
+              storeDataD = [];
+          }
+          
+          storeDataD.push(data);
+          localStorage.setItem("localData",  JSON.stringify(storeDataD));
+          this.storeData(false);
+         
+      }
+      */
         this.sendDataMail = function (mail) {
             _this.user = JSON.parse(localStorage.getItem('User'));
             var params = "a=" + mail;
@@ -3607,12 +3624,10 @@ var SrvData = /** @class */ (function () {
     }
     SrvData = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]) === "function" && _d || Object])
     ], SrvData);
     return SrvData;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=srvData.js.map

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/timeout';
+//import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/map';
 
 import { IUser } from '../models/user';
@@ -10,17 +10,17 @@ import { IConfig } from '../models/config';
 
 import { SrvHttp } from '../providers/srvHttp';
 import { SrvGeneral } from '../providers/srvGeneral';
-import { IMesAliments } from '../models/mesAliments';
+//import { IMesAliments } from '../models/mesAliments';
 import { Observable } from 'rxjs/Observable';
 import { timeout } from 'rxjs/operator/timeout';
-import { Serializer } from '@angular/compiler/src/i18n/serializers/serializer';
+//import { Serializer } from '@angular/compiler/src/i18n/serializers/serializer';
 
 @Injectable()
 export class SrvData {
   user: IUser = {} as any;
   data: IData = [] as any;
   config: IConfig = {} as any;
-  aliments :IMesAliments = {} as any;
+//  aliments :IMesAliments = {} as any;
   lstDataD: IData = {} as any;
 
   constructor( 
@@ -97,16 +97,16 @@ export class SrvData {
 
     if(calculInjection) {         
       this.srvGeneral.setMessageInjection(msgInjection,msgSubTitle);  
-      this.data.dateInj = this.srvGeneral.formatDate(new Date());
-      this.data.timeInj = this.srvGeneral.formatTime(new Date());
+//      this.data.dateInj = this.srvGeneral.formatDate(new Date());
+//      this.data.timeInj = this.srvGeneral.formatTime(new Date());
       this.data.commentaire = '';
       this.data.glycemieCapteur = 0;
       this.data.injection = injection;
-      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
+//      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
 
       localStorage.setItem("localData", JSON.stringify(this.dataToJson(this.data)));
       // Set Data Injection 
-      this.saveData();   
+//      this.saveData();   
     }
     else {         
       this.srvGeneral.setMessage(msgErr);
