@@ -97,16 +97,16 @@ export class SrvData {
 
     if(calculInjection) {         
       this.srvGeneral.setMessageInjection(msgInjection,msgSubTitle);  
-//      this.data.dateInj = this.srvGeneral.formatDate(new Date());
-//      this.data.timeInj = this.srvGeneral.formatTime(new Date());
+      this.data.dateInj = this.srvGeneral.formatDate(new Date());
+      this.data.timeInj = this.srvGeneral.formatTime(new Date());
       this.data.commentaire = '';
       this.data.glycemieCapteur = 0;
       this.data.injection = injection;
-//      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
+      this.data.repas = this.srvGeneral.getNumeroRepas(formCalcul.trancheHoraire);
 
       localStorage.setItem("localData", JSON.stringify(this.dataToJson(this.data)));
       // Set Data Injection 
-//      this.saveData();   
+      this.saveData();   
     }
     else {         
       this.srvGeneral.setMessage(msgErr);
