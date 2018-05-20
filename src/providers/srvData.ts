@@ -182,7 +182,13 @@ export class SrvData {
     this.lstDataD.glycemieCapteur=this.data.glycemieCapteur;
     this.lstDataD.repas=this.data.repas;
 
-    return this.lstDataD;
+    var storeData = this.listLocalData();
+    if(!storeData || storeData.length===0) {
+        storeData = [];
+    }
+    storeData.push(this.lstDataD);
+
+    return storeData;
   }
 
   public listLocalData = function () {
@@ -227,6 +233,7 @@ export class SrvData {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.set('user', this.user.num);
     let options = new RequestOptions({ headers: headers});
+
     var localData=this.listLocalData();
     var params = JSON.stringify(localData);
     var storeData = "n="+params;

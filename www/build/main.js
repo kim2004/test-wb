@@ -3558,7 +3558,12 @@ var SrvData = /** @class */ (function () {
             _this.lstDataD.glycemieAuto = _this.data.glycemieAuto;
             _this.lstDataD.glycemieCapteur = _this.data.glycemieCapteur;
             _this.lstDataD.repas = _this.data.repas;
-            return _this.lstDataD;
+            var storeData = _this.listLocalData();
+            if (!storeData || storeData.length === 0) {
+                storeData = [];
+            }
+            storeData.push(_this.lstDataD);
+            return storeData;
         };
         this.listLocalData = function () {
             var wd = localStorage.getItem("localData");
