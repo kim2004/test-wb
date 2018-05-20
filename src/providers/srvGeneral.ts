@@ -1,9 +1,13 @@
+import { App } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingController } from 'ionic-angular/index';
 import { AlertController, ToastController } from 'ionic-angular';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+
+import { HomePage } from '../pages/home/home';
 
 /*
   Generated class for the Famille provider.
@@ -17,6 +21,7 @@ export class SrvGeneral {
   loader: any;
 
   constructor( 
+    private app: App,
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController,
@@ -87,7 +92,7 @@ export class SrvGeneral {
 });   
   }
 
-  public setMessageInjection = ( title?: string, subTitle?: string ): void => {     
+  public setMessageInjection = ( title?: string, subTitle?: string, goHome?: boolean ): void => {     
     if(title==null || title.trim().length==0){
       title = 'Information';
     } 
@@ -98,7 +103,12 @@ export class SrvGeneral {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
-      buttons: ['Ok'],
+      buttons: [{
+          text: 'Ok',
+          handler: () => {
+            if(goHome){this.goHome();};
+        }}],
+//      buttons: ['Ok'],
       mode:'ios',
 //      cssClass: 'alertDanger',
       enableBackdropDismiss: false
@@ -272,6 +282,10 @@ export class SrvGeneral {
     var newnumberFloat =  parseFloat(newnumber);
     newnumber = newnumberFloat.toFixed(2);
     return parseFloat(newnumber);
+  };
+
+  public goHome = ( ):void => {
+    this.app.getRootNav().setRoot( HomePage, {}, {animate: true, direction: 'back'} );
   };
 
 }

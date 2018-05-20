@@ -126,7 +126,8 @@ export class webDia {
             data => {
               localStorage.removeItem('User');
               localStorage.removeItem("Config");
-              localStorage.removeItem("Donnees");
+              localStorage.removeItem("localData");
+              localStorage.removeItem("lastData");
               localStorage.removeItem("mesRepas");  
 
               // affiche le menu disconnect

@@ -123,12 +123,9 @@ export class AddDataPage {
     else if (tranche==="u6"){
       numRepas=6;
     }
-    this.data.repas=numRepas;
-   
-    //this.srvGeneral.setMessage(this.dataToString(this.data));
-    
-//    this.saveData(this.data);
-    localStorage.setItem("localData", JSON.stringify(this.srvData.dataToJson(this.data))); 
+    this.data.repas=numRepas;    
+
+    localStorage.setItem("localData", JSON.stringify(this.srvData.dataToJson(this.data)));   
     this.srvData.saveData();
   }
 

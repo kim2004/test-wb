@@ -96,7 +96,8 @@ export class SrvData {
     }
 
     if(calculInjection) {         
-      this.srvGeneral.setMessageInjection(msgInjection,msgSubTitle);  
+      this.srvGeneral.setMessageInjection(msgInjection,msgSubTitle,true); 
+
       this.data.dateInj = this.srvGeneral.formatDate(new Date());
       this.data.timeInj = this.srvGeneral.formatTime(new Date());
       this.data.commentaire = '';
@@ -106,7 +107,8 @@ export class SrvData {
 
       localStorage.setItem("localData", JSON.stringify(this.dataToJson(this.data)));
       // Set Data Injection 
-      this.saveData();   
+      this.saveData(); 
+
     }
     else {         
       this.srvGeneral.setMessage(msgErr);
@@ -170,17 +172,17 @@ export class SrvData {
   */
 
   public dataToJson = ( data: IData ):  any => {  
-    this.data.idUti=this.config[0].idUti;
-    this.lstDataD.idUti=this.data.idUti;
-    this.lstDataD.timeInj=this.data.timeInj;
-    this.lstDataD.dateInj=this.data.dateInj;
-    this.lstDataD.nbHdc=this.data.nbHdc;
-    this.lstDataD.glycemie=this.data.glycemie;
-    this.lstDataD.injection=this.data.injection;
-    this.lstDataD.commentaire=this.data.commentaire;
-    this.lstDataD.glycemieAuto=this.data.glycemieAuto;
-    this.lstDataD.glycemieCapteur=this.data.glycemieCapteur;
-    this.lstDataD.repas=this.data.repas;
+    data.idUti=this.config[0].idUti;
+    this.lstDataD.idUti=data.idUti;
+    this.lstDataD.timeInj=data.timeInj;
+    this.lstDataD.dateInj=data.dateInj;
+    this.lstDataD.nbHdc=data.nbHdc;
+    this.lstDataD.glycemie=data.glycemie;
+    this.lstDataD.injection=data.injection;
+    this.lstDataD.commentaire=data.commentaire;
+    this.lstDataD.glycemieAuto=data.glycemieAuto;
+    this.lstDataD.glycemieCapteur=data.glycemieCapteur;
+    this.lstDataD.repas=data.repas;
 
     var storeData = this.listLocalData();
     if(!storeData || storeData.length===0) {
@@ -234,7 +236,7 @@ export class SrvData {
     headers.set('user', this.user.num);
     let options = new RequestOptions({ headers: headers});
 
-    var localData=this.listLocalData();
+    var localData = this.listLocalData();
     var params = JSON.stringify(localData);
     var storeData = "n="+params;
     this.http.post(this.srvHttp.SERVER_URL+this.srvHttp.urlData, storeData, options)
