@@ -101,6 +101,7 @@ export class AddDataPage {
     this.data.dateInj = formData.currentDate.substring(0,10);
     this.data.timeInj = formData.currentDate.substring(11,16);
     this.data.commentaire = formData.commentaire;
+    this.data.commentaire = this.data.commentaire.replace(/"/g, "'");
     this.data.glycemieAuto = 0;
     this.data.glycemieCapteur = 0;
     var tranche=formData.trancheHoraire;

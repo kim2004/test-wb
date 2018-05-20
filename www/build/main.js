@@ -1913,6 +1913,7 @@ var AddDataPage = /** @class */ (function () {
             _this.data.dateInj = formData.currentDate.substring(0, 10);
             _this.data.timeInj = formData.currentDate.substring(11, 16);
             _this.data.commentaire = formData.commentaire;
+            _this.data.commentaire = _this.data.commentaire.replace(/"/g, "'");
             _this.data.glycemieAuto = 0;
             _this.data.glycemieCapteur = 0;
             var tranche = formData.trancheHoraire;
