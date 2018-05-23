@@ -76,8 +76,7 @@ export class LoginPage {
         this.srvAuth.connexion(this.formLogin.value.email, this.formLogin.value.password)
 //            .timeout(10000)
             .subscribe(
-              data => {    
-console.log(data);                                          
+              data => {                                            
                 if(data!=null){ 
                   localStorage.setItem("User", JSON.stringify(data.json())); 
                   localStorage.setItem("email",this.formLogin.value.email);               

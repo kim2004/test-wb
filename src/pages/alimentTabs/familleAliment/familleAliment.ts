@@ -16,7 +16,6 @@ import { SrvGeneral } from '../../../providers/srvGeneral';
 })
 export class FamilleAlimentPage {
   MES_FAVORIS: number = 14;
-
   favoris: boolean = false;
 
   listFamille: any;
