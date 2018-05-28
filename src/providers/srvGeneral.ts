@@ -45,41 +45,26 @@ export class SrvGeneral {
     }    
   }
 
-  public setMessage = ( text?: string, titre?: string, css?:string ): void => {    
+  public setMessage = ( text?: string, titre?: string, goHome?: boolean ): void => {    
     var alert = null;  
     var options = { };
 
     if(!titre){titre = 'Information';}    
     if(!text){text = 'Information';}   
 
-    if(css){
-       options = {
-        title: titre,
-        subTitle: text,
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-              return (localStorage.getItem('access')=='0'?true:true);
-          }}],
-        cssClass: 'alertDanger',
-        mode:'ios',
-        enableBackdropDismiss: false
-      };
-    } 
-    else {
-        options = {
-        title: titre,
-        subTitle: text,
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-              return (localStorage.getItem('access')=='0'?true:true);
-          }}],
-        mode:'ios',
-        cssClass: 'alertDanger',
-        enableBackdropDismiss: false
-      };
-    }
+    options = {
+      title: titre,
+      subTitle: text,
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          if(goHome){this.goHome();};
+  //              return (localStorage.getItem('access')=='0'?true:true);
+        }}],
+      mode:'ios',
+//      cssClass: 'alertDanger',
+      enableBackdropDismiss: false
+    };
     
     alert = this.alertCtrl.create(options);
     

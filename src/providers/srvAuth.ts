@@ -58,7 +58,13 @@ export class SrvAuth {
       return this.http.post( this.srvHttp.SERVER_URL + this.srvHttp.urlPassword, params, options )
             .timeout(10000)
             .map(res => {return true;})
-            .subscribe((err) => (this.srvHttp.handleError(err)));
+            .subscribe(
+              data => {
+                  this.srvGeneral.setMessage(this.translate.instant("msg.valideMotdepasseModifie"), "", true);  
+//                  this.goHome();       
+              },
+              err  => this.srvHttp.handleError(err)
+            );
     }
   }
 

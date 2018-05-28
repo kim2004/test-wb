@@ -82,14 +82,7 @@ export class ChangePasswordPage {
         this.srvGeneral.setMessage(this.translate.instant("msg.saisieMotdepasseDifferent"));
       }
       else {
-        this.srvAuth.changePassword(this.formChangePassword.value.oldPassword, this.formChangePassword.value.newPassword1)
-            .subscribe(
-              data => {
-                  this.srvGeneral.setMessage(this.translate.instant("msg.valideMotdepasseModifie"));  
-                  this.goHome();       
-              },
-              err  => this.srvHttp.handleError(err)
-            ); 
+        this.srvAuth.changePassword(this.formChangePassword.value.oldPassword, this.formChangePassword.value.newPassword1);      
       }                
     }
   }
