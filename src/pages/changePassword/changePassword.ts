@@ -4,14 +4,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { HomePage } from '../../pages/home/home';
-import { SrvHttp } from '../../providers/srvHttp';
 import { SrvAuth } from '../../providers/srvAuth';
 import { SrvGeneral } from '../../providers/srvGeneral';
 
 
 @Component({
   templateUrl: './changePassword.html',
-  providers: [SrvHttp, SrvAuth]
+  providers: [SrvAuth]
 })
 export class ChangePasswordPage {
   oldPasswod: string = "";
@@ -23,7 +22,6 @@ export class ChangePasswordPage {
 
 
   constructor( 
-    private srvHttp: SrvHttp, 
     private srvAuth: SrvAuth,
     private srvGeneral: SrvGeneral, 
     private navCtrl: NavController,

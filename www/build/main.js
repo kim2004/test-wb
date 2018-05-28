@@ -221,10 +221,13 @@ var SrvAuth = /** @class */ (function () {
     }
     SrvAuth = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__["a" /* SrvHttp */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__["a" /* SrvGeneral */],
+            __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */]])
     ], SrvAuth);
     return SrvAuth;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=srvAuth.js.map
@@ -2742,9 +2745,8 @@ var InformationPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvAuth__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvAuth__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2761,11 +2763,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ChangePasswordPage = /** @class */ (function () {
-    function ChangePasswordPage(srvHttp, srvAuth, srvGeneral, navCtrl, translate) {
+    function ChangePasswordPage(srvAuth, srvGeneral, navCtrl, translate) {
         var _this = this;
-        this.srvHttp = srvHttp;
         this.srvAuth = srvAuth;
         this.srvGeneral = srvGeneral;
         this.navCtrl = navCtrl;
@@ -2831,12 +2831,14 @@ var ChangePasswordPage = /** @class */ (function () {
     }
     ChangePasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\changePassword\changePassword.html"*/'<ion-header>\n  <ion-navbar hideBackButton="true">\n    <ion-buttons left>\n      <button ion-button (click)="goHome()">\n        <ion-icon class="ion-ios-home"></ion-icon>        \n      </button>\n    </ion-buttons>\n    <ion-title>\n      <div class="title center" style="padding-top: 10px;">\n        {{"frm.motdepasse.titre"|translate}}\n      </div>\n    </ion-title>\n    <ion-buttons right>\n          <button ion-button menuToggle>\n            <ion-icon class="ion-ios-menu"></ion-icon>\n          </button>\n        </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="background-color-login" no-lines >\n\n  <form (submit)="validateChangePassword()" [formGroup]="formChangePassword">\n\n    <ion-list>\n\n      <ion-item class="list-conf-rb">        \n        <ion-input type="password" autofocus formControlName="oldPassword" placeholder=\'{{"msg.motdepasse"|translate}}\' (keyup)="onChangeOldPassword($event.target.value)"></ion-input>\n      </ion-item>\n      <br>\n      <ion-item class="list-conf-rb">\n        <ion-input type="password" formControlName="newPassword1" placeholder=\'{{"msg.newMotdepasse"|translate}}\' (keyup)="onChangeNewPassword1($event.target.value)"></ion-input>\n      </ion-item>\n      <br>\n      <ion-item class="list-conf-rb">\n        <ion-input type="password" formControlName="newPassword2" placeholder=\'{{"msg.reNewMotdepasse"|translate}}\' (keyup)="onChangeNewPassword2($event.target.value)"></ion-input>\n      </ion-item>\n      <br>\n      <ion-grid>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <div class="dividerBlock"></div>\n          </ion-col>\n        </ion-row>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <button disabled={{buttonDisabled}} ion-button color="myck" type="submit" block>{{"button.ok"|translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n \n<ion-footer class="title center footer">\n  <div class="txt-footer">{{"msg.footer" | translate}}</div>\n</ion-footer>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\changePassword\changePassword.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__["a" /* SrvHttp */], __WEBPACK_IMPORTED_MODULE_6__providers_srvAuth__["a" /* SrvAuth */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__providers_srvAuth__["a" /* SrvAuth */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvAuth__["a" /* SrvAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvAuth__["a" /* SrvAuth */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__providers_srvAuth__["a" /* SrvAuth */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
     ], ChangePasswordPage);
     return ChangePasswordPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=changePassword.js.map
@@ -4416,10 +4418,14 @@ var SrvGeneral = /** @class */ (function () {
     };
     SrvGeneral = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["c" /* App */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["p" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_index__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_index__["h" /* LoadingController */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["c" /* App */],
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_index__["h" /* LoadingController */]])
     ], SrvGeneral);
     return SrvGeneral;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=srvGeneral.js.map
