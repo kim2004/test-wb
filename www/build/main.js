@@ -1610,14 +1610,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   for more info on providers and Angular 2 DI.
 */
 var SrvHttp = /** @class */ (function () {
-    //SERVER_URL = 'http://macbookpatrick.local:8081/webdia/';
+    //  SERVER_URL = 'http://localhost:8084/webdia/';
     function SrvHttp(srvGeneral, translate) {
         var _this = this;
         this.srvGeneral = srvGeneral;
         this.translate = translate;
-        //SERVER_URL = 'http://www.kmconcept.net/webdia/';
-        //SERVER_URL = 'http://192.168.1.22:8081/webdia/';
-        this.SERVER_URL = 'http://localhost:8084/webdia/';
+        this.SERVER_URL = 'http://www.kmconcept.net/webdia/';
         this.getFavoris = function () {
             return JSON.parse(localStorage.getItem("mesRepas"));
         };
@@ -1653,10 +1651,10 @@ var SrvHttp = /** @class */ (function () {
     }
     SrvHttp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object])
     ], SrvHttp);
     return SrvHttp;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=srvHttp.js.map
