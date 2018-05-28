@@ -26,8 +26,8 @@ export class AjoutAlimentPage {
   nbHdc: string = "";
   base64ImageT: string = null;
   lstAlimentAdd: IAlimentAdd[] = {} as any; ;
-  clearNom : string
-  clearHdc:number;
+//  clearNom : string
+//  clearHdc : number;
   img:boolean=false;
 
 
@@ -52,12 +52,9 @@ export class AjoutAlimentPage {
   public onChangeNom = ( data ): void => {
     this.nom = data;  
   }
-  
-
   public onChangeHdc = ( data ): void => {
     this.nbHdc = data;    
   } 
-
   public onChangeUnite = ( data, item ): void => {
     this.unite = item;   // 1 = 100gr. - 2 = unité
   }  
@@ -95,15 +92,15 @@ export class AjoutAlimentPage {
     alert.present();
   }
 
-  public setRepas = ( ): void => {  
+  public setRepas = ( ): void => {
     var data: {};
     this.platform.ready().then(() => {   
       if(this.nom && this.nom.length>0){
         if(this.nbHdc && this.nbHdc.length>0){
           this.srvAliment.upload(this.base64ImageT, this.nom, Number.parseFloat(this.nbHdc), this.unite);
           this.base64ImageT=null;
-          this.clearHdc=0;
-          this.clearNom="";
+//          this.clearHdc=0;
+//          this.clearNom="";
         }
         else {
           this.srvGeneral.setMessage(this.translate.instant("msg.saisieNbHdC"));

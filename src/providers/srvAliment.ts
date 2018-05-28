@@ -56,20 +56,19 @@ export class SrvAliment {
       // Get the data of an image
       this.camera.getPicture(options).then((imageData) => {
         let base64Image = null;
-              //get photo from the camera based on platform type
-                base64Image = "data:image/jpeg;base64," + imageData;
+        //get photo from the camera based on platform type
+        base64Image = "data:image/jpeg;base64," + imageData;
         // Call Events de ajoutAliment.ts afin d'afficher l'image à l'écran
-          this.events.publish('initImageSrc', base64Image);
-        }, (err) => {
-          this.srvGeneral.presentToast(this.translate.instant("msg.image.error.select"));
-        });
+        this.events.publish('initImageSrc', base64Image);
+      }, 
+      (err) => {
+        this.srvGeneral.presentToast(this.translate.instant("msg.image.error.select"));
+      });
     });
   }
 
   public upload =  ( dataFile: string, nom: string, hdc: number, unite: number):void=>  { 
    this.platform.ready().then(() => {
-      //this.srvGeneral.setLoader(true);
-
       // Destination URL
       var url = this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment;  
 
@@ -95,22 +94,17 @@ export class SrvAliment {
         this.http.post(url, params, options)
             .subscribe(
                 data => {
-                  //this.srvGeneral.setLoader(false);
-                 
                   this.srvGeneral.setMessage(this.translate.instant("msg.image.enreg"));
-                  
-                  //this.getMesAliments(options);
                } ,
                 err  => {
-                    var data = <IAlimentAdd>new Object();
-                    data.file=encodeURIComponent(dataFile);
-                    data.name=nom;
-                    data.nbHdc=hdc;
-                    data.unite=unite;
-                    this.lstAlimentAdd=this.listLstAddAliment();
-                    this.lstAlimentAdd.push(data);
-                    localStorage.setItem("addAliment",JSON.stringify(this.lstAlimentAdd));
-                  //this.srvGeneral.setLoader(false);
+                  var data = <IAlimentAdd>new Object();
+                  data.file = encodeURIComponent(dataFile);
+                  data.name = nom;
+                  data.nbHdc = hdc;
+                  data.unite = unite;
+                  this.lstAlimentAdd = this.listLstAddAliment();
+                  this.lstAlimentAdd.push(data);
+                  localStorage.setItem("addAliment",JSON.stringify(this.lstAlimentAdd));
                   this.srvHttp.handleError(err);
                 }
             ); 

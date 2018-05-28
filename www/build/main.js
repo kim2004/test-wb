@@ -2253,6 +2253,8 @@ var AjoutAlimentPage = /** @class */ (function () {
         this.nbHdc = "";
         this.base64ImageT = null;
         this.lstAlimentAdd = {};
+        //  clearNom : string
+        //  clearHdc : number;
         this.img = false;
         this.onChangeNom = function (data) {
             _this.nom = data;
@@ -2300,8 +2302,8 @@ var AjoutAlimentPage = /** @class */ (function () {
                     if (_this.nbHdc && _this.nbHdc.length > 0) {
                         _this.srvAliment.upload(_this.base64ImageT, _this.nom, Number.parseFloat(_this.nbHdc), _this.unite);
                         _this.base64ImageT = null;
-                        _this.clearHdc = 0;
-                        _this.clearNom = "";
+                        //          this.clearHdc=0;
+                        //          this.clearNom="";
                     }
                     else {
                         _this.srvGeneral.setMessage(_this.translate.instant("msg.saisieNbHdC"));
@@ -2329,20 +2331,13 @@ var AjoutAlimentPage = /** @class */ (function () {
     ;
     AjoutAlimentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-ajoutAliment',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\ajoutAliment\ajoutAliment.html"*/'<ion-content padding class="background-color-aliment">\n    <div style="height:30px;">\n      <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>\n    </div>\n    \n    <ion-grid>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <button ion-button block color="dark" class="button-selectImage" (click)="selectImage()">\n              <ion-icon name="camera"></ion-icon>&nbsp;&nbsp;&nbsp;{{"msg.image.select"|translate}}    \n            </button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n     \n<!--      \n      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">\n        <ion-icon name="cloud-upload"></ion-icon>Upload\n      </button>\n-->      \n    <ion-list> \n\n      <ion-grid>\n        <ion-row class="center">\n          <ion-col width-100 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-input [value]="clearNom" name="nom" required autofocus type="text" placeholder=\'{{"msg.nom.aliment"|translate}}\' (keyup)="onChangeNom($event.target.value)"></ion-input>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>\n        <ion-row class="center">\n          <ion-col width-50 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-input [value]="clearHdc" name="nbHdc" required type="number" placeholder=\'{{"frm.monAliment.nbHdc"|translate}}\' (keyup)="onChangeHdc($event.target.value)"></ion-input>\n            </ion-item>\n          </ion-col>\n          <ion-col width-50 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-select [(ngModel)]="select" (ionChange)="onChangeUnite($event, select)" class="selectOption" cancelText="{{\'button.annuler\'|translate}}" okText="{{\'button.ok\'|translate}}">\n                <ion-option value=100 selected="true">100 gr.</ion-option>\n                <ion-option value=1>unité</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>    \n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <img  [src]="base64ImageT" style="width: 100%" [hidden]="(base64ImageT === null)">\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n<!--            <button class="button-ok" disabled={{buttonDisabled}} ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>-->\n            <button class="button-ok" ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\ajoutAliment\ajoutAliment.html"*/,
+            selector: 'page-ajoutAliment',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\ajoutAliment\ajoutAliment.html"*/'<ion-content padding class="background-color-aliment">\n    <div style="height:30px;">\n      <span class="txt-title">{{"frm.aliments.titre" | translate}}</span>\n    </div>\n    \n    <ion-grid>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <button ion-button block color="dark" class="button-selectImage" (click)="selectImage()">\n              <ion-icon name="camera"></ion-icon>&nbsp;&nbsp;&nbsp;{{"msg.image.select"|translate}}    \n            </button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n     \n<!--      \n      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">\n        <ion-icon name="cloud-upload"></ion-icon>Upload\n      </button>\n-->      \n    <ion-list> \n\n      <ion-grid>\n        <ion-row class="center">\n          <ion-col width-100 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-input [value]="nom" name="nom" required autofocus type="text" placeholder=\'{{"msg.nom.aliment"|translate}}\' (keyup)="onChangeNom($event.target.value)"></ion-input>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>\n        <ion-row class="center">\n          <ion-col width-50 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-input [value]="nbHdc" name="nbHdc" required type="number" placeholder=\'{{"frm.monAliment.nbHdc"|translate}}\' (keyup)="onChangeHdc($event.target.value)"></ion-input>\n            </ion-item>\n          </ion-col>\n          <ion-col width-50 class="center-col">\n            <ion-item no-lines class="itemConf list-conf-rb" >\n              <ion-select [(ngModel)]="select" (ionChange)="onChangeUnite($event, select)" class="selectOption" cancelText="{{\'button.annuler\'|translate}}" okText="{{\'button.ok\'|translate}}">\n                <ion-option value=100 selected="true">100 gr.</ion-option>\n                <ion-option value=1>unité</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>    \n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n            <img  [src]="base64ImageT" style="width: 100%" [hidden]="(base64ImageT === null)">\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-grid>\n        <ion-row class="center">  \n          <ion-col width-90 class="center-col">\n<!--            <button class="button-ok" disabled={{buttonDisabled}} ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>-->\n            <button class="button-ok" ion-button block (click)="setRepas()">{{"button.ok"|translate}}</button>\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\ajoutAliment\ajoutAliment.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */], __WEBPACK_IMPORTED_MODULE_5__providers_srvAliment__["a" /* SrvAliment */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_srvAliment__["a" /* SrvAliment */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* ActionSheetController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_srvAliment__["a" /* SrvAliment */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_srvAliment__["a" /* SrvAliment */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* ActionSheetController */]) === "function" && _j || Object])
     ], AjoutAlimentPage);
     return AjoutAlimentPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=ajoutAliment.js.map
@@ -3750,7 +3745,6 @@ var SrvAliment = /** @class */ (function () {
         };
         this.upload = function (dataFile, nom, hdc, unite) {
             _this.platform.ready().then(function () {
-                //this.srvGeneral.setLoader(true);
                 // Destination URL
                 var url = _this.srvHttp.SERVER_URL + _this.srvHttp.urlMesdAliment;
                 _this.user = JSON.parse(localStorage.getItem('User'));
@@ -3772,9 +3766,7 @@ var SrvAliment = /** @class */ (function () {
                     var params = "img=" + strMesAliments;
                     _this.http.post(url, params, options)
                         .subscribe(function (data) {
-                        //this.srvGeneral.setLoader(false);
                         _this.srvGeneral.setMessage(_this.translate.instant("msg.image.enreg"));
-                        //this.getMesAliments(options);
                     }, function (err) {
                         var data = new Object();
                         data.file = encodeURIComponent(dataFile);
@@ -3784,7 +3776,6 @@ var SrvAliment = /** @class */ (function () {
                         _this.lstAlimentAdd = _this.listLstAddAliment();
                         _this.lstAlimentAdd.push(data);
                         localStorage.setItem("addAliment", JSON.stringify(_this.lstAlimentAdd));
-                        //this.srvGeneral.setLoader(false);
                         _this.srvHttp.handleError(err);
                     });
                 }
@@ -3893,15 +3884,10 @@ var SrvAliment = /** @class */ (function () {
     }
     SrvAliment = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _g || Object])
     ], SrvAliment);
     return SrvAliment;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=srvAliment.js.map
