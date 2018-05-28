@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 
 import { HomePage } from '../../../pages/home/home';
 import { SrvData } from '../../../providers/srvData';
-import { SrvHttp } from '../../../providers/srvHttp';
 import { SrvGeneral } from '../../../providers/srvGeneral';
 
 
@@ -24,7 +23,6 @@ export class SendDataPage {
   constructor( 
     private http: Http,
     private srvData: SrvData,
-    private srvHttp: SrvHttp,
     private navCtrl: NavController,
     private srvGeneral: SrvGeneral,
     private translate: TranslateService ) {

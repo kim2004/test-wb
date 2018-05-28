@@ -524,15 +524,10 @@ var SrvInscription = /** @class */ (function () {
     }
     SrvInscription = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _g || Object])
     ], SrvInscription);
     return SrvInscription;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=srvInscription.js.map
@@ -717,8 +712,7 @@ var CalculPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvQuantite; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_srvGeneral__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -730,12 +724,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var SrvQuantite = /** @class */ (function () {
-    function SrvQuantite(srvGeneral, platform) {
+    function SrvQuantite(srvGeneral) {
         var _this = this;
         this.srvGeneral = srvGeneral;
-        this.platform = platform;
         this.repas = {};
         this.lstRepas = [];
         this.getNbHdcRepas = function () {
@@ -836,9 +828,10 @@ var SrvQuantite = /** @class */ (function () {
     };
     SrvQuantite = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_srvGeneral__["a" /* SrvGeneral */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _a || Object])
     ], SrvQuantite);
     return SrvQuantite;
+    var _a;
 }());
 
 //# sourceMappingURL=srvQuantite.js.map
@@ -1996,8 +1989,7 @@ var AddDataPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvData__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_srvGeneral__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2016,13 +2008,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var SendDataPage = /** @class */ (function () {
-    function SendDataPage(http, srvData, srvHttp, navCtrl, srvGeneral, translate) {
+    function SendDataPage(http, srvData, navCtrl, srvGeneral, translate) {
         var _this = this;
         this.http = http;
         this.srvData = srvData;
-        this.srvHttp = srvHttp;
         this.navCtrl = navCtrl;
         this.srvGeneral = srvGeneral;
         this.translate = translate;
@@ -2055,16 +2045,12 @@ var SendDataPage = /** @class */ (function () {
     SendDataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'page-sendData',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/'<ion-content padding class="background-color-donnees">\n  <div>\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n  </div>\n  <div  style="margin-top:10px;"class="roundRect_Sent">\n    <span class="txt-title-D" style="font-size:1.4em;">{{"frm.transfert.envoi"|translate}}</span>\n  </div>\n  <br>\n\n  <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">\n\n    <ion-list> \n      <ion-item class="list-conf-rb itemConf">\n        <ion-input type="text" formControlName="mail" placeholder=\'{{"msg.inscription.email"|translate}}\'></ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-grid>\n      <ion-row class="center">  \n        <ion-col width-90 class="center-col">\n          <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>  \n\n  </form>\n\n</ion-content>\n '/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_9__providers_srvGeneral__["a" /* SrvGeneral */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _e || Object])
     ], SendDataPage);
     return SendDataPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=sendData.js.map
@@ -4048,17 +4034,10 @@ var QuantitePage = /** @class */ (function () {
             selector: 'page-quantite',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\quantite\quantite.html"*/'<ion-content padding class="background-color-aliment">\n\n    <ion-grid class="vertical-align-content">\n      <ion-row>\n          <ion-col width-100 class="center"><span [innerHTML]="quantiteAliment"></span></ion-col>        \n      </ion-row>\n\n      <ion-row>\n        <ion-col width-100>\n          <ion-item no-lines class="itemConf list-conf-rb">\n            <!--\n            <ion-input type="number" [value]="quantite" placeholder=\'{{"frm.quantite.saisieQuantite"|translate}}\' (change)="getQuantite($event.target.value)"></ion-input>\n            -->\n            <ion-input type="number" [value]="quantite" placeholder=\'{{getTextUnite()}}\' (change)="getQuantite($event.target.value)"></ion-input>\n          </ion-item>\n        </ion-col>\n      </ion-row>      \n      <ion-row class="center">  \n        <ion-col width-90 class="center-col">\n          <div class="dividerBlock" ></div>\n        </ion-col>\n      </ion-row>\n      <ion-row class="center">  \n        <ion-col width-50 class="center-col">\n          <button ion-button full color="myck" (click)="calculHdc()">{{"button.ok"|translate}}</button>\n        </ion-col>\n        <ion-col width-50 class="center-col">\n          <button ion-button full color="dark" (click)="returnAliment();">{{"button.annuler"|translate}}</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid> \n\n    <ion-grid>\n      <ion-row class="center">\n        <ion-col width-90 class="center-col">\n          <img src="{{imageAliment_1}}" class="imgAliment" [hidden]="(imageAliment_1 === null || alimentAffiche !== 1)">\n          <img src="{{imageAliment_2}}" class="imgAliment" [hidden]="(imageAliment_2 === null || alimentAffiche !== 2)">\n          <img src="{{imageAliment_3}}" class="imgAliment" [hidden]="(imageAliment_3 === null || alimentAffiche !== 3)">\n          <img [src]="sanitizer.bypassSecurityTrustUrl(imageMonAliment)" style="width:100%;" class="imgAliment" [hidden]="(imageMonAliment === null || imageMonAliment==\'undefined\')">\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-grid class="button-quantite" [hidden]="imageAliment === 0">\n      <ion-row class="center">\n        <ion-col width-33 class="center-col" (click)=\'setQuantite(1)\'>\n            <span>{{quantite_1}}</span>\n        </ion-col>\n        <ion-col width-33 class="center-col col-border" (click)=\'setQuantite(2)\'>\n            <span>{{quantite_2}}</span>\n        </ion-col>\n        <ion-col width-33 class="center-col" (click)=\'setQuantite(3)\'>\n            <span>{{quantite_3}}</span>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\quantite\quantite.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */], __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */],
-            __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _j || Object])
     ], QuantitePage);
     return QuantitePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=quantite.js.map

@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/timeout';
-import { normalizeURL } from 'ionic-angular';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { IUser } from '../models/user';
 import { IMesAliments } from '../models/mesAliments';

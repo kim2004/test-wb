@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+
 import { IRepas } from '../models/repas';
-import { normalizeURL } from 'ionic-angular';
 import { SrvGeneral } from '../providers/srvGeneral';
-import { normalizeUrl } from 'ionic-angular/navigation/deep-linker';
 
 
 @Injectable()
@@ -15,7 +13,7 @@ export class SrvQuantite {
 
 
   constructor( 
-    private srvGeneral: SrvGeneral,private platform: Platform ) { 
+    private srvGeneral: SrvGeneral ) { 
         this.langue = localStorage.getItem("langue");
         this.lstData = JSON.parse(localStorage.getItem("Aliments")); 
     }
