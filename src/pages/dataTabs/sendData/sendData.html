@@ -1,11 +1,9 @@
 <ion-content padding class="background-color-donnees">
-  <div>
+  <div style="padding-bottom:10px;">
     <span class="txt-title">{{"frm.data.titre" | translate}}</span>
+    <br>
   </div>
-  <div  style="margin-top:10px;"class="roundRect_Sent">
-    <span class="txt-title-D" style="font-size:1.4em;">{{"frm.transfert.envoi"|translate}}</span>
-  </div>
-  <br>
+  <div style="color:#000;padding-bottom:10px">{{"frm.transfert.envoi"|translate}}</div>
 
   <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">
 
@@ -26,4 +24,3 @@
   </form>
 
 </ion-content>
- 

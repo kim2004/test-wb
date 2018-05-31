@@ -72,12 +72,14 @@ export class SrvInit {
             err => (console.log("getMesDonnees: Delay exceeded !"))
           );
             
-      this.srvAliment.getFavoris( options );
+//      this.srvAliment.getFavoris( options );
       this.srvAliment.getMesAliments( options );   
       this.srvConfig.getConfiguration( options );
       localStorage.getItem("localData")!=null && localStorage.getItem('localData').toString()!='[]'? this.srvData.saveData():'';   
     } 
-    this.srvAliment.getAliments();
+    else {
+      this.srvAliment.getAliments();
+    }
     this.srvAliment.getImagesAliments();            
   }
 

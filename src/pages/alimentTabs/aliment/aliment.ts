@@ -142,13 +142,15 @@ export class AlimentPage {
     alert.present(); 
   }
 
+/*  
   ionViewWillEnter() {
     this.user = JSON.parse(localStorage.getItem('User'));
     if(this.user && this.user.num && this.user.num.length>0){
       let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
       headers.append('user', this.user.num);
       let options = new RequestOptions({ headers: headers });
-    this.srvAliment.getMesAliments(options);
+      this.srvAliment.getMesAliments(options);
     }
   }
+  */
 }

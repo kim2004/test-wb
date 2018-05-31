@@ -24,7 +24,7 @@ export class AjoutAlimentPage {
   nom: string = "";
   unite: number = 0;
   nbHdc: string = "";
-  base64ImageT: string = null;
+  base64Image: string = null;
   lstAlimentAdd: IAlimentAdd[] = {} as any; ;
 //  clearNom : string
 //  clearHdc : number;
@@ -44,7 +44,7 @@ export class AjoutAlimentPage {
 
       // Permet d'initialiser l'image "lastImage", appelé dans le provider srvAliment.ts
       this.events.subscribe('initImageSrc', (dataImage) => {
-        this.base64ImageT = dataImage;      
+        this.base64Image = dataImage;      
       });
 
     }
@@ -97,8 +97,8 @@ export class AjoutAlimentPage {
     this.platform.ready().then(() => {   
       if(this.nom && this.nom.length>0){
         if(this.nbHdc && this.nbHdc.length>0){
-          this.srvAliment.upload(this.base64ImageT, this.nom, Number.parseFloat(this.nbHdc), this.unite);
-          this.base64ImageT=null;
+          this.srvAliment.upload(this.base64Image, this.nom, Number.parseFloat(this.nbHdc), this.unite);
+          this.base64Image=null;
 //          this.clearHdc=0;
 //          this.clearNom="";
         }
@@ -114,8 +114,8 @@ export class AjoutAlimentPage {
 
   public resetChamps= ():void=>{
     this.events.subscribe('initImageSrc', (dataImage) => {
-              this.base64ImageT = "";      
-            });
+      this.base64Image=null;     
+    });
   }
 
 /* ---------------------------------------------------------------------------------------------------------------- */

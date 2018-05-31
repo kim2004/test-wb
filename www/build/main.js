@@ -11,7 +11,7 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvAuth__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvInit__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -141,10 +141,10 @@ var LoginPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvAuth; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_timeout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__(8);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -240,10 +240,10 @@ var SrvAuth = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvInit; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvData__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvConfig__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvAliment__ = __webpack_require__(52);
@@ -314,25 +314,23 @@ var SrvInit = /** @class */ (function () {
                 _this.srvData.getMesDonnees(options)
                     .timeout(10000)
                     .subscribe(function (data) { return localStorage.setItem("lastData", JSON.stringify(data.json())); }, function (err) { return (console.log("getMesDonnees: Delay exceeded !")); });
-                _this.srvAliment.getFavoris(options);
+                //      this.srvAliment.getFavoris( options );
                 _this.srvAliment.getMesAliments(options);
                 _this.srvConfig.getConfiguration(options);
                 localStorage.getItem("localData") != null && localStorage.getItem('localData').toString() != '[]' ? _this.srvData.saveData() : '';
             }
-            _this.srvAliment.getAliments();
+            else {
+                _this.srvAliment.getAliments();
+            }
             _this.srvAliment.getImagesAliments();
         };
     }
     SrvInit = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_srvData__["a" /* SrvData */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_srvConfig__["a" /* SrvConfig */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_srvAliment__["a" /* SrvAliment */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_srvInscription__["a" /* SrvInscription */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvData__["a" /* SrvData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvData__["a" /* SrvData */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_srvConfig__["a" /* SrvConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_srvConfig__["a" /* SrvConfig */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvAliment__["a" /* SrvAliment */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvAliment__["a" /* SrvAliment */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvInscription__["a" /* SrvInscription */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvInscription__["a" /* SrvInscription */]) === "function" && _f || Object])
     ], SrvInit);
     return SrvInit;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=srvInit.js.map
@@ -344,12 +342,12 @@ var SrvInit = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvConfig; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_timeout__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_timeout__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -433,10 +431,10 @@ var SrvConfig = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -524,10 +522,15 @@ var SrvInscription = /** @class */ (function () {
     }
     SrvInscription = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__["a" /* SrvHttp */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__["a" /* SrvGeneral */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
     ], SrvInscription);
     return SrvInscription;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=srvInscription.js.map
@@ -543,7 +546,7 @@ var SrvInscription = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvData__ = __webpack_require__(37);
@@ -828,10 +831,9 @@ var SrvQuantite = /** @class */ (function () {
     };
     SrvQuantite = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_srvGeneral__["a" /* SrvGeneral */]])
     ], SrvQuantite);
     return SrvQuantite;
-    var _a;
 }());
 
 //# sourceMappingURL=srvQuantite.js.map
@@ -844,12 +846,12 @@ var SrvQuantite = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataTabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dataTabs_data_data__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvData__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dataTabs_addData_addData__ = __webpack_require__(233);
@@ -975,15 +977,15 @@ var DataTabsPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FamilleAlimentPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__aliment_aliment__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1089,12 +1091,12 @@ var FamilleAlimentPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfigurationPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
@@ -1219,7 +1221,7 @@ var ConfigurationPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvInscription__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1570,7 +1572,24 @@ webpackEmptyAsyncContext.id = 141;
 
 /***/ }),
 
-/***/ 16:
+/***/ 186:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 186;
+
+/***/ }),
+
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1579,7 +1598,7 @@ webpackEmptyAsyncContext.id = 141;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1609,9 +1628,11 @@ var SrvHttp = /** @class */ (function () {
         this.srvGeneral = srvGeneral;
         this.translate = translate;
         this.SERVER_URL = 'http://www.kmconcept.net/webdia/';
-        this.getFavoris = function () {
-            return JSON.parse(localStorage.getItem("mesRepas"));
-        };
+        /*
+        public getFavoris = ( ): void => {
+          return JSON.parse(localStorage.getItem("mesRepas"));
+        }
+        */
         this.getFamilleAliment = function () {
             return JSON.parse(localStorage.getItem("FamillesAliments"));
         };
@@ -1651,23 +1672,6 @@ var SrvHttp = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=srvHttp.js.map
-
-/***/ }),
-
-/***/ 186:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 186;
 
 /***/ }),
 
@@ -1714,11 +1718,11 @@ var SrvSafeHtml = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipes_srvConvertDate__ = __webpack_require__(232);
@@ -1828,13 +1832,13 @@ var SrvConvertDate = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvData__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dataTabs_dataTabs__ = __webpack_require__(129);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1980,12 +1984,12 @@ var AddDataPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SendDataPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvData__ = __webpack_require__(37);
@@ -2044,13 +2048,16 @@ var SendDataPage = /** @class */ (function () {
     }
     SendDataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-            selector: 'page-sendData',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/'<ion-content padding class="background-color-donnees">\n  <div>\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n  </div>\n  <div  style="margin-top:10px;"class="roundRect_Sent">\n    <span class="txt-title-D" style="font-size:1.4em;">{{"frm.transfert.envoi"|translate}}</span>\n  </div>\n  <br>\n\n  <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">\n\n    <ion-list> \n      <ion-item class="list-conf-rb itemConf">\n        <ion-input type="text" formControlName="mail" placeholder=\'{{"msg.inscription.email"|translate}}\'></ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-grid>\n      <ion-row class="center">  \n        <ion-col width-90 class="center-col">\n          <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>  \n\n  </form>\n\n</ion-content>\n '/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/,
+            selector: 'page-sendData',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/'<ion-content padding class="background-color-donnees">\n  <div style="padding-bottom:10px;">\n    <span class="txt-title">{{"frm.data.titre" | translate}}</span>\n    <br>\n  </div>\n  <div style="color:#000;padding-bottom:10px">{{"frm.transfert.envoi"|translate}}</div>\n\n  <form (submit)="validateSendMail(true, formSendMail.value)" [formGroup]="formSendMail">\n\n    <ion-list> \n      <ion-item class="list-conf-rb itemConf">\n        <ion-input type="text" formControlName="mail" placeholder=\'{{"msg.inscription.email"|translate}}\'></ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-grid>\n      <ion-row class="center">  \n        <ion-col width-90 class="center-col">\n          <button ion-button class="button-ok" type="submit" block>{{"button.ok"|translate}}</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>  \n\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\dataTabs\sendData\sendData.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_srvData__["a" /* SrvData */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_8__providers_srvGeneral__["a" /* SrvGeneral */],
+            __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]])
     ], SendDataPage);
     return SendDataPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=sendData.js.map
@@ -2235,7 +2242,7 @@ var AjoutAlimentPage = /** @class */ (function () {
         this.nom = "";
         this.unite = 0;
         this.nbHdc = "";
-        this.base64ImageT = null;
+        this.base64Image = null;
         this.lstAlimentAdd = {};
         //  clearNom : string
         //  clearHdc : number;
@@ -2284,8 +2291,8 @@ var AjoutAlimentPage = /** @class */ (function () {
             _this.platform.ready().then(function () {
                 if (_this.nom && _this.nom.length > 0) {
                     if (_this.nbHdc && _this.nbHdc.length > 0) {
-                        _this.srvAliment.upload(_this.base64ImageT, _this.nom, Number.parseFloat(_this.nbHdc), _this.unite);
-                        _this.base64ImageT = null;
+                        _this.srvAliment.upload(_this.base64Image, _this.nom, Number.parseFloat(_this.nbHdc), _this.unite);
+                        _this.base64Image = null;
                         //          this.clearHdc=0;
                         //          this.clearNom="";
                     }
@@ -2300,7 +2307,7 @@ var AjoutAlimentPage = /** @class */ (function () {
         };
         this.resetChamps = function () {
             _this.events.subscribe('initImageSrc', function (dataImage) {
-                _this.base64ImageT = "";
+                _this.base64Image = null;
             });
         };
         /* ---------------------------------------------------------------------------------------------------------------- */
@@ -2309,7 +2316,7 @@ var AjoutAlimentPage = /** @class */ (function () {
         };
         // Permet d'initialiser l'image "lastImage", appelé dans le provider srvAliment.ts
         this.events.subscribe('initImageSrc', function (dataImage) {
-            _this.base64ImageT = dataImage;
+            _this.base64Image = dataImage;
         });
     }
     ;
@@ -2337,12 +2344,12 @@ var AjoutAlimentPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_index__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipes_srvSort__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__quantite_quantite__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_srvAliment__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__familleAliment_familleAliment__ = __webpack_require__(130);
@@ -2470,32 +2477,15 @@ var AlimentPage = /** @class */ (function () {
         this.param = params.get("idFamille");
         this.getAlimentFamille(this.param);
     }
-    AlimentPage.prototype.ionViewWillEnter = function () {
-        this.user = JSON.parse(localStorage.getItem('User'));
-        if (this.user && this.user.num && this.user.num.length > 0) {
-            var headers = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-            headers.append('user', this.user.num);
-            var options = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["d" /* RequestOptions */]({ headers: headers });
-            this.srvAliment.getMesAliments(options);
-        }
-    };
     AlimentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-aliment',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\aliment\aliment.html"*/'<ion-content padding class="background-color-aliment">\n  <div style="height:30px;">\n    <span class="txt-title">{{getTextTitle()}}</span>\n  </div>\n  <ion-searchbar (ionInput)="setFilteredItems($event)" placeholder=\'{{"msg.rechercheAliments"|translate}}\'></ion-searchbar>\n  <ion-list no-lines >\n    <div [hidden]="(isMesAliments === 0)">\n      <ion-item-sliding style="padding:3px 10px 3px 3px;border-bottom:1px solid grey" *ngFor="let aliment of listAliment | OrderBy : [\'nom\']" (click)="getQuantite(aliment.id, aliment.quantite)">\n        <ion-item>\n          {{aliment.nom}}    \n          <ion-icon (click)="deleteMesAliments(aliment.id)" item-right name="remove-circle"></ion-icon>    \n        </ion-item>\n\n<!--\n        <ion-item-options>\n          <button ion-button icon-only (click)="deleteMesAliments(aliment.id)" [color]="\'danger\'">\n            <ion-icon name="trash"></ion-icon>\n          </button>\n        </ion-item-options>\n-->\n\n      </ion-item-sliding>\n    </div>\n\n    <div [hidden]="(isMesAliments !== 0)">\n      <ion-item *ngFor="let aliment of listAliment | OrderBy : [\'nom\']" (click)="getQuantite(aliment.id, aliment.quantite)">\n          {{aliment.nom}}\n      </ion-item>\n    </div>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\aliment\aliment.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__["a" /* SrvHttp */], __WEBPACK_IMPORTED_MODULE_10__providers_srvGeneral__["a" /* SrvGeneral */], __WEBPACK_IMPORTED_MODULE_9__providers_srvAliment__["a" /* SrvAliment */], __WEBPACK_IMPORTED_MODULE_6__pipes_srvSort__["a" /* SrvSort */]],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__["a" /* SrvHttp */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_srvAliment__["a" /* SrvAliment */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_10__providers_srvGeneral__["a" /* SrvGeneral */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular_index__["h" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__["a" /* SrvHttp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__providers_srvHttp__["a" /* SrvHttp */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_9__providers_srvAliment__["a" /* SrvAliment */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__providers_srvAliment__["a" /* SrvAliment */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_10__providers_srvGeneral__["a" /* SrvGeneral */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__providers_srvGeneral__["a" /* SrvGeneral */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular_index__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular_index__["h" /* LoadingController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]) === "function" && _k || Object])
     ], AlimentPage);
     return AlimentPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=aliment.js.map
@@ -2844,7 +2834,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_keyboard__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(144);
@@ -2860,7 +2850,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_component__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pipes_srvSort__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_srvInit__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_srvData__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_pop_popup__ = __webpack_require__(239);
@@ -3051,7 +3041,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keyboard__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvAuth__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_srvInit__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_login_login__ = __webpack_require__(122);
@@ -3264,10 +3254,10 @@ module.exports = function(module) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_alimentTabs_quantite_quantite__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_srvAliment__ = __webpack_require__(52);
@@ -3358,10 +3348,10 @@ var FavorisPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SrvData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3664,10 +3654,10 @@ var SrvData = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_srvHttp__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_srvGeneral__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3799,15 +3789,17 @@ var SrvAliment = /** @class */ (function () {
             })
                 .subscribe(function (data) { return (data); }, function (err) { return (console.log("getImagesAliments: Delay exceeded !")); });
         };
-        this.getFavoris = function (options) {
-            _this.http.get(_this.srvHttp.SERVER_URL + _this.srvHttp.urlFavoris, options)
+        /*
+        public getFavoris = ( options: RequestOptions ): void => {
+          this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlFavoris, options)
                 .timeout(10000)
-                .map(function (res) {
-                localStorage.setItem("mesRepas", JSON.stringify(res.json()));
-                return res.json();
-            })
-                .subscribe(function (data) { return (data); }, function (err) { return (console.log("getFavoris: Delay exceeded !")); });
-        };
+                .map(res => {
+                  localStorage.setItem("mesRepas", JSON.stringify(res.json()));
+                  return res.json();
+                })
+                .subscribe(data => (data), (err) => (console.log("getFavoris: Delay exceeded !")));
+        }
+        */
         this.getMesAliments = function (options) {
             _this.http.get(_this.srvHttp.SERVER_URL + _this.srvHttp.urlMesdAliment, options)
                 .timeout(10000)
@@ -3824,12 +3816,13 @@ var SrvAliment = /** @class */ (function () {
                 headers.append("Accept", 'application/x-www-form-urlencoded');
                 headers.append('Content-Type', 'application/x-www-form-urlencoded');
                 headers.set('user', _this.user.num);
-                var options_1 = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["d" /* RequestOptions */]({ headers: headers });
+                var options = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["d" /* RequestOptions */]({ headers: headers });
                 var idAliment = "id=" + id;
-                _this.http.delete(_this.srvHttp.SERVER_URL + _this.srvHttp.urlMesdAliment + "?" + idAliment, options_1)
+                _this.http.delete(_this.srvHttp.SERVER_URL + _this.srvHttp.urlMesdAliment + "?" + idAliment, options)
                     .timeout(10000)
                     .map(function (res) {
-                    _this.getMesAliments(options_1);
+                    _this.getAliments();
+                    //            this.getMesAliments(options);                                                     
                 })
                     .subscribe(function (data) { return (data); }, function (err) { return (console.log("deleteMesAliments: Delay exceeded !")); });
             }
@@ -4034,10 +4027,17 @@ var QuantitePage = /** @class */ (function () {
             selector: 'page-quantite',template:/*ion-inline-start:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\quantite\quantite.html"*/'<ion-content padding class="background-color-aliment">\n\n    <ion-grid class="vertical-align-content">\n      <ion-row>\n          <ion-col width-100 class="center"><span [innerHTML]="quantiteAliment"></span></ion-col>        \n      </ion-row>\n\n      <ion-row>\n        <ion-col width-100>\n          <ion-item no-lines class="itemConf list-conf-rb">\n            <!--\n            <ion-input type="number" [value]="quantite" placeholder=\'{{"frm.quantite.saisieQuantite"|translate}}\' (change)="getQuantite($event.target.value)"></ion-input>\n            -->\n            <ion-input type="number" [value]="quantite" placeholder=\'{{getTextUnite()}}\' (change)="getQuantite($event.target.value)"></ion-input>\n          </ion-item>\n        </ion-col>\n      </ion-row>      \n      <ion-row class="center">  \n        <ion-col width-90 class="center-col">\n          <div class="dividerBlock" ></div>\n        </ion-col>\n      </ion-row>\n      <ion-row class="center">  \n        <ion-col width-50 class="center-col">\n          <button ion-button full color="myck" (click)="calculHdc()">{{"button.ok"|translate}}</button>\n        </ion-col>\n        <ion-col width-50 class="center-col">\n          <button ion-button full color="dark" (click)="returnAliment();">{{"button.annuler"|translate}}</button>\n        </ion-col>\n      </ion-row>\n    </ion-grid> \n\n    <ion-grid>\n      <ion-row class="center">\n        <ion-col width-90 class="center-col">\n          <img src="{{imageAliment_1}}" class="imgAliment" [hidden]="(imageAliment_1 === null || alimentAffiche !== 1)">\n          <img src="{{imageAliment_2}}" class="imgAliment" [hidden]="(imageAliment_2 === null || alimentAffiche !== 2)">\n          <img src="{{imageAliment_3}}" class="imgAliment" [hidden]="(imageAliment_3 === null || alimentAffiche !== 3)">\n          <img [src]="sanitizer.bypassSecurityTrustUrl(imageMonAliment)" style="width:100%;" class="imgAliment" [hidden]="(imageMonAliment === null || imageMonAliment==\'undefined\')">\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-grid class="button-quantite" [hidden]="imageAliment === 0">\n      <ion-row class="center">\n        <ion-col width-33 class="center-col" (click)=\'setQuantite(1)\'>\n            <span>{{quantite_1}}</span>\n        </ion-col>\n        <ion-col width-33 class="center-col col-border" (click)=\'setQuantite(2)\'>\n            <span>{{quantite_2}}</span>\n        </ion-col>\n        <ion-col width-33 class="center-col" (click)=\'setQuantite(3)\'>\n            <span>{{quantite_3}}</span>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projets\diabete\diabete_v3\client\new_webdia\src\pages\alimentTabs\quantite\quantite.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */], __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */],
+            __WEBPACK_IMPORTED_MODULE_5__pipes_srvSafeHtml__["a" /* SrvSafeHtml */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_srvQuantite__["a" /* SrvQuantite */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */]])
     ], QuantitePage);
     return QuantitePage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=quantite.js.map

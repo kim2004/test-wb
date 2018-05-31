@@ -49,9 +49,11 @@ export class SrvHttp {
     this.urlInscription= 'inscription';
   }  
 
+  /*
   public getFavoris = ( ): void => {
     return JSON.parse(localStorage.getItem("mesRepas"));           
   }  
+  */
 
   public getFamilleAliment = ( ): void => {
     return JSON.parse(localStorage.getItem("FamillesAliments"));           

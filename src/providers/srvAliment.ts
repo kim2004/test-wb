@@ -125,32 +125,33 @@ export class SrvAliment {
 
   public getAliments = ( ): void => { 
     let lstData = this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlFamilleAliment)
-          .timeout(10000)
-          .map(res => {   
-            localStorage.setItem("FamillesAliments", JSON.stringify(res.json()));                                         
-            return res.json(); 
-          })
-          .subscribe(data => ( data ), (err) => (console.log("getFamillesAliments: Delay exceeded !")));
+      .timeout(10000)
+      .map(res => {   
+        localStorage.setItem("FamillesAliments", JSON.stringify(res.json()));                                         
+        return res.json(); 
+      })
+      .subscribe(data => ( data ), (err) => (console.log("getFamillesAliments: Delay exceeded !")));
 
     lstData = this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlAliment)
-          .timeout(10000)
-          .map(res => {   
-            localStorage.setItem("Aliments", JSON.stringify(res.json()));                                                    
-            return res.json(); 
-          })
-          .subscribe(data => ( data ), (err) => (console.log("getAliments: Delay exceeded !")));
+      .timeout(10000)
+      .map(res => {   
+        localStorage.setItem("Aliments", JSON.stringify(res.json()));                                                    
+        return res.json(); 
+      })
+      .subscribe(data => ( data ), (err) => (console.log("getAliments: Delay exceeded !")));
   }  
 
   public getImagesAliments = ( ): void => { 
     this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlImageAliment)
-          .timeout(10000)
-          .map(res => {   
-            localStorage.setItem("imagesAliments", JSON.stringify(res.json()));                                         
-            return res.json();
-          })
-          .subscribe(data => ( data ), (err) => (console.log("getImagesAliments: Delay exceeded !")));
+      .timeout(10000)
+      .map(res => {   
+        localStorage.setItem("imagesAliments", JSON.stringify(res.json()));                                         
+        return res.json();
+      })
+      .subscribe(data => ( data ), (err) => (console.log("getImagesAliments: Delay exceeded !")));
   }  
 
+  /*
   public getFavoris = ( options: RequestOptions ): void => { 
     this.http.get(this.srvHttp.SERVER_URL + this.srvHttp.urlFavoris, options)
           .timeout(10000)            
@@ -159,7 +160,8 @@ export class SrvAliment {
             return res.json();
           })
           .subscribe(data => (data), (err) => (console.log("getFavoris: Delay exceeded !")));
-  }  
+  } 
+  */ 
 
   public getMesAliments = ( options: RequestOptions ): void => { 
     this.http.get( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment, options)
@@ -170,7 +172,7 @@ export class SrvAliment {
       })
       .subscribe(data => (data), (err) => (console.log("getMesAliments: Delay exceeded !"))); 
   }
-
+ 
   public deleteMesAliments = (id): void => { 
     this.user = JSON.parse(localStorage.getItem('User'));
     if(this.user && this.user.num && this.user.num.length>0){
@@ -179,10 +181,10 @@ export class SrvAliment {
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       headers.set('user', this.user.num);
       let options = new RequestOptions({ headers: headers });
-      var idAliment = "id="+id;
-      this.http.delete( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment+"?"+idAliment, options)
+      var params = "?id="+id;
+      this.http.delete( this.srvHttp.SERVER_URL + this.srvHttp.urlMesdAliment + params, options)
           .timeout(10000)
-          .map(res => {                         
+          .map(res => {    
             this.getMesAliments(options);                                                     
           })
           .subscribe(data => (data), (err) => (console.log("deleteMesAliments: Delay exceeded !"))); 
@@ -208,15 +210,6 @@ export class SrvAliment {
         }          
         lstData = JSON.stringify(lstAlimentPhoto);
       }
-    
-//      else if(idFamille===this.MES_ALIMENTS){
-//        lstMesAliment = JSON.parse(localStorage.getItem("mesAliments"));             
-//        for (var i = 0; i < lstMesAliment.length; i++) {
-//          this.listAliment.push({id: lstMesAliment[i].id, nom: lstMesAliment[i].nom, nom_en: lstMesAliment[i].nom, nom_de: lstMesAliment[i].nom, quantite: lstMesAliment[i].quantite, imgData: lstMesAliment[i].image});         
-//        }
-//        this.lstData = JSON.stringify(this.listAliment); 
-//      }
-      
       else {
         let aliment: any;
         let listAliment: Array<any> = [];
